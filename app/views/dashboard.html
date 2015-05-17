@@ -1,0 +1,90 @@
+<div class="text-center">
+  <h1>Go refer me</h1>
+  <br />
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <p class="well">
+        Welcome  {{linkedinProfile.firstName}}, Glad to have you here. You can have below an overlook of all your profile.
+      </p>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="panel"  ng-class="{'panel-primary':!product.toRemove, 'panel-danger':product.toRemove}">
+        <div class="panel-heading">
+          <h3 class="panel-title">Profile</h3>
+        </div>
+        <div class="panel-body">
+          <p>{{linkedinProfile.headline}}</p>
+          <p>
+            <img ng-src="{{linkedinProfile.pictureUrl}}" class="img-circle" />
+          </p>
+          <br />
+          <p class="text-center">
+            <b>Last name</b> : {{linkedinProfile.lastName}}<br />
+            <b>First name</b> : {{linkedinProfile.firstName}}<br />
+            <b>Industry</b> : {{linkedinProfile.industry}}<br />
+            <b>Location</b> : {{linkedinProfile.location.name}}<br>
+            <b>Category</b> :
+            <select ng-model="linkedinProfile.category">
+              <option value="referer">Referer</option>
+              <option value="looking_for_job">Looking for job</option>
+            </select>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-offset-2 col-md-8">
+      <div class="panel panel-primary" >
+        <div class="panel-heading">
+          <h3 class="panel-title">What am I looking for?</h3>
+        </div>
+        <div class="panel-body">
+          <p class="text-center">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Industry</h3>
+                </div>
+                <div class="panel-body">
+                  <input type="text" ng-model='industry'/> <button class="btn btn-primary" ng-click='addIndustry()'>Add</button>
+                  <div ng-if="linkedinProfile.search.industries && linkedinProfile.search.industries.length > 0">
+                    <div class="row">
+                      <div class="col-md-4" ng-repeat="industry in linkedinProfile.search.industries track by $index">
+                       <alert type='success' close='removeIndustry(industry)'>{{industry}}</alert>
+                      </div>
+                    </div>
+                  </div>
+                  <div ng-if="!linkedinProfile.search.industries || linkedinProfile.search.industries.length === 0">
+                    You haven't set up any filters on the industry yet
+                  </div>
+                </div>
+              </div>
+            </p>
+            <p class="text-center">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Location</h3>
+                </div>
+                <div class="panel-body">
+                  <input type="text" ng-model='location'/> <button class="btn btn-primary" ng-click='addLocation()'>Add</button>
+                  <div ng-if="linkedinProfile.search.locations && linkedinProfile.search.locations.length > 0">
+                    <div class="row">
+                      <div class='col-md-4' ng-repeat="location in linkedinProfile.search.locations track by $index">
+                          <alert type='success' close='removeLocation(location)'>{{location}}</alert>              
+                      </div>
+                    </div>
+                  </div>
+                  <div ng-if="!linkedinProfile.search.locations || linkedinProfile.search.locations.length === 0">
+                    You haven't set up any filters on the location yet
+                  </div>
+                </div>
+              </div>
+            </p>
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

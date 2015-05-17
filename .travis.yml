@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 0.10
+install:
+	- npm install
+	- bower install
+
+script:
+ - grunt
+
+notification:
+	email:
+		- frederic.fort32@gmail.com
+
+	on_success: always
+	on_failure: always
+
