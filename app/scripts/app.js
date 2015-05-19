@@ -47,10 +47,8 @@ angular
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
         resolve:{
-          linkedinProfile:['Linkedin', function(Linkedin){
-             return Linkedin.authorization().then(function(){
-              return Linkedin.getUserInformation();
-             })
+          linkedinProfile:['User','$state', function(User, $state){
+            return User.getUser();
           }]
         }
       })

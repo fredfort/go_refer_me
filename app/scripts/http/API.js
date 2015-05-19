@@ -7,8 +7,17 @@ angular.module('discountdublin')
 	var user = null;
 
 	return {
-		createUser :function(category){
-			return $http.post(baseURL+'user');
+		createUser :function(user){
+			return $http.post(baseURL+'user',{user:user});
+		},
+
+		getUser: function(user){
+			return $http.get(baseURL+'user/'+user.id);
+		},
+
+		updateUser: function(user){
+			debugger;
+			return $http.put(baseURL+'user/',{user:user});
 		},
 
 		searchUser :function(){

@@ -1,11 +1,15 @@
 'use strict';
 
 angular.module('discountdublin')
-.controller('DashboardCtrl',['$scope','linkedinProfile', function ($scope,linkedinProfile) { 
+.controller('DashboardCtrl',['$scope','$state','linkedinProfile', 'API','User', function ($scope,$state,linkedinProfile, API,User) { 
+	if(!linkedinProfile){
+		$state.go('login');//TODO dirty change that
+	}
 	$scope.linkedinProfile = linkedinProfile;
-	$scope.linkedinProfile.search = { industries:[], locations:[]};
-	debugger;
-
+	if(!$scope.linkedinProfile.search){
+		$scope.linkedinProfile.search = { industries:[], locations:[]};
+	}
+	
 	$scope.addIndustry = function(){
 		linkedinProfile.search.industries.push($scope.industry);
 		$scope.industry = '';
@@ -22,6 +26,12 @@ angular.module('discountdublin')
 
 	$scope.removeLocation = function(location){
 		linkedinProfile.search.locations = _.without(linkedinProfile.search.locations, location)
+	}
+
+	$scope.saveProfile = function(){
+		API.updateUser($scope.linkedinProfile).then(function(){
+			User.updateUser($scope.linkedinProfile);
+		});
 	}
 
 

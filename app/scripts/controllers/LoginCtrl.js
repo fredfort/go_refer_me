@@ -7,7 +7,16 @@ angular.module('discountdublin')
 
     $scope.linkedInLogin = function(){
       Linkedin.authorization().then(function(data){
-        $state.go('main.dashboard');
+            Linkedin.getUserInformation().then(function(user){
+                API.createUser(user)
+                .then(function(userToken){
+                  debugger;
+                  User.setUser(userToken);
+                  $state.go('main.dashboard');
+                }).catch(function(err){
+                  alert('User creation error '+err);
+                });
+            });
       }).catch(function(data){
         alert('cant connect to linkedin')
       });

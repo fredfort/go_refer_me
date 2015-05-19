@@ -2,7 +2,7 @@
   <h1>Go refer me</h1>
   <br />
   <div class="row">
-    <div class="col-md-offset-1 col-md-10">
+    <div class="col-md-offset-2 col-md-8">
       <p class="well">
         Welcome  {{linkedinProfile.firstName}}, Glad to have you here. You can have below an overlook of all your profile.
       </p>
@@ -35,7 +35,8 @@
       </div>
     </div>
   </div>
-  <div class="col-md-offset-2 col-md-8">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
       <div class="panel panel-primary" >
         <div class="panel-heading">
           <h3 class="panel-title">What am I looking for?</h3>
@@ -81,10 +82,11 @@
                 </div>
               </div>
             </p>
-            
-          </p>
+         </div>
         </div>
-      </div>
-    </div>
+     </div>
+  </div>
+  <div class="row text-right">
+  <button class="btn btn-success" ng-click="saveProfile()">Save Profile</button>
   </div>
 </div>
