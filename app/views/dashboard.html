@@ -25,8 +25,8 @@
             <b>First name</b> : {{linkedinProfile.firstName}}<br />
             <b>Industry</b> : {{linkedinProfile.industry}}<br />
             <b>Location</b> : {{linkedinProfile.location.name}}<br>
-            <b>Category</b> :
-            <select ng-model="linkedinProfile.category">
+            <b>Category</b> : 
+            <select ng-model="linkedinProfile.category" ng-change="saveProfile()">
               <option value="referer">Referer</option>
               <option value="looking_for_job">Looking for job</option>
             </select>
@@ -35,24 +35,27 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-show='linkedinProfile.category === "referer"'>
     <div class="col-md-offset-2 col-md-8">
       <div class="panel panel-primary" >
         <div class="panel-heading">
           <h3 class="panel-title">What am I looking for?</h3>
         </div>
         <div class="panel-body">
-          <p class="text-center">
+          <div class="text-center">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Industry</h3>
                 </div>
                 <div class="panel-body">
-                  <input type="text" ng-model='industry'/> <button class="btn btn-primary" ng-click='addIndustry()'>Add</button>
+                  <div>
+                    <input type="text" ng-model='industry'/> <button class="btn btn-primary" ng-click='addIndustry()'>Add</button>
+                  </div>
+                  <br />
                   <div ng-if="linkedinProfile.search.industries && linkedinProfile.search.industries.length > 0">
                     <div class="row">
-                      <div class="col-md-4" ng-repeat="industry in linkedinProfile.search.industries track by $index">
-                       <alert type='success' close='removeIndustry(industry)'>{{industry}}</alert>
+                      <div class="col-xs-6 col-md-4" ng-repeat="industry in linkedinProfile.search.industries track by $index">
+                       <alert type='info' close='removeIndustry(industry)'>{{industry}}</alert>
                       </div>
                     </div>
                   </div>
@@ -61,18 +64,21 @@
                   </div>
                 </div>
               </div>
-            </p>
-            <p class="text-center">
+            </div>
+            <div class="text-center">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Location</h3>
                 </div>
                 <div class="panel-body">
-                  <input type="text" ng-model='location'/> <button class="btn btn-primary" ng-click='addLocation()'>Add</button>
+                  <div>
+                    <input type="text" ng-model='location'/> <button class="btn btn-primary" ng-click='addLocation()'>Add</button>
+                  </div>
+                  <br />
                   <div ng-if="linkedinProfile.search.locations && linkedinProfile.search.locations.length > 0">
                     <div class="row">
-                      <div class='col-md-4' ng-repeat="location in linkedinProfile.search.locations track by $index">
-                          <alert type='success' close='removeLocation(location)'>{{location}}</alert>              
+                      <div class='col-xs-6 col-sm-4' ng-repeat="location in linkedinProfile.search.locations track by $index">
+                          <alert type='info' close='removeLocation(location)'>{{location}}</alert>              
                       </div>
                     </div>
                   </div>
@@ -81,12 +87,14 @@
                   </div>
                 </div>
               </div>
-            </p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <button class="btn btn-success btn-block" ng-click="searchJobSeeker()">Search for job Seeker</button>
+              </div>
+            </div>
          </div>
         </div>
      </div>
-  </div>
-  <div class="row text-right">
-  <button class="btn btn-success" ng-click="saveProfile()">Save Profile</button>
   </div>
 </div>

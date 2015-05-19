@@ -1,8 +1,8 @@
 angular.module('discountdublin')
 
 .factory('API',['$http','md5',function($http,md5){
-	var nodeAPI = 'http://localhost:3000/';
-	//var nodeAPI = 'http://default-environment-tjdrvapm26.elasticbeanstalk.com/';
+	//var nodeAPI = 'http://localhost:3000/';
+	var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
 	var baseURL = nodeAPI;
 	var user = null;
 
@@ -16,11 +16,10 @@ angular.module('discountdublin')
 		},
 
 		updateUser: function(user){
-			debugger;
 			return $http.put(baseURL+'user/',{user:user});
 		},
 
-		searchUser :function(){
+		searchUsers :function(){
 			return $http.get(baseURL+'user');
 		},
 

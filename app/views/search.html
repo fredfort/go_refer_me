@@ -1,0 +1,44 @@
+<div class="search">
+	<div class="text-center">
+	  <h1>Search for job seeker</h1>
+	</div>
+	<div class="row text-center">
+		<h4> You have found {{search.length}} people</h4>
+		<div class="col-md-offset-2 col-md-8">
+		  <div class="panel panel-primary" ng-repeat="linkedinProfile in search" id="profile_{{$index}}" ng-show="currentProfile == {{$index}}">
+		    <div class="panel-heading">
+		      <h3 class="panel-title">Profile</h3>
+		    </div>
+		    <div class="panel-body">
+		      <p>{{linkedinProfile.headline}}</p>
+		      <p>
+		        <img ng-src="{{linkedinProfile.pictureUrl}}" class="img-circle" />
+		      </p>
+		      <br />
+		      <p class="text-center">
+		        <b>Last name</b> : {{linkedinProfile.lastName}}<br />
+		        <b>First name</b> : {{linkedinProfile.firstName}}<br />
+		        <b>Industry</b> : {{linkedinProfile.industry}}<br />
+		        <b>Location</b> : {{linkedinProfile.location.name}}<br>
+		        <b>Category</b> : {{linkedinProfile.category}}
+		      </p>
+		    </div>
+		    <div class="panel-footer">
+		    	<div class="row">
+			    	<div class="col-xs-4 text-left">
+			    		<button class="btn btn-default" ng-click="previous()"> 
+			    			<span class="glyphicon glyohicon-chevron-left"></span> Previous
+			    		</button>
+			    	</div>
+			    	<div class="col-xs-4 text-center">
+			    		<span> <span class="hidden-xs">Person</span> {{$index+1}} / {{search.length}}
+			    	</div>
+			    	<div class="col-xs-4 text-right">
+			    		<button class="btn btn-default" ng-click="next()">Next <span class="glyphicon glyohicon-chevron-left"></span></button>
+			    	</div>
+			    </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>

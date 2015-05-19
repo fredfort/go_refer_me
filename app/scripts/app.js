@@ -17,7 +17,6 @@ angular
     'ngSanitize',
     'ngTouch',
     'angular-md5',
-    'xeditable',
     'toaster',
     'ui.bootstrap'
   ])
@@ -52,4 +51,16 @@ angular
           }]
         }
       })
+      .state('main.search',{
+        url:'search',
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl',
+        resolve:{
+          search:['API', function(API){
+            return API.searchUsers().then(function(people){
+              return people.data;
+            });
+          }]
+        }
+      });
   });
