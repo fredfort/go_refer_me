@@ -2,8 +2,15 @@
 
 
 angular.module('discountdublin')
-  .controller('MainCtrl',['$scope','$state','Linkedin','User', function ($scope,$state, Linkedin, User) {
+  .controller('MainCtrl',['$scope','$state','Linkedin','User','industries', function ($scope,$state, Linkedin, User,industries) {
 
+    $scope.industries = industries.getIndustries();
+    var sub_industries = [];
+    angular.forEach($scope.industries, function(value, key) {
+      sub_industries = sub_industries.concat(value);
+    });
+    $scope.sub_industries = sub_industries;
+    
   	$scope.logout = function(){
   		User.clear();
   		$state.go('login');

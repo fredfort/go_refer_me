@@ -49,7 +49,10 @@
                 </div>
                 <div class="panel-body">
                   <div>
-                    <input type="text" ng-model='industry'/> <button class="btn btn-primary" ng-click='addIndustry()'>Add</button>
+                    <input type="text" ng-model='industry' 
+                          typeahead-on-select="addIndustry()" 
+                          typeahead="industry for industry in sub_industries | filter:$viewValue | limitTo:15" />
+                    <button class="btn btn-primary" ng-click='addIndustry()'>Add</button>
                   </div>
                   <br />
                   <div ng-if="linkedinProfile.search.industries && linkedinProfile.search.industries.length > 0">
