@@ -8549,49 +8549,60 @@ button.close {
   padding: 25px;
 }
 
-/* line 10, _utils.scss */
+/* line 11, _utils.scss */
+.no-padding {
+  padding: 0px;
+}
+
+/*Margin*/
+/* line 17, _utils.scss */
+.margin-top5 {
+  margin-top: 5px;
+}
+
+/* line 21, _utils.scss */
 .margin-top15 {
   margin-top: 15px;
 }
 
-/* line 14, _utils.scss */
+/* line 25, _utils.scss */
 .margin-bottom15 {
   margin-bottom15: 15px;
 }
 
 /*FONT SIZE*/
-/* line 19, _utils.scss */
+/* line 30, _utils.scss */
 .font_size1-1 {
   font-size: 1.1em;
 }
 
-/* line 23, _utils.scss */
+/* line 34, _utils.scss */
 .font_size1-2 {
   font-size: 1.2em;
 }
 
-/* line 27, _utils.scss */
+/* line 38, _utils.scss */
 .font_size1-3 {
   font-size: 1.3em;
 }
 
-/* line 31, _utils.scss */
+/* line 42, _utils.scss */
 .font_size1-6 {
   font-size: 1.6em;
 }
 
-/* line 35, _utils.scss */
+/* line 46, _utils.scss */
 .font_size2-1 {
   font-size: 2.1em;
 }
 
 /*BORDER*/
-/* line 40, _utils.scss */
+/* line 51, _utils.scss */
 .borderTop {
   border-top: solid lightgray 1px;
 }
 
-/* line 44, _utils.scss */
+/* line 55, _utils.scss */
 .borderBottom {
   border-bottom: solid lightgray 1px;
 }
@@ -8603,44 +8614,15 @@ button.close {
   padding: 0.2em 0;
 }
 
-/* line 11, main.scss */
-body {
-  padding: 0;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-/* line 16, main.scss */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-/* line 24, main.scss */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-  /* Make the masthead heading the same height as the navigation */
-}
-/* line 29, main.scss */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
 /* Custom page footer */
-/* line 38, main.scss */
+/* line 13, main.scss */
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 45, main.scss */
+/* line 20, main.scss */
 .loginImage {
   background-image: url("../images/logo.png");
   background-size: cover;
@@ -8648,20 +8630,20 @@ body {
   height: 500px;
 }
 
-/* line 52, main.scss */
+/* line 27, main.scss */
 .tabHeader {
   padding: 5px;
   font-weight: bold;
   border: 1px lightgray solid;
 }
 
-/* line 57, main.scss */
+/* line 32, main.scss */
 .tabRow {
   padding: 5px;
   border: 1px lightgray solid;
 }
 
-/* line 62, main.scss */
+/* line 37, main.scss */
 .mainTitle {
   color: white;
   font-size: 2.4em;
@@ -8669,17 +8651,17 @@ body {
   opacity: 0.8;
 }
 
-/* line 69, main.scss */
+/* line 44, main.scss */
 .menuItem {
   padding: 50px;
   border-top: lightgray 1px solid;
 }
-/* line 73, main.scss */
+/* line 48, main.scss */
 .menuItem div p {
   font-size: 1.4em;
 }
 
-/* line 79, main.scss */
+/* line 54, main.scss */
 .shoppingBackground {
   background: url("../images/shopping.jpg");
   background-size: cover;
@@ -8687,29 +8669,38 @@ body {
   height: 350px;
 }
 
-/* line 86, main.scss */
+/* line 61, main.scss */
 .merchantBackground {
   background: url("../images/merchants.jpg");
   background-size: cover;
   background-position: center;
-  height: 350px;
+  height: 320px;
 }
 
-/* line 93, main.scss */
+/* line 68, main.scss */
 .intro {
   background-color: whitesmoke;
   padding: 50px;
   margin-top: 25px;
 }
-/* line 97, main.scss */
+/* line 72, main.scss */
 .intro p {
   font-size: 1.6em;
 }
 
-/* line 102, main.scss */
-.linkedinLogo {
-  border: 1px solid lightgray;
-  margin-top: -30px;
+/* line 77, main.scss */
+.LoginHeading {
+  height: 350px;
+}
+/* line 80, main.scss */
+.LoginHeading .mainLogo {
+  width: 50%;
+  max-width: 350px;
+}
+
+/* line 86, main.scss */
+.headerLogo {
+  width: 105px;
 }
 
 /*# sourceMappingURL=main.css.map */

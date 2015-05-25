@@ -16,7 +16,6 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    'angular-md5',
     'toaster',
     'ui.bootstrap'
   ])
@@ -56,11 +55,37 @@ angular
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl',
         resolve:{
-          search:['API', function(API){
+          search:['API', 'User', function(API,User){
+             var userTrash = User.getUser().trash;
             return API.searchUsers().then(function(people){
+              var people = people.data;
+              return _.filter(people, function(person){
+                return userTrash.indexOf(person._id) === -1;
+              });
+            });
+          }]
+        }
+      })
+      .state('main.userSaved',{
+        url:'userSaved',
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl',
+        resolve:{
+          search:['API','User', function(API, User){
+            var ids = User.getUser().saved;
+            return API.searchUsersByIds(ids).then(function(people){
               return people.data;
             });
           }]
         }
+      })
+      .state('main.info',{
+        url:'info',
+        templateUrl: 'views/info.html'
+      })
+      .state('main.credit',{
+        url:'credit',
+        templateUrl: 'views/credit.html',
+        controller:'CreditController'
       });
   });

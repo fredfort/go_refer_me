@@ -1,7 +1,4 @@
 <div class="search">
-	<div class="text-center">
-	  <h1>Search for job seeker</h1>
-	</div>
 	<div class="row text-center">
 		<h4> You have found {{search.length}} people</h4>
 		<div class="col-md-offset-2 col-md-8">
@@ -10,35 +7,118 @@
 		      <h3 class="panel-title">Profile</h3>
 		    </div>
 		    <div class="panel-body">
-		      <p>{{linkedinProfile.headline}}</p>
-		      <p>
-		        <img ng-src="{{linkedinProfile.pictureUrl}}" class="img-circle" />
-		      </p>
+		      <div class="font_size1-1">{{linkedinProfile.headline}}</div>
 		      <br />
-		      <p class="text-center">
+		      <div>
+		        <img ng-src="{{linkedinProfile.pictureUrl}}" class="img-circle" />
+		      </div>
+		      <br />
+		      <div class="text-center">
 		        <b>Last name</b> : {{linkedinProfile.lastName}}<br />
 		        <b>First name</b> : {{linkedinProfile.firstName}}<br />
 		        <b>Industry</b> : {{linkedinProfile.industry}}<br />
 		        <b>Location</b> : {{linkedinProfile.location.name}}<br>
 		        <b>Category</b> : {{linkedinProfile.category}}
-		      </p>
+		      </div>
+		      <br /><br />
+		      <div class="text-center">
+		      	<div>
+		      		<span><b>Interested in this profile?</b></span>
+		      	</div>
+		      	<br />
+		      	<alert type="success" ng-show="!hasGotIt()">
+		      		<b>Never</b> hide this person for your next searches<br />
+		      		<b>Maybe</b> save this person in your favourite list<br />
+		      		<b>Yes</b> send an invitation to this person<br/><br/>
+					<div>
+						<button class='btn btn-default' ng-click="gotIt()">Got it!</button>
+					</div>
+		      	</alert>
+		      	<div class="row">
+			      	<div class="col-xs-4 no-padding">
+					  <button type="button" class="btn btn-default btn-block" ng-click="trashProfile(linkedinProfile)">Never 
+					  	<span class="glyphicon glyphicon-trash"></span>
+					  </button>
+				  	</div>
+				  	<div class="col-xs-4 no-padding">
+				  		<button type="button" class="btn btn-default btn-block" ng-class="{'btn-success':isAlreadySaved(linkedinProfile)}"ng-click="saveProfile(linkedinProfile)">Maybe 
+				  			<span class="glyphicon glyphicon-save"></span>
+				  		</button>
+				  	</div>
+				  	<div class="col-xs-4 no-padding">
+				  		<button type="button" class="btn btn-default btn-block" ng-click="contactProfile(linkedinProfile)">Yes 
+				  			<span  class="glyphicon glyphicon-heart"></span>
+				  		</button>
+					</div>
+				</div>
+		      </div>
 		    </div>
 		    <div class="panel-footer">
 		    	<div class="row">
 			    	<div class="col-xs-4 text-left">
-			    		<button class="btn btn-default" ng-click="previous()"> 
+			    		<button class="btn btn-default" ng-click="previous()" ng-show="currentProfile > 0"> 
 			    			<span class="glyphicon glyohicon-chevron-left"></span> Previous
 			    		</button>
 			    	</div>
 			    	<div class="col-xs-4 text-center">
-			    		<span> <span class="hidden-xs">Person</span> {{$index+1}} / {{search.length}}
+			    		 <span class="hidden-xs">Person</span> {{$index+1}} / {{search.length}}
 			    	</div>
 			    	<div class="col-xs-4 text-right">
-			    		<button class="btn btn-default" ng-click="next()">Next <span class="glyphicon glyohicon-chevron-left"></span></button>
+			    		<button class="btn btn-default" ng-show="currentProfile < search.length" ng-click="next()">Next 
+			    			<span class="glyphicon glyohicon-chevron-left"></span>
+			    		</button>
 			    	</div>
 			    </div>
 		    </div>
 		  </div>
+		  <div class="panel panel-primary" id="profile_{{$index}}" ng-show="currentProfile == search.length">
+		    <div class="panel-heading">
+		      <h3 class="panel-title">No more Profile</h3>
+		    </div>
+		    <div class="panel-body">
+		    	<div class="row">
+		    		<span class="font_size1-2">You went throught all the profile matching your search.</span>
+		    	</div>
+		    	<br />
+		    	<div class="row">
+		    		<div class="col-md-6">
+		    			<div class="panel panel-default" ng-show="user.trash.length > 0">
+						    <div class="panel-heading">
+						      <h3 class="panel-title">Trash</h3>
+						    </div>
+						    <div class="panel-body">
+						    	<p>You have {{user.trash.length}} profile(s) in the trash</p><br />
+						    	<div>
+			    					<bouton class="btn btn-danger" ng-click="clearTrash()">Clear the trash</bouton>
+		    					</div>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="col-md-6">
+		    			<div class="panel panel-default"  ng-show="user.saved.length > 0">
+						    <div class="panel-heading">
+						      <h3 class="panel-title">Saved list</h3>
+						    </div>
+						    <div class="panel-body">
+		    					<p>You have {{user.saved.length}} profile(s) in the saved list</p><br />
+		    					<div class="row">
+		    						<div class="col-md-6 margin-top5">
+		    							<bouton class="btn btn-danger" ng-click="clearSavedList()">Clear the list</bouton>
+		    						</div>
+		    						<div class="col-md-6 margin-top5">
+		    							<button class="btn btn-default" ng-click="goToSavedList()">See profiles</button>
+		    						</div>
+		    					</div>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+		  </div>
 		</div>
 	</div>
+	<div class="row text-center">
+		<a ui-sref="main.dashboard" class="btn btn-primary">Back to my profile</a>
+	</div>
+	<br />
 </div>

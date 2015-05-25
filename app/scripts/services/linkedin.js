@@ -1,15 +1,14 @@
 angular.module('discountdublin')
 
 .factory('Linkedin',['$http','$q',function($http, $q){
-	var format = '?format=json';
-	var params = ':(id,first-name,skills,educations,languages,twitter-accounts,industry,location)'
+
 	var vm = this;
 
 	return {
 
 		getUserInformation: function(){
 			var deferred = $q.defer();
-			var url = 'people/~:(id,first-name,last-name,headline,siteStandardProfileRequest,industry,location,skills,num-connections,picture-url)?format=json'
+			var url = 'people/~:(id,positions,specialties,summary,first-name,last-name,headline,siteStandardProfileRequest,industry,location,skills,picture-url)?format=json';
 			IN.API.Raw(url).method('GET').body().result(function(data){
 				deferred.resolve(data);
 			});
