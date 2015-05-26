@@ -1,19 +1,25 @@
 'use strict';
 
 angular.module('discountdublin')
-.controller('DashboardCtrl',['$scope','$state','linkedinProfile', 'API','User', 'toaster', function ($scope,$state,linkedinProfile, API,User,toaster) { 
+.controller('DashboardCtrl',['$scope','$state','linkedinProfile', 'API','User','companies', 'toaster', function ($scope,$state,linkedinProfile, API,User, companies, toaster) { 
 	if(!linkedinProfile){
 		$state.go('login');//TODO dirty change that
 	}
 
 	$scope.linkedinProfile = linkedinProfile;
 	if(!$scope.linkedinProfile.search){
-		$scope.linkedinProfile.search = { industries:[], locations:[]};
+		$scope.linkedinProfile.search = { industries:[], locations:[], functions:[], languages:[]};
 	}
 
 	if(!$scope.linkedinProfile.wants){
-		$scope.linkedinProfile.wants = { industries:[], locations:[], companies:[]};
+		$scope.linkedinProfile.wants = { industries:[], locations:[], companies:[], functions:[], languages:[]};
 	}
+
+	$scope.companiesArray = _.map(companies, function(company){
+		if(company.currentJob){
+			return company.currentJob.company;
+		}
+	});
 
 	//Industries
 	$scope.addIndustry = function(){
@@ -36,6 +42,20 @@ angular.module('discountdublin')
 
 	$scope.removeLocation = function(location){
 		linkedinProfile.search.locations = _.without(linkedinProfile.search.locations, location);
+		$scope.saveUserProfile($scope.linkedinProfile);
+	};
+
+	$scope.addFunction = function(){
+		if(!linkedinProfile.search.functions){
+			linkedinProfile.search.functions = [];
+		}
+		linkedinProfile.search.functions.push($scope.function);
+		$scope.function = '';
+		$scope.saveUserProfile($scope.linkedinProfile);
+	};
+
+	$scope.removeFunction = function(myfunction){
+		linkedinProfile.search.functions = _.without(linkedinProfile.search.functions, myfunction);
 		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
@@ -74,12 +94,26 @@ angular.module('discountdublin')
 		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
+
+	$scope.addFunctionWish = function(){
+		if(!linkedinProfile.wants.functions){
+			linkedinProfile.wants.functions = [];
+		}
+		linkedinProfile.wants.functions.push($scope.wants_function);
+		$scope.wants_function = '';
+		$scope.saveUserProfile($scope.linkedinProfile);
+	};
+
+	$scope.removeFunctionWish = function(myfunction){
+		linkedinProfile.wants.functions = _.without(linkedinProfile.wants.functions, myfunction);
+		$scope.saveUserProfile($scope.linkedinProfile);
+	};
+
 	$scope.searchJobSeeker = function(){
 		$state.go('main.search');
 	};
 
-	$scope.searchReferer = function(){
-		debugger;
+	$scope.searchReferer = function(){;
 		$state.go('main.search');
 	};
 

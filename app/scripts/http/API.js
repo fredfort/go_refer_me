@@ -1,8 +1,8 @@
 angular.module('discountdublin')
 
 .factory('API',['$http',function($http){
-	//var nodeAPI = 'http://localhost:3000/';
-	var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
+	var nodeAPI = 'http://localhost:3000/';
+	//var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
 	var baseURL = nodeAPI;
 	var user = null;
 
@@ -25,6 +25,10 @@ angular.module('discountdublin')
 
 		searchUsersByIds:function(ids){
 			return $http.post(baseURL+'user/search',{ids:ids});
+		},
+
+		searchCompanies:function(ids){
+			return $http.get(baseURL+'companies');
 		}
 	}
 

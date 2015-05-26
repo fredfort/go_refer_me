@@ -1,0 +1,164 @@
+  <div class="row" ng-show='linkedinProfile.category === "referer"'>
+    <div class="col-md-offset-2 col-md-8">
+      <div class="panel panel-primary" >
+        <div class="panel-heading">
+          <h3 class="panel-title">What am I looking for?</h3>
+        </div>
+        <div class="panel-body">
+          <div class="text-center">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Industries</h3>
+              </div>
+              <div class="panel-body">
+                <div>
+                  <input type="text" ng-model='industry' 
+                        typeahead-on-select="addIndustry()" 
+                        typeahead="industry for industry in sub_industries | filter:$viewValue | limitTo:15" />
+                  <button class="btn btn-primary" ng-click='addIndustry()'>Add</button>
+                </div>
+                <br />
+                <div ng-if="linkedinProfile.search.industries && linkedinProfile.search.industries.length > 0">
+                  <div class="row text-center">
+                    <div class="col-sm-6 col-md-4" ng-repeat="industry in linkedinProfile.search.industries track by $index">
+                     <alert type='info' close='removeIndustry(industry)'>{{industry}}</alert>
+                    </div>
+                  </div>
+                </div>
+                <div ng-if="!linkedinProfile.search.industries || linkedinProfile.search.industries.length === 0">
+                  You haven't set up any filters on the industry yet
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Location</h3>
+              </div>
+              <div class="panel-body">
+                <div>
+                  <input type="text" ng-model='location'
+                    typeahead-on-select="addLocation()" 
+                    typeahead="country for country in countries | filter:$viewValue | limitTo:15"/> 
+                    <button class="btn btn-primary" ng-click='addLocation()'>Add</button>
+                </div>
+                <br />
+                <div ng-if="linkedinProfile.search.locations && linkedinProfile.search.locations.length > 0">
+                  <div class="row">
+                    <div class='col-sm-6 col-sm-4' ng-repeat="location in linkedinProfile.search.locations track by $index">
+                        <alert type='info' close='removeLocation(location)'>{{location}}</alert>              
+                    </div>
+                  </div>
+                </div>
+                <div ng-if="!linkedinProfile.search.locations || linkedinProfile.search.locations.length === 0">
+                  You haven't set up any filters on the location yet
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <button class="btn btn-primary btn-block" ng-click="searchJobSeeker()">Search for job Seeker</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-show='linkedinProfile.category === "looking_for_job"'>
+    <div class="col-md-offset-2 col-md-8">
+      <div class="panel panel-primary" >
+        <div class="panel-heading">
+          <h3 class="panel-title">Which job  am I looking for?</h3>
+        </div>
+        <div class="panel-body">
+        <div class="text-center">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Compagny</h3>
+            </div>
+            <div class="panel-body">
+              <div>
+                <input type="text" ng-model='wants_company'
+                       typeahead-on-select="addCompanyWish()" 
+                        typeahead="company for company in companiesArray | filter:$viewValue | limitTo:15" /> 
+                <button class="btn btn-primary" ng-click='addCompanyWish()'>Add</button>
+              </div>
+              <br />
+              <div ng-if="linkedinProfile.wants.companies && linkedinProfile.wants.companies.length > 0">
+                <div class="row">
+                  <div class='col-sm-6 col-sm-4' ng-repeat="company in linkedinProfile.wants.companies track by $index">
+                      <alert type='info' close='removeCompanyWish(company)'>{{company}}</alert>              
+                  </div>
+                </div>
+              </div>
+              <div ng-if="!linkedinProfile.wants.companies || linkedinProfile.wants.companies.length === 0">
+                You haven't set up any filters on the company yet
+              </div>
+            </div>
+          </div>
+        </div>
+       <div class="text-center">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Location</h3>
+            </div>
+            <div class="panel-body">
+              <div>
+                <input type="text" ng-model='wants_location'
+                  typeahead-on-select="addLocationWish()" 
+                  typeahead="country for country in countries | filter:$viewValue | limitTo:15"/> 
+                  <button class="btn btn-primary" ng-click='addLocationWish()'>Add</button>
+              </div>
+              <br />
+              <div ng-if="linkedinProfile.wants.locations && linkedinProfile.wants.locations.length > 0">
+                <div class="row">
+                  <div class='col-sm-6 col-sm-4' ng-repeat="location in linkedinProfile.wants.locations track by $index">
+                      <alert type='info' close='removeLocationWish(location)'>{{location}}</alert>              
+                  </div>
+                </div>
+              </div>
+              <div ng-if="!linkedinProfile.wants.locations || linkedinProfile.wants.locations.length === 0">
+                You haven't set up any filters on the location yet
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="text-center">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Industries</h3>
+                </div>
+                <div class="panel-body">
+                  <div>
+                    <input type="text" ng-model='wants_industry' 
+                          typeahead-on-select="addIndustryWish()" 
+                          typeahead="industry for industry in sub_industries | filter:$viewValue | limitTo:15" />
+                    <button class="btn btn-primary" ng-click='addIndustryWish()'>Add</button>
+                  </div>
+                  <br />
+                  <div ng-if="linkedinProfile.wants.industries && linkedinProfile.wants.industries.length > 0">
+                    <div class="row text-center">
+                      <div class="col-sm-6 col-md-4" ng-repeat="industry in linkedinProfile.wants.industries track by $index">
+                       <alert type='info' close='removeIndustryWish(industry)'>{{industry}}</alert>
+                      </div>
+                    </div>
+                  </div>
+                  <div ng-if="!linkedinProfile.wants.industries || linkedinProfile.wants.industries.length === 0">
+                    You haven't set up any filters on the industry yet
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <button class="btn btn-primary btn-block" ng-click="searchReferer()">Search for referer</button>
+              </div>
+            </div>
+         </div>
+        </div>
+      </div>
+     </div>
+  </div>

@@ -47,6 +47,11 @@ angular
         resolve:{
           linkedinProfile:['User','$state', function(User, $state){
             return User.getUser();
+          }],
+          companies:['API', function(API){
+            return API.searchCompanies().then(function(companies){
+              return companies.data;
+            });
           }]
         }
       })
@@ -62,6 +67,21 @@ angular
               return _.filter(people, function(person){
                 return userTrash.indexOf(person._id) === -1;
               });
+            });
+          }]
+        }
+      })
+      .state('main.searchSettings',{
+        url:'searchSettings',
+        controller: 'DashboardCtrl',
+        templateUrl: 'views/searchSettings.html',
+         resolve:{
+          linkedinProfile:['User','$state', function(User, $state){
+            return User.getUser();
+          }],
+          companies:['API', function(API){
+            return API.searchCompanies().then(function(companies){
+              return companies.data;
             });
           }]
         }

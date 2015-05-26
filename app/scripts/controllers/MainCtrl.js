@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('discountdublin')
-  .controller('MainCtrl',['$scope','$state','Linkedin','User','industries','locations','API',function ($scope,$state, Linkedin, User,industries, locations, API) {
+  .controller('MainCtrl',['$scope','$state','Linkedin','User','industries','locations','functions','API',
+      function ($scope,$state, Linkedin, User,industries, locations, functions, API) {
 
     $scope.getIndustriesArray = function(){
       var sub_industries = [];
@@ -43,5 +44,8 @@ angular.module('discountdublin')
     $scope.sub_industries = $scope.getIndustriesArray();
 
     $scope.locations      = locations.getLocations();
-    $scope.countries        = $scope.getLocationArray();
+    $scope.countries      = $scope.getLocationArray();
+
+    $scope.functions      = functions.getFunctions();
+
   }]);

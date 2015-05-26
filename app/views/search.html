@@ -7,7 +7,7 @@
 		      <h3 class="panel-title">Profile</h3>
 		    </div>
 		    <div class="panel-body">
-		      <div class="font_size1-1">{{linkedinProfile.headline}}</div>
+		      <div class="font_size1-1">{{linkedinProfile.currentJob.title || linkedinProfile.headline}}</div>
 		      <br />
 		      <div>
 		        <img ng-src="{{linkedinProfile.pictureUrl}}" class="img-circle" />
@@ -18,7 +18,8 @@
 		        <b>First name</b> : {{linkedinProfile.firstName}}<br />
 		        <b>Industry</b> : {{linkedinProfile.industry}}<br />
 		        <b>Location</b> : {{linkedinProfile.location.name}}<br>
-		        <b>Category</b> : {{linkedinProfile.category}}
+		        <b>Category</b> : {{linkedinProfile.category}}<br />
+		        <b>Company</b>  : {{linkedinProfile.currentJob.company}}<br />
 		      </div>
 		      <br /><br />
 		      <div class="text-center">
@@ -118,7 +119,7 @@
 		</div>
 	</div>
 	<div class="row text-center">
-		<a ui-sref="main.dashboard" class="btn btn-primary">Back to my profile</a>
+		<a ui-sref="main.searchSettings" class="btn btn-primary">Back to my search settings</a>
 	</div>
 	<br />
 </div>
