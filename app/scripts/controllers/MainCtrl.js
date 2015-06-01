@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('discountdublin')
-  .controller('MainCtrl',['$scope','$state','Linkedin','User','industries','locations','functions','API',
-      function ($scope,$state, Linkedin, User,industries, locations, functions, API) {
-
+  .controller('MainCtrl',['$scope','$state','$interval','Linkedin','User','industries','locations','functions','languages','API','linkedinProfile',
+      function ($scope,$state,$interval, Linkedin, User,industries, locations, functions, languages, API,linkedinProfile) {
+1
     $scope.getIndustriesArray = function(){
       var sub_industries = [];
       angular.forEach($scope.industries, function(value, key) {
@@ -39,13 +39,23 @@ angular.module('discountdublin')
         toaster.pop('error', 'Profile changes could not be saved');
       });
     };
+
+    $scope.getUser = function(){
+      API.me().then(function(user){
+        $scope.user.invitationsReceived = user.data.invitationsReceived;
+      });
+    };
     
-    $scope.industries     = industries.getIndustries();
-    $scope.sub_industries = $scope.getIndustriesArray();
+    $scope.user            = linkedinProfile.data;  
+    $scope.industries      = industries.getIndustries();
+    $scope.sub_industries  = $scope.getIndustriesArray();
 
-    $scope.locations      = locations.getLocations();
-    $scope.countries      = $scope.getLocationArray();
+    $scope.locations       = locations.getLocations();
+    $scope.countries       = $scope.getLocationArray();
 
-    $scope.functions      = functions.getFunctions();
+    $scope.functions       = functions.getFunctions();
+    $scope.languages       = languages.getLanguages();
+
+    $interval($scope.getUser, 1000 * 30);
 
   }]);

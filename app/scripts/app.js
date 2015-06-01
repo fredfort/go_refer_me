@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'toaster',
+    'angular-md5',
     'ui.bootstrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
@@ -33,7 +34,17 @@ angular
         url:'/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        abstract:true
+        abstract:true,
+        resolve:{
+          linkedinProfile:['API','$state','User', function(API,$state,User){
+            return API.me().then(function(me){
+              User.updateUser(me.data);
+              return me;
+            }).catch(function(err){
+              $state.go('login');
+            });
+          }]
+        }
       })
       .state('login',{
         url:'/login',
@@ -93,6 +104,36 @@ angular
         resolve:{
           search:['API','User', function(API, User){
             var ids = User.getUser().saved;
+            return API.searchUsersByIds(ids).then(function(people){
+              return people.data;
+            });
+          }]
+        }
+      })
+      .state('main.friendsRequest',{
+        url:'friends',
+        templateUrl: 'views/friendsRequest.html',
+        controller: 'FriendRequestCtrl',
+        resolve:{
+          me:['API', function(API){
+            return API.me().then(function(me){
+              return me;
+            });
+          }],
+          invitations:['API','me', function(API, me){
+            var ids = me.data.invitationsReceived;
+            return API.searchUsersByIds(ids).then(function(people){
+              return people.data;
+            });
+          }],
+           friends:['API','me', function(API, me){
+            var ids = me.data.friends;
+            return API.searchUsersByIds(ids).then(function(people){
+              return people.data;
+            });
+          }],
+           invitationsSent:['API','me', function(API, me){
+            var ids = me.data.invitationsSent;
             return API.searchUsersByIds(ids).then(function(people){
               return people.data;
             });

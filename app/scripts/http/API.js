@@ -10,6 +10,11 @@ angular.module('discountdublin')
 		createUser :function(user){
 			return $http.post(baseURL+'user',{user:user});
 		},
+		
+		login :function(email, password){
+			debugger;
+			return $http.post(baseURL+'user/login',{emailAddress:email,password:password});
+		},
 
 		getUser: function(user){
 			return $http.get(baseURL+'user/'+user.id);
@@ -29,6 +34,30 @@ angular.module('discountdublin')
 
 		searchCompanies:function(ids){
 			return $http.get(baseURL+'companies');
+		},
+
+		sendInvitation: function(userInvited){
+			return $http.post(baseURL+'invite', {user:userInvited});
+		},
+
+		me:function(){
+			return $http.get(baseURL+'me');
+		}, 
+
+		acceptInvitation:function(user){
+			return $http.post(baseURL+'user/accept',{user:user});
+		},
+
+		denyInvitation:function(user){
+			return $http.post(baseURL+'user/deny', {user:user});
+		},
+
+		unFriend:function(user){
+			return $http.post(baseURL+'user/unFriend',{user:user})
+		},
+
+		cancelInvitation:function(user){
+			return $http.post(baseURL+'user/cancelInvitation',{user:user})
 		}
 	}
 

@@ -1,0 +1,96 @@
+<div class="friends">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Your connections</h3>
+        </div>
+        <div class="panel-body">
+        	<div class="row" ng-repeat="person in friends">
+        		<div class="col-xs-4">
+        			<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" class="img img-responsive img-90" />
+        		</div>
+						<div class="col-xs-8">
+							<div>
+								<b>{{person.firstName}} {{person.lastName}}</b><br />
+								<b>Location</b> : {{person.location.name}}<br>
+								<b>Company</b>  : {{person.currentJob.company}}<br />    
+								<b>Profile</b>  : <a ng-href="{{person.siteStandardProfileRequest.url}}" target="_blank">Linkedin profile</a><br />
+								<b>Email</b>    : <a ng-href='mailto:{{person.emailAddress}}'>{{person.emailAddress}}</a>   
+							</div>
+						</div>
+						<div class="text-center row margin-top5">
+							<button class="btn btn-default" ng-click='unFriend(person)'>Unfriend</button>
+						</div>
+					</div>
+					<div ng-show='!friends || friends.length ===0' class="well text-center">
+						You havn't made any connection yet
+					</div>
+      	</div>
+    	</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		        <div class="panel-heading">
+		          <h3 class="panel-title">Your friend request</h3>
+		        </div>
+		        <div class="panel-body">
+					<div class="row" ng-repeat="person in invitations">
+						<div class="col-xs-8">
+							<div>
+								<b>{{person.firstName}} {{person.lastName}}</b><br />
+								<b>Location</b> : {{person.location.name}}<br>
+								<b>Company</b>  : {{person.currentJob.company}}<br />    
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="text-center">
+								<div>
+									<button class="btn btn-success" ng-click="acceptInvitation(person)">Accept <span class='glyphicon glyphicon-ok'></span></button>
+								</div>
+								<div class="margin-top5">
+									<button class="btn btn-default" ng-click="denyInvitation(person)">Deny <span class='glyphicon glyphicon-ok'></span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-show='!invitations || invitations.length ===0' class="well text-center">
+						You don't have any friend request
+					</div>
+				</div>
+			</div>
+		</div>
+				
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		        <div class="panel-heading">
+		          <h3 class="panel-title">Your invitations sent</h3>
+		        </div>
+		        <div class="panel-body">
+					<div class="row" ng-repeat="person in invitationsSent">
+						<div class="col-xs-8">
+							<div>
+								<b>Title</b> : {{person.currentJob.title || person.headline}}<br />
+								<b>Indistry</b> : {{person.industry}}<br>
+								<b>Category</b> : {{person.category | categoryFilter}}<br>
+								<b>Company</b>  : {{person.currentJob.company}}<br />    
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="text-center">
+								<div>
+									<button class="btn btn-default" ng-click="cancelInvitation(person)">Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-show='!invitationsSent || invitationsSent.length ===0' class="well text-center">
+						You don't have any pending invitation
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

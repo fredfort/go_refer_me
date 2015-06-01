@@ -1,7 +1,7 @@
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div>
-          <div class="navbar-header">
+          <div class="navbar-header text-right">
 
             <button type="button" class="navbar-toggle collapsed"  ng-click="collapse = !collapse">
               <span class="sr-only">Toggle navigation</span>
@@ -11,11 +11,21 @@
             </button>
 
             <a class="navbar-brand" href="#/dashboard"><img class="headerLogo" src="../images/logo.png" /></a>
+            <a ui-sref='main.friendsRequest' ng-show="user.invitationsReceived.length">  
+              <span tabindex='0' class="badge notification-xs notification" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
+            </a>
           </div>
+
 
           <div ng-init="collapse = true" class="collapse navbar-collapse" collapse="collapse">
             <ul class="nav navbar-nav navbar-right">
+              <li class="hidden-xs">
+                <a ui-sref='main.friendsRequest'  ng-click="collapse = true" ng-show="user.invitationsReceived.length"> 
+                  <span class="badge notification notification-sm" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
+                </a>
+              </li>
               <li><a ui-sref='main.dashboard'  ng-click="collapse = true"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+              <li><a ui-sref='main.friendsRequest' ng-click='collapse = true'><span class='glyphicon glyphicon-globe'></span> Friends</a></li>
               <li><a ui-sref='main.searchSettings'  ng-click="collapse = true"><span class="glyphicon glyphicon-search"></span> Search</a></li>
               <li><a ui-sref='main.info'  ng-click="collapse = true"><span class="glyphicon glyphicon-info-sign"></span> More info</a></li>
               <li><a ui-sref='main.credit' ng-click="collapse = true"><span class="glyphicon glyphicon-piggy-bank"></span> Credit </a></li>

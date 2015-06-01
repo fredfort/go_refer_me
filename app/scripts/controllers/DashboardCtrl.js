@@ -23,9 +23,11 @@ angular.module('discountdublin')
 
 	//Industries
 	$scope.addIndustry = function(){
-		linkedinProfile.search.industries.push($scope.industry);
-		$scope.industry = '';
-		$scope.saveUserProfile($scope.linkedinProfile);
+		if($scope.industry && $scope.industry.length){
+			linkedinProfile.search.industries.push($scope.industry);
+			$scope.industry = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
 	};
 
 	$scope.removeIndustry = function(industry){
@@ -35,9 +37,11 @@ angular.module('discountdublin')
 
 	//Location
 	$scope.addLocation = function(){
-		linkedinProfile.search.locations.push($scope.location);
-		$scope.location = '';
-		$scope.saveUserProfile($scope.linkedinProfile);
+		if($scope.location && $scope.location.length){
+			linkedinProfile.search.locations.push($scope.location);
+			$scope.location = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
 	};
 
 	$scope.removeLocation = function(location){
@@ -45,13 +49,16 @@ angular.module('discountdublin')
 		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
+	//Function
 	$scope.addFunction = function(){
-		if(!linkedinProfile.search.functions){
-			linkedinProfile.search.functions = [];
+		if($scope.function && $scope.function.length){
+			if(!linkedinProfile.search.functions){
+				linkedinProfile.search.functions = [];
+			}
+			linkedinProfile.search.functions.push($scope.function);
+			$scope.function = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
 		}
-		linkedinProfile.search.functions.push($scope.function);
-		$scope.function = '';
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	$scope.removeFunction = function(myfunction){
@@ -59,12 +66,31 @@ angular.module('discountdublin')
 		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
+	//Function
+	$scope.addLanguage = function(){
+		if($scope.language && $scope.language.length){
+			if(!linkedinProfile.search.languages){
+				linkedinProfile.search.languages = [];
+			}
+			linkedinProfile.search.languages.push($scope.language);
+			$scope.language = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
+	};
+
+	$scope.removeLanguage = function(language){
+		linkedinProfile.search.languages = _.without(linkedinProfile.search.languages, language);
+		$scope.saveUserProfile($scope.linkedinProfile);
+	};
+
 
 	/*Job seeker*/
 	$scope.addLocationWish = function(){
-		linkedinProfile.wants.locations.push($scope.wants_location);
-		$scope.wants_location = '';
-		$scope.saveUserProfile($scope.linkedinProfile);
+		if($scope.wants_location && $scope.wants_location.length){
+			linkedinProfile.wants.locations.push($scope.wants_location);
+			$scope.wants_location = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
 	};
 
 	$scope.removeLocationWish = function(location){
@@ -73,9 +99,11 @@ angular.module('discountdublin')
 	};
 
 	$scope.addCompanyWish = function(){
-		linkedinProfile.wants.companies.push($scope.wants_company);
-		$scope.wants_company = '';
-		$scope.saveUserProfile($scope.linkedinProfile);
+		if($scope.wants_company && $scope.wants_company.length){
+			linkedinProfile.wants.companies.push($scope.wants_company);
+			$scope.wants_company = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
 	};
 
 	$scope.removeCompanyWish = function(company){
@@ -84,9 +112,11 @@ angular.module('discountdublin')
 	};
 
 	$scope.addIndustryWish = function(){
-		linkedinProfile.wants.industries.push($scope.wants_industry);
-		$scope.wants_company = '';
-		$scope.saveUserProfile($scope.linkedinProfile);
+		if($scope.wants_company && $scope.wants_company.length){
+			linkedinProfile.wants.industries.push($scope.wants_industry);
+			$scope.wants_company = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
 	};
 
 	$scope.removeIndustryWish = function(industry){
@@ -96,16 +126,35 @@ angular.module('discountdublin')
 
 
 	$scope.addFunctionWish = function(){
-		if(!linkedinProfile.wants.functions){
-			linkedinProfile.wants.functions = [];
+		if($scope.wants_function && $scope.wants_function.length){
+			if(!linkedinProfile.wants.functions){
+				linkedinProfile.wants.functions = [];
+			}
+			linkedinProfile.wants.functions.push($scope.wants_function);
+			$scope.wants_function = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
 		}
-		linkedinProfile.wants.functions.push($scope.wants_function);
-		$scope.wants_function = '';
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	$scope.removeFunctionWish = function(myfunction){
 		linkedinProfile.wants.functions = _.without(linkedinProfile.wants.functions, myfunction);
+		$scope.saveUserProfile($scope.linkedinProfile);
+	};
+
+
+	$scope.addLanguageWish = function(){
+		if($scope.wants_language && $scope.wants_language.length){
+			if(!linkedinProfile.wants.languages){
+				linkedinProfile.wants.languages = [];
+			}
+			linkedinProfile.wants.languages.push($scope.wants_language);
+			$scope.wants_language = '';
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
+	};
+
+	$scope.removeLanguageWish = function(language){
+		linkedinProfile.wants.languages = _.without(linkedinProfile.wants.languages, language);
 		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
