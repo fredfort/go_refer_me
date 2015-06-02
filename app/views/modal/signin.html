@@ -45,15 +45,15 @@
 				      <input type="email" ng-model='emailAddress' class="form-control" id="emailAddress" placeholder="Email">
 				    </div>
 				  </div>
-				  <div class="form-group" ng-class="{'has-error':!password && checked}">
+				  <div class="form-group"  ng-show="!passwordForgotten" ng-class="{'has-error':!password && checked}">
 				    <label for="password" class="col-sm-3 control-label">Password</label>
 				    <div class="col-sm-9">
 				      <input type="password" ng-model='password' ng-minlength="8" class="form-control" id="password" placeholder="Password">
 				      <span class='description error' ng-show='!password && checked'>Password must be at leat 8 caracters long</span>
 				    </div>
 				  </div>
-				  <div class="form-group" ng-show="!haveAccount" ng-class="{'has-error':(!password_confirm || password !== password_confirm) && checked}"}>
-				    <label for="password_confirm" class="col-sm-3 control-label">Password confirm</label>
+				  <div class="form-group" ng-show="!haveAccount && !passwordForgotten" ng-class="{'has-error':(!password_confirm || password !== password_confirm) && checked}"}>
+				    <label for="password_confirm" class="col-sm-3  control-label">Password confirm</label>
 				    <div class="col-sm-9">
 				      <input type="password" ng-model='password_confirm' ng-minlength="8" class="form-control" id="password_confirm" placeholder="Password">
 				    </div>
@@ -63,17 +63,22 @@
 				  </div>
 				  <div class="text-center">
 				 		<a href='' ng-show="!haveAccount" ng-click='haveAccount=true'> I already have an account</a>
-				 		<a href='' ng-show="haveAccount" ng-click='haveAccount=false'> I want to create an account</a>
+				 		<a href='' ng-show="haveAccount" ng-click='haveAccount=false;passwordForgotten=false'> I want to create an account</a><br />
+				 		<a href='' ng-show="haveAccount && !passwordForgotten" ng-click='passwordForgotten=true'> I forgot my password</a>
 				 	</div>
 				 	<div ng-if='!formValid' class="text-center no-margin">
 				 		<alert type='danger'>Please check that all the information are properly filled in</alert>
+				 	</div>
+				 	<div ng-if='wrongCredential' class="text-center no-margin">
+				 		<alert type='danger'>You login and/or password are incorrect</alert>
 				 	</div>
 				</form>
 	  </div>
 	  <div class="modal-footer">
 	    <button type="button" class="btn btn-default"  ng-click="$close()">Close</button>
 	    <button type="button" ng-show="!haveAccount" class="btn btn-primary"  ng-click="signin()">Sign In</button>
-	    <button type="button" ng-show="haveAccount"  class="btn btn-primary"  ng-click="login()">Log In</button>
+	    <button type="button" ng-show="haveAccount && !passwordForgotten"  class="btn btn-primary"  ng-click="login()">Log In</button>
+	    <button type="button" ng-show="passwordForgotten"  class="btn btn-primary"  ng-click="reinitPassword()">Reinitialize my password</button>
 	  </div>
 	</div>
 </div>

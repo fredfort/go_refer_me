@@ -1,8 +1,8 @@
 angular.module('discountdublin')
 
 .factory('API',['$http',function($http){
-	var nodeAPI = 'http://localhost:3000/';
-	//var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
+	//var nodeAPI = 'http://localhost:3000/';
+	var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
 	var baseURL = nodeAPI;
 	var user = null;
 
@@ -12,7 +12,6 @@ angular.module('discountdublin')
 		},
 		
 		login :function(email, password){
-			debugger;
 			return $http.post(baseURL+'user/login',{emailAddress:email,password:password});
 		},
 
@@ -53,11 +52,26 @@ angular.module('discountdublin')
 		},
 
 		unFriend:function(user){
-			return $http.post(baseURL+'user/unFriend',{user:user})
+			return $http.post(baseURL+'user/unFriend',{user:user});
 		},
 
 		cancelInvitation:function(user){
-			return $http.post(baseURL+'user/cancelInvitation',{user:user})
+			return $http.post(baseURL+'user/cancelInvitation',{user:user});
+		},
+
+		reinitPassword:function(email){
+			return $http.post(baseURL+'user/reinitPassword',{emailAddress:email});
+		},
+
+		changePassword:function(password,token){
+			return $http({
+				method:'POST',
+				url:baseURL+'user/changePassword',
+				data:{password:password},
+				headers:{
+					'x-access-token':token,
+				}
+			});
 		}
 	}
 

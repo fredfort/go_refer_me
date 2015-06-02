@@ -11,7 +11,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .navbar-header{
   text-align:text-right;
 }
-
+footer{
+  bottom:0px;
+}
 .notification{
   padding: 10px 12px;
   border-radius: 50%;
@@ -29,12 +31,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .notification-sm{
   margin-top: -10px;
   margin-bottom: -10px;
-}
-
-@media (max-width: $screen-sm-min){
-  .notification-xs{
-    display:inline-block;
-  }
 }
 
 
@@ -71,6 +67,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 .menuItem{
+  margin:0px;
   background-color:whitesmoke;
   padding:30px;
   border-top: lightgray 1px solid;
@@ -149,4 +146,25 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 .profile-img{
   width:100%;
+}
+
+
+@media (max-width: $screen-sm-min){
+  .notification-xs{
+    display:inline-block;
+  }
+
+  .mainIntro{
+    h3{
+      font-size:19px
+    }
+  }
+
+  .menu1-text,.menu2-text{
+    height:600px;
+    padding:15px;
+    p{
+      font-size: 1.2em;
+    }
+  }
 }

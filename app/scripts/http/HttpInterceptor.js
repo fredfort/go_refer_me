@@ -2,10 +2,12 @@ angular.module('discountdublin').factory('HttpInterceptor',['$window','$q','User
     var sessionInjector = {
 
     	request: function(config){
-        if(User.hasToken()){
-          config.headers['x-access-token'] = User.getToken();
-        }else{
-          delete config.headers['x-access-token']
+        if(!config.headers['x-access-token']){
+          if(User.hasToken()){
+            config.headers['x-access-token'] = User.getToken();
+          }else{
+            delete config.headers['x-access-token']
+          }
         }
     		return config;
     	},

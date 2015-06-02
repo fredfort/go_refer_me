@@ -51,6 +51,11 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .state('reinitPassword',{
+        url:'/reinitPassword/:token',
+        templateUrl: 'views/reinitPassword.html',
+        controller: 'reinitPasswordCtrl'
+      })
       .state('main.dashboard',{
         url:'dashboard',
         templateUrl: 'views/dashboard.html',

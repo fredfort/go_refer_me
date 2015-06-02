@@ -2,8 +2,8 @@
 
 
 angular.module('discountdublin')
-  .controller('LoginCtrl',['$scope','$rootScope','$state','$modal','API','User','Linkedin', 'md5',
-    function ($scope,$rootScope,$state,$modal, API,User, Linkedin, md5) {
+  .controller('LoginCtrl',['$scope','$rootScope','$state','$modal','API','User','Linkedin', 'md5','toaster',
+    function ($scope,$rootScope,$state,$modal, API,User, Linkedin, md5, toaster) {
 
     $scope.formValid = true;
     var modalInstance = null;
@@ -61,7 +61,6 @@ angular.module('discountdublin')
           emailAddress : $scope.emailAddress,
           password     : md5.createHash($scope.password)
         };
-        debugger;
         API.createUser(user).then(function(userToken){
             User.setUser(userToken);
             $state.go('main.dashboard');
@@ -76,14 +75,27 @@ angular.module('discountdublin')
 
     $scope.login = function(){
       $scope.checked = true;
+      $scope.wrongCredential = false;
       if($scope.emailAddress && $scope.password){
         $scope.formValid = true;
         API.login($scope.emailAddress, md5.createHash($scope.password)).then(function(userToken){
-          debugger;
+         if(userToken.data && userToken.data.user){//if login successful
+            User.setUser(userToken);
+            $state.go('main.dashboard');
+            $rootScope.modalInstance.close();
+         }else{
+          $scope.wrongCredential = true;
+         }
         });
       }else{
         $scope.formValid = false;
       }
-    }
+    };
+
+    $scope.reinitPassword = function(){
+      API.reinitPassword($scope.emailAddress).then(function(res){
+        toaster.pop('success','An email has been sent to '+$scope.emailAddress);
+      });
+    };
 
   }]);
