@@ -87,21 +87,6 @@ angular
           }]
         }
       })
-      .state('main.searchSettings',{
-        url:'searchSettings',
-        controller: 'DashboardCtrl',
-        templateUrl: 'views/searchSettings.html',
-         resolve:{
-          linkedinProfile:['User','$state', function(User, $state){
-            return User.getUser();
-          }],
-          companies:['API', function(API){
-            return API.searchCompanies().then(function(companies){
-              return companies.data;
-            });
-          }]
-        }
-      })
       .state('main.userSaved',{
         url:'userSaved',
         templateUrl: 'views/search.html',

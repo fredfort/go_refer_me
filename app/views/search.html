@@ -1,7 +1,6 @@
 <div class="search">
 	<div class="row text-center">
-		<h4> You have found {{search.length}} people</h4>
-		<div class="col-md-offset-2 col-md-8">
+		<div class="col-md-offset-2 col-md-8 horizontal-padding-5">
 		  <div class="panel panel-primary" ng-repeat="linkedinProfile in search" id="profile_{{$index}}" ng-show="currentProfile == {{$index}}">
 		    <div class="panel-heading">
 		      <h3 class="panel-title">Profile</h3>
@@ -11,7 +10,7 @@
 	      		<div class="col-sm-offset-1 col-xs-4 text-right">
 	      			<b>Title</b><br />
 	      		</div>
-	      		<div class="col-xs-4 text-left">
+	      		<div class="col-xs-7 text-left">
 	      			{{linkedinProfile.currentJob.title || linkedinProfile.headline}}
 	      		</div>
 	      	</div>
@@ -19,23 +18,15 @@
 	      		<div class="col-sm-offset-1 col-xs-4 text-right">
 	      			<b>Industry</b><br />
 	      		</div>
-	      		<div class="col-xs-4 text-left">
+	      		<div class="col-xs-7 text-left">
 	      			{{linkedinProfile.industry}}
-	      		</div>
-	      	</div>
-	      	<div class="row margin-top5">
-	      		<div class="col-sm-offset-1 col-xs-4 text-right">
-	      			<b>Category</b><br />
-	      		</div>
-	      		<div class="col-xs-4 text-left">
-	      			 {{linkedinProfile.category | categoryFilter}}
 	      		</div>
 	      	</div>
 	      	<div class="row margin-top5">
 	      		<div class="col-sm-offset-1 col-xs-4 text-right">
 	      			<b>Company</b><br />
 	      		</div>
-	      		<div class="col-xs-4 text-left">
+	      		<div class="col-xs-7 text-left">
 	      			{{linkedinProfile.currentJob.company}}
 	      		</div>
 	      	</div>
@@ -53,7 +44,7 @@
 							<button class='btn btn-default' ng-click="gotIt()">Got it!</button>
 						</div>
 		      	</alert>
-		      	<div class="row">
+		      	<div class="row no-margin">
 			      	<div class="col-xs-4 no-padding">
 						  <button type="button" class="btn btn-default btn-block" ng-click="trashProfile(linkedinProfile)">Never 
 						  	<span class="glyphicon glyphicon-trash"></span>
@@ -80,7 +71,9 @@
 			    		</button>
 			    	</div>
 			    	<div class="col-xs-4 text-center">
-			    		 <span class="hidden-xs">Person</span> {{$index+1}} / {{search.length}}
+			    		 <span class="hidden-xs">Person</span> {{$index+1}} / {{search.length}}<br />
+			    		 <span ng-show='user.category === "looking_for_job"'>referer</span>
+			    		 <span ng-show='user.category === "referer"'>job seeker</span>
 			    	</div>
 			    	<div class="col-xs-4 text-right">
 			    		<button class="btn btn-default" ng-show="currentProfile < search.length" ng-click="next()">Next 
@@ -95,7 +88,7 @@
 		      <h3 class="panel-title">No more Profile</h3>
 		    </div>
 		    <div class="panel-body">
-		    	<div class="row">
+		    	<div>
 		    		<span class="font_size1-2">You went throught all the profile matching your search.</span>
 		    	</div>
 		    	<br />
@@ -137,7 +130,7 @@
 		</div>
 	</div>
 	<div class="row text-center">
-		<a ui-sref="main.searchSettings" class="btn btn-primary">Back to my search settings</a>
+		<a ui-sref="main.dashboard" class="btn btn-primary">Back to my profile</a>
 	</div>
 	<br />
 </div>

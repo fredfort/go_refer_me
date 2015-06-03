@@ -8554,72 +8554,78 @@ button.close {
   padding: 0px;
 }
 
+/* line 15, _utils.scss */
+.horizontal-padding-5 {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
 /*Margin*/
-/* line 17, _utils.scss */
+/* line 21, _utils.scss */
 .margin-top5 {
   margin-top: 5px;
 }
 
-/* line 21, _utils.scss */
+/* line 25, _utils.scss */
 .margin-top15 {
   margin-top: 15px;
 }
 
-/* line 25, _utils.scss */
+/* line 29, _utils.scss */
 .margin-bottom15 {
   margin-bottom15: 15px;
 }
 
-/* line 29, _utils.scss */
+/* line 33, _utils.scss */
 .no-margin {
   margin: 0px;
 }
 
 /*FONT SIZE*/
-/* line 34, _utils.scss */
+/* line 38, _utils.scss */
 .font_size1-1 {
   font-size: 1.1em;
 }
 
-/* line 38, _utils.scss */
+/* line 42, _utils.scss */
 .font_size1-2 {
   font-size: 1.2em;
 }
 
-/* line 42, _utils.scss */
+/* line 46, _utils.scss */
 .font_size1-3 {
   font-size: 1.3em;
 }
 
-/* line 46, _utils.scss */
+/* line 50, _utils.scss */
 .font_size1-6 {
   font-size: 1.6em;
 }
 
-/* line 50, _utils.scss */
+/* line 54, _utils.scss */
 .font_size2-1 {
   font-size: 2.1em;
 }
 
 /*BORDER*/
-/* line 55, _utils.scss */
+/* line 59, _utils.scss */
 .borderTop {
   border-top: solid lightgray 1px;
 }
 
-/* line 59, _utils.scss */
+/* line 63, _utils.scss */
 .borderBottom {
   border-bottom: solid lightgray 1px;
 }
 
 /*IMAGE*/
-/* line 65, _utils.scss */
+/* line 69, _utils.scss */
 .img-90 {
   width: 90%;
 }
 
 /*Colors */
-/* line 70, _utils.scss */
+/* line 74, _utils.scss */
 .error {
   color: #d9534f;
 }
@@ -8797,25 +8803,54 @@ cursor:pointer
   width: 100%;
 }
 
+/* line 151, main.scss */
+.search-panel-title {
+  padding-left: 5px;
+  padding-top: 9px;
+}
+
 @media (max-width: 768px) {
-  /* line 153, main.scss */
+  /* line 159, main.scss */
   .notification-xs {
     display: inline-block;
   }
 
-  /* line 158, main.scss */
+  /* line 164, main.scss */
   .mainIntro h3 {
     font-size: 19px;
   }
 
-  /* line 163, main.scss */
+  /* line 169, main.scss */
   .menu1-text, .menu2-text {
     height: 600px;
     padding: 15px;
   }
-  /* line 166, main.scss */
+  /* line 172, main.scss */
   .menu1-text p, .menu2-text p {
     font-size: 1.2em;
+  }
+
+  /* line 178, main.scss */
+  .search-panel-title .panel-title {
+    font-size: 14px;
+  }
+
+  /* line 183, main.scss */
+  .panel-body {
+    padding: 10px;
+  }
+
+  /* line 187, main.scss */
+  .navbar {
+    margin-bottom: 10px;
+  }
+
+  /* line 191, main.scss */
+  .alert {
+    margin-right: -5px;
+    margin-left: -5px;
+    margin-bottom: 10px;
+    padding: 5px;
   }
 }
 

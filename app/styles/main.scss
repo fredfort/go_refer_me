@@ -148,6 +148,12 @@ footer{
   width:100%;
 }
 
+.search-panel-title{
+  padding-left: 5px;
+  padding-top: 9px;
+}
+
+
 
 @media (max-width: $screen-sm-min){
   .notification-xs{
@@ -167,4 +173,26 @@ footer{
       font-size: 1.2em;
     }
   }
+
+  .search-panel-title{
+    .panel-title{
+      font-size:14px;
+    }
+  }
+
+  .panel-body{
+    padding:10px;
+  }
+
+  .navbar{
+    margin-bottom:10px;
+  }
+
+  .alert{
+    margin-right: -5px;
+    margin-left: -5px;
+    margin-bottom:10px;
+    padding:5px;
+  }
+
 }

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-offset-2 col-md-8">
+  <div class="col-md-offset-2 col-md-8 horizontal-padding-5">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">Profile</h3>
@@ -60,21 +60,61 @@
             </div>
           </div>
         </div>
-        <br />
+         <div class="margin-top5 text-center" ng-show='linkedinProfile.category'>
+              <alert type="info" ng-show='linkedinProfile.category === "looking_for_job"'>
+                Describe your dream job thanks to the following criterias </alert>
+              <alert type="info" ng-show='linkedinProfile.category === "referer"'>
+                Indicate on which locations, departement and languages you can refer someone.</alert>
+              </alert>
+        </div>
         <div>
           <div ng-show="linkedinProfile.category === 'referer'">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">In which departement can you refer?</h3>
+                <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Location</h3>
+                  </div>
+                  <div class="col-xs-7 no-padding">
+                    <input type="text" ng-model='location' class="form-control" 
+                        typeahead-on-select="addLocation()" 
+                        typeahead="country for country in countries | filter:$viewValue | limitTo:15"/> 
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addLocation()'><span class="glyphicon glyphicon-plus"></span></button>
+                  </div>
+                </div>
               </div>
               <div class="panel-body">
-                <div>
-                  <input type="text" ng-model='function'
+                <div ng-if="linkedinProfile.search.locations && linkedinProfile.search.locations.length > 0">
+                  <div class="row">
+                    <div class='col-sm-6 col-sm-4' ng-repeat="location in linkedinProfile.search.locations track by $index">
+                        <alert type='info' close='removeLocation(location)'>{{location}}</alert>              
+                    </div>
+                  </div>
+                </div>
+                <div ng-if="!linkedinProfile.search.locations || linkedinProfile.search.locations.length === 0">
+                  You can refer in any locations
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                 <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Function</h3>
+                  </div>
+                   <div class="col-xs-7 no-padding">
+                    <input type="text" ng-model='function' class="form-control" 
                     typeahead-on-select="addFunction()" 
                     typeahead="function for function in functions | filter:$viewValue | limitTo:15"/> 
-                    <button class="btn btn-primary" ng-click='addFunction()'>Add</button>
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addFunction()'><span class="glyphicon glyphicon-plus"></span></button>
+                  </div>
                 </div>
-                <br />
+              </div>
+              <div class="panel-body">
                 <div ng-if="linkedinProfile.search.functions && linkedinProfile.search.functions.length > 0">
                   <div class="row">
                     <div class='col-sm-6 col-sm-4' ng-repeat="function in linkedinProfile.search.functions track by $index">
@@ -83,22 +123,27 @@
                   </div>
                 </div>
                 <div ng-if="!linkedinProfile.search.functions || linkedinProfile.search.functions.length === 0">
-                  You haven't set up any filters on the function yet
+                 You can refer in any functions
                 </div>
               </div>
             </div>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">For which language do you want to refer?</h3>
+                <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Language</h3>
+                  </div>
+                  <div class="col-xs-7 no-padding">
+                    <input type="text" ng-model='language' class="form-control" 
+                    typeahead-on-select="addLanguage()" 
+                    typeahead="language for language in languages | filter:$viewValue | limitTo:15"/>
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addLanguage()'><span class="glyphicon glyphicon-plus"></span></button>
+                  </div>
+                </div>
               </div>
               <div class="panel-body">
-                <div>
-                  <input type="text" ng-model='language'
-                    typeahead-on-select="addLanguage()" 
-                    typeahead="language for language in languages | filter:$viewValue | limitTo:15"/> 
-                    <button class="btn btn-primary" ng-click='addLanguage()'>Add</button>
-                </div>
-                <br />
                 <div ng-if="linkedinProfile.search.languages && linkedinProfile.search.languages.length > 0">
                   <div class="row">
                     <div class='col-sm-6 col-sm-4' ng-repeat="language in linkedinProfile.search.languages track by $index">
@@ -107,24 +152,121 @@
                   </div>
                 </div>
                 <div ng-if="!linkedinProfile.search.languages || linkedinProfile.search.languages.length === 0">
-                  You haven't set up any filters on the function yet
+                  You can refer in any languages
                 </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <button class="btn btn-primary btn-block" ng-click="searchJobSeeker()">Search for job Seeker</button>
               </div>
             </div>
           </div>
           <div ng-show="linkedinProfile.category === 'looking_for_job'">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">In which departement would you like to work?</h3>
+                 <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Company</h3>
+                  </div>
+                   <div class="col-xs-7 no-padding">
+                    <input type="text" ng-model='wants_company' class="form-control" 
+                        typeahead-on-select="addCompanyWish()"
+                        typeahead="company for company in companiesArray | filter:$viewValue | limitTo:15" />
+                   </div>
+                   <div class="col-xs-2 no-padding"> 
+                      <button class="btn btn-primary" ng-click='addCompanyWish()'><span class='glyphicon glyphicon-plus'></span></button>
+                   </div>
+                </div>
               </div>
               <div class="panel-body">
-                <div>
-                  <input type="text" ng-model='wants_function'
-                    typeahead-on-select="addFunctionWish()" 
-                    typeahead="function for function in functions | filter:$viewValue | limitTo:15"/> 
-                    <button class="btn btn-primary" ng-click='addFunctionWish()'>Add</button>
+                <div ng-if="linkedinProfile.wants.companies && linkedinProfile.wants.companies.length > 0">
+                  <div class="row">
+                    <div class='col-sm-6 col-sm-4' ng-repeat="company in linkedinProfile.wants.companies track by $index">
+                        <alert type='info' close='removeCompanyWish(company)'>{{company}}</alert>              
+                    </div>
+                  </div>
                 </div>
-                <br />
+                <div ng-if="!linkedinProfile.wants.companies || linkedinProfile.wants.companies.length === 0">
+                  All companies are included in your criterias
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Location</h3>
+                  </div>
+                  <div class="col-xs-7 no-padding">
+                     <input type="text" ng-model='wants_location' class="form-control" 
+                    typeahead-on-select="addLocationWish()" 
+                    typeahead="country for country in countries | filter:$viewValue | limitTo:15"/> 
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addLocationWish()'><span class='glyphicon glyphicon-plus'></span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div ng-if="linkedinProfile.wants.locations && linkedinProfile.wants.locations.length > 0">
+                  <div class="row">
+                    <div class='col-sm-6 col-sm-4' ng-repeat="location in linkedinProfile.wants.locations track by $index">
+                        <alert type='info' close='removeLocationWish(location)'>{{location}}</alert>              
+                    </div>
+                  </div>
+                </div>
+                <div ng-if="!linkedinProfile.wants.locations || linkedinProfile.wants.locations.length === 0">
+                  All locations are included in your criterias
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Industries</h3>
+                  </div>
+                  <div class="col-xs-7 no-padding">
+                    <input type="text" ng-model='wants_industry' class="form-control" 
+                        typeahead-on-select="addIndustryWish()" 
+                        typeahead="industry for industry in sub_industries | filter:$viewValue | limitTo:15" />
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addIndustryWish()'><span class='glyphicon glyphicon-plus'></span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div ng-if="linkedinProfile.wants.industries && linkedinProfile.wants.industries.length > 0">
+                  <div class="row text-center">
+                    <div class="col-sm-6 col-md-4" ng-repeat="industry in linkedinProfile.wants.industries track by $index">
+                     <alert type='info' close='removeIndustryWish(industry)'>{{industry}}</alert>
+                    </div>
+                  </div>
+                </div>
+                <div ng-if="!linkedinProfile.wants.industries || linkedinProfile.wants.industries.length === 0">
+                  All industries are included in your criterias
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Function</h3>
+                  </div>
+                  <div class="col-xs-7 no-padding">
+                    <input type="text" ng-model='wants_function' class="form-control" 
+                    typeahead-on-select="addFunctionWish()" 
+                    typeahead="function for function in functions | filter:$viewValue | limitTo:15"/>
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addFunctionWish()'><span class='glyphicon glyphicon-plus'></span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
                 <div ng-if="linkedinProfile.wants.functions && linkedinProfile.wants.functions.length > 0">
                   <div class="row">
                     <div class='col-sm-6 col-sm-4' ng-repeat="function in linkedinProfile.wants.functions track by $index">
@@ -133,22 +275,27 @@
                   </div>
                 </div>
                 <div ng-if="!linkedinProfile.wants.functions || linkedinProfile.wants.functions.length === 0">
-                  You haven't set up any filters on the function yet
+                  All functions are included in your criterias
                 </div>
               </div>
             </div>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">For which language you want to be refered?</h3>
+                <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Language</h3>
+                  </div>
+                  <div class="col-xs-7 no-padding">
+                    <input type="text" ng-model='wants_language' class="form-control" 
+                    typeahead-on-select="addLanguageWish()" 
+                    typeahead="language for language in languages | filter:$viewValue | limitTo:15"/>
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addLanguage()'><span class='glyphicon glyphicon-plus'></span></button>
+                  </div>
+                </div>
               </div>
               <div class="panel-body">
-                <div>
-                  <input type="text" ng-model='wants_language'
-                    typeahead-on-select="addLanguageWish()" 
-                    typeahead="language for language in languages | filter:$viewValue | limitTo:15"/> 
-                    <button class="btn btn-primary" ng-click='addLanguage()'>Add</button>
-                </div>
-                <br />
                 <div ng-if="linkedinProfile.wants.languages && linkedinProfile.wants.languages.length > 0">
                   <div class="row">
                     <div class='col-sm-6 col-sm-4' ng-repeat="language in linkedinProfile.wants.languages track by $index">
@@ -157,8 +304,13 @@
                   </div>
                 </div>
                 <div ng-if="!linkedinProfile.wants.languages || linkedinProfile.wants.languages.length === 0">
-                  You haven't set up any filters on the function yet
+                  All languages are included in your criterias
                 </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <button class="btn btn-primary btn-block" ng-click="searchReferer()">Search for referer</button>
               </div>
             </div>
           </div>
