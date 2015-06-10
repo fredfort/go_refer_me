@@ -5,27 +5,35 @@
         <div class="panel-heading">
           <h3 class="panel-title">Your connections</h3>
         </div>
-        <div class="panel-body">
-        	<div class="row" ng-repeat="person in friends">
-        		<div class="col-xs-4">
-        			<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" class="img img-responsive img-90" />
-        		</div>
-						<div class="col-xs-8">
-							<div>
-								<b>{{person.firstName}} {{person.lastName}}</b><br />
-								<b>Location</b> : {{person.location.name}}<br>
-								<b>Company</b>  : {{person.currentJob.company}}<br />    
-								<b>Profile</b>  : <a ng-href="{{person.siteStandardProfileRequest.url}}" target="_blank">Linkedin profile</a><br />
-								<b>Email</b>    : <a ng-href='mailto:{{person.emailAddress}}'>{{person.emailAddress}}</a>   
-							</div>
-						</div>
-						<div class="text-center row margin-top5">
-							<button class="btn btn-default" ng-click='unFriend(person)'>Unfriend</button>
-						</div>
-					</div>
-					<div ng-show='!friends || friends.length ===0' class="well text-center">
-						You havn't made any connection yet
-					</div>
+        <div class="panel-body no-padding">
+     		<div class="input-group margin-bottom10" ng-show='friends.length  > 2'>
+		      <input type="text" class="form-control" id="exampleInputAmount" ng-model="personFilter" placeholder="Search">
+		     	<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+				</div>
+			  <accordion close-others="true">
+			    <accordion-group heading="{{person.firstName}} {{person.lastName}} - {{person.status}}" 
+			    								 ng-repeat="person in friends | filter:personFilter | orderBy:'-date_connection'" is-open="$first" class='no-margin'>
+				    <div class="row">
+				    	<div class="col-md-3 text-center">
+				     		<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" class="img img-responsive" />
+				     	</div>
+				     	<div class="col-md-6">
+								<b>Location</b>: {{person.location.name}}<br>
+								<b>Company</b>: {{person.currentJob.company}}<br />    
+								<b>Profile</b>: <a ng-href="{{person.siteStandardProfileRequest.url}}" target="_blank">Linkedin profile</a><br />
+								<b>Email</b>: <a ng-href='mailto:{{person.emailAddress}}'>{{person.emailAddress}}</a><br/>
+								<span ng-show='person.date_connection'><b>Friends since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}<br /></span>
+								<span ng-show='person.status'><b>Last action</b>:{{person.status}}</span>  
+				     	</div>
+				     	<div class="col-md-3">
+				     		<button class="btn btn-default pull-right" ng-click='unFriend(person)'>Unfriend</button>
+				     	</div>
+				   	</div>
+			    </accordion-group>
+			  </accordion>
+				<div ng-show='!friends || friends.length === 0' class="well text-center">
+					You havn't made any connection yet
+				</div>
       	</div>
     	</div>
 		</div>

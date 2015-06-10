@@ -2,11 +2,20 @@
 
 
 angular.module('discountdublin')
-  .controller('LoginCtrl',['$scope','$rootScope','$state','$modal','API','User','Linkedin', 'md5','toaster',
-    function ($scope,$rootScope,$state,$modal, API,User, Linkedin, md5, toaster) {
+  .controller('LoginCtrl',['$scope','$rootScope','$state','$modal','API','User','Linkedin', 'md5','toaster','industries',
+    function ($scope,$rootScope,$state,$modal, API,User, Linkedin, md5, toaster, industries) {
 
     $scope.formValid = true;
     var modalInstance = null;
+
+    $scope.getIndustriesArray = function(){
+      var sub_industries = [];
+      angular.forEach(industries.getIndustries(), function(value, key) {
+        sub_industries = sub_industries.concat(value);
+      });
+      return sub_industries;
+    };
+
 
     $scope.getJob = function(linkedinJob){
       return {
@@ -45,7 +54,7 @@ angular.module('discountdublin')
 
     $scope.signin = function(){
       $scope.checked = true;
-      if($scope.firstName && $scope.lastName && $scope.company  && $scope.title && $scope.emailAddress 
+      if($scope.firstName && $scope.lastName && $scope.company  && $scope.title && $scope.emailAddress && $scope.industry && $scope.location
                           && $scope.password && $scope.category && ($scope.password === $scope.password_confirm)){
         $scope.formValid = true;
         var user = {
@@ -55,6 +64,8 @@ angular.module('discountdublin')
             company: $scope.company,
             title:   $scope.title,
           }, 
+          industry     : $scope.industry,
+          location     : {name:$scope.location},
           category     : $scope.category,
           company      : $scope.company,
           title        : $scope.title,
@@ -98,4 +109,6 @@ angular.module('discountdublin')
       });
     };
 
+
+    $scope.industries = $scope.getIndustriesArray();
   }]);

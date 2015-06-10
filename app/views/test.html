@@ -1,0 +1,8 @@
+<!-- anything typed in here is magically saved to our Firebase database! -->
+	Name <input type="text" ng-model="data.name"/>
+    Message <input type="text" ng-model="data.text"/>
+    <button class="btn btn-default" ng-click='addMessage()'>Send</button>
+    <!-- all changes from our Firebase database magically appear here! -->
+    <div ng-repeat='c in chat'>
+    {{c.name}}: {{c.text}}
+    </div>

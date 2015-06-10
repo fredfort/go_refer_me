@@ -7,6 +7,20 @@ angular.module('discountdublin')
 
     $scope.invitations     = invitations;
     $scope.friends         = friends;
+    debugger;
+    
+
+    angular.forEach($scope.friends, function(friends){//map every friend with the personal frienship details
+      angular.forEach($scope.user.friends, function(friend){
+        if(friends._id === friend.id){
+         friends.date_connection  = friend.date_connection;
+         friends.status  = friend.status;
+         friends.last_update  = friend.last_update;
+        }
+      });
+
+    });
+
     $scope.invitationsSent = invitationsSent;
 
     $scope.acceptInvitation = function(user){

@@ -18,6 +18,7 @@ angular
     'ngTouch',
     'toaster',
     'angular-md5',
+    'firebase',
     'ui.bootstrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
@@ -50,6 +51,11 @@ angular
         url:'/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
+      })
+      .state('test`',{
+        url:'/test',
+        templateUrl: 'views/test.html',
+        controller:'TestController'
       })
       .state('reinitPassword',{
         url:'/reinitPassword/:token',
@@ -117,7 +123,10 @@ angular
             });
           }],
            friends:['API','me', function(API, me){
-            var ids = me.data.friends;
+            var ids = _.map(me.data.friends, function(friend){
+              return friend.id;
+            });
+            debugger;
             return API.searchUsersByIds(ids).then(function(people){
               return people.data;
             });
@@ -133,6 +142,11 @@ angular
       .state('main.info',{
         url:'info',
         templateUrl: 'views/info.html'
+      })
+       .state('main.test',{
+        url:'test',
+        templateUrl: 'views/test.html',
+        controller:'TestController'
       })
       .state('main.credit',{
         url:'credit',

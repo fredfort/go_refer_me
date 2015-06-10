@@ -3,7 +3,6 @@
 angular.module('discountdublin')
   .controller('MainCtrl',['$scope','$state','$interval','Linkedin','User','industries','locations','functions','languages','API','linkedinProfile',
       function ($scope,$state,$interval, Linkedin, User,industries, locations, functions, languages, API,linkedinProfile) {
-1
     $scope.getIndustriesArray = function(){
       var sub_industries = [];
       angular.forEach($scope.industries, function(value, key) {
