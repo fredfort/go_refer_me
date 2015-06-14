@@ -7,7 +7,6 @@ angular.module('discountdublin')
 
     $scope.invitations     = invitations;
     $scope.friends         = friends;
-    debugger;
     
 
     angular.forEach($scope.friends, function(friends){//map every friend with the personal frienship details
@@ -25,7 +24,7 @@ angular.module('discountdublin')
 
     $scope.acceptInvitation = function(user){
     	API.acceptInvitation(user).then(function(res){
-    		$scope.friends.push(user);
+    		$scope.friends = res.data.friends;
     		$scope.invitations = _.without($scope.invitations, user);
         $scope.user.invitationsReceived = $scope.invitations;
     		toaster.pop('info', 'Invitation accepted');
@@ -53,5 +52,9 @@ angular.module('discountdublin')
         toaster.pop('info', 'User unfriended');
       });
     };
+
+    $scope.changeFriendShipStatus = function(user){
+      API.changeFriendShipStatus(user)
+    }
 
   }]);

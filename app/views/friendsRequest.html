@@ -6,13 +6,13 @@
           <h3 class="panel-title">Your connections</h3>
         </div>
         <div class="panel-body no-padding">
-     		<div class="input-group margin-bottom10" ng-show='friends.length  > 2'>
+     		<div class="input-group margin-vertical10" ng-show='friends.length  > 2'>
 		      <input type="text" class="form-control" id="exampleInputAmount" ng-model="personFilter" placeholder="Search">
 		     	<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
 				</div>
 			  <accordion close-others="true">
-			    <accordion-group heading="{{person.firstName}} {{person.lastName}} - {{person.status}}" 
-			    								 ng-repeat="person in friends | filter:personFilter | orderBy:'-date_connection'" is-open="$first" class='no-margin'>
+			    <accordion-group heading="{{person.firstName}} {{person.lastName | firstLetter}} - {{person.status | statusFilter}} - Last Update {{person.last_update | date}}" 
+			    								 ng-repeat="person in friends | filter:personFilter | orderBy:'-last_update'" is-open="$first" class='no-margin'>
 				    <div class="row">
 				    	<div class="col-md-3 text-center">
 				     		<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" class="img img-responsive" />
@@ -23,7 +23,14 @@
 								<b>Profile</b>: <a ng-href="{{person.siteStandardProfileRequest.url}}" target="_blank">Linkedin profile</a><br />
 								<b>Email</b>: <a ng-href='mailto:{{person.emailAddress}}'>{{person.emailAddress}}</a><br/>
 								<span ng-show='person.date_connection'><b>Friends since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}<br /></span>
-								<span ng-show='person.status'><b>Last action</b>:{{person.status}}</span>  
+								<label ng-show='person.status'><b>Status:</b></label>
+								<select id='experience' ng-model="person.status" class="form-control" ng-change="changeFriendShipStatus(person)">
+                  <option value="connected">Connected</option>
+                  <option value="cv_granted">CV granted</option>
+                  <option value="cv_forwarded">CV forwarded to HR</option>
+                  <option value="hired">Hired</option>
+                  <option value="not_hired">Not hired</option>
+                </select>
 				     	</div>
 				     	<div class="col-md-3">
 				     		<button class="btn btn-default pull-right" ng-click='unFriend(person)'>Unfriend</button>

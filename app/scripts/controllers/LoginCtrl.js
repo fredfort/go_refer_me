@@ -30,6 +30,7 @@ angular.module('discountdublin')
       Linkedin.authorization().then(function(data){
         Linkedin.getUserInformation().then(function(user){
           user.currentJob = $scope.getJob(user.positions.values[0]);
+          debugger;
           API.createUser(user)
           .then(function(userToken){
             User.setUser(userToken);
@@ -87,8 +88,10 @@ angular.module('discountdublin')
     $scope.login = function(){
       $scope.checked = true;
       $scope.wrongCredential = false;
+      debugger;
       if($scope.emailAddress && $scope.password){
         $scope.formValid = true;
+        debugger;
         API.login($scope.emailAddress, md5.createHash($scope.password)).then(function(userToken){
          if(userToken.data && userToken.data.user){//if login successful
             User.setUser(userToken);

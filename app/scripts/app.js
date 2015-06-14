@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'toaster',
     'angular-md5',
-    'firebase',
+    'angularMoment',
     'ui.bootstrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
@@ -61,6 +61,16 @@ angular
         url:'/reinitPassword/:token',
         templateUrl: 'views/reinitPassword.html',
         controller: 'reinitPasswordCtrl'
+      })
+      .state('activateAccount',{
+        url:'/activateAccount/:token',
+        templateUrl: 'views/activateAccount.html',
+        resolve:{
+          active:['API', function(API){
+            debugger;
+            return API.activateAccount();
+          }]
+        }
       })
       .state('main.dashboard',{
         url:'dashboard',
@@ -126,7 +136,6 @@ angular
             var ids = _.map(me.data.friends, function(friend){
               return friend.id;
             });
-            debugger;
             return API.searchUsersByIds(ids).then(function(people){
               return people.data;
             });
@@ -142,11 +151,6 @@ angular
       .state('main.info',{
         url:'info',
         templateUrl: 'views/info.html'
-      })
-       .state('main.test',{
-        url:'test',
-        templateUrl: 'views/test.html',
-        controller:'TestController'
       })
       .state('main.credit',{
         url:'credit',

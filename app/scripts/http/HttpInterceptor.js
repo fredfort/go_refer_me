@@ -1,4 +1,4 @@
-angular.module('discountdublin').factory('HttpInterceptor',['$window','$q','User', function($window,$q, User) {
+angular.module('discountdublin').factory('HttpInterceptor',['$window','$q','User','toaster', function($window,$q, User, toaster) {
     var sessionInjector = {
 
     	request: function(config){
@@ -20,6 +20,9 @@ angular.module('discountdublin').factory('HttpInterceptor',['$window','$q','User
         if(rejection.status === 403 || rejection.status === 401){
           $window.location.replace('#/login');
           localStorage.removeItem('token');
+          toaster.pop('error', rejection.data);
+        }else if(rejection.status !== 404){
+          toaster.pop('error', rejection.data);
         }
         return $q.reject(rejection);    
       }

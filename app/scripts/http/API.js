@@ -55,12 +55,20 @@ angular.module('discountdublin')
 			return $http.post(baseURL+'user/unFriend',{user:user});
 		},
 
+		changeFriendShipStatus:function(user){
+			return $http.post(baseURL+'user/changeFriendShipStatus',{userId:user._id, status:user.status});
+		},
+
 		cancelInvitation:function(user){
 			return $http.post(baseURL+'user/cancelInvitation',{user:user});
 		},
 
 		reinitPassword:function(email){
 			return $http.post(baseURL+'user/reinitPassword',{emailAddress:email});
+		},
+
+		activateAccount:function(){
+			return $http.post(baseURL+'user/activateAccount');
 		},
 
 		changePassword:function(password,token){

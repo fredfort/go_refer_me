@@ -67,6 +67,25 @@ angular.module('discountdublin')
 	};
 
 	//Function
+	$scope.addExperience = function(){
+		if($scope.experience && $scope.experience.length){
+			if(!linkedinProfile.search.experience){
+				linkedinProfile.search.experience = [];
+			}
+			if(linkedinProfile.search.experience.indexOf($scope.experience) === -1){
+				linkedinProfile.search.experience.push($scope.experience);
+			}
+			$scope.experience = '';
+
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
+	};
+
+	$scope.removeExperience = function(experience){
+		linkedinProfile.search.experience = _.without(linkedinProfile.search.experience, experience);
+		$scope.saveUserProfile($scope.linkedinProfile);
+	};
+
 	$scope.addLanguage = function(){
 		if($scope.language && $scope.language.length){
 			if(!linkedinProfile.search.languages){
@@ -95,6 +114,25 @@ angular.module('discountdublin')
 
 	$scope.removeLocationWish = function(location){
 		linkedinProfile.wants.locations = _.without(linkedinProfile.wants.locations, location);
+		$scope.saveUserProfile($scope.linkedinProfile);
+	};
+
+	$scope.addExperienceWish = function(){
+		if($scope.wants_experience && $scope.wants_experience.length){
+			if(!linkedinProfile.wants.experience){
+				linkedinProfile.wants.experience = [];
+			}
+			if(linkedinProfile.wants.experience.indexOf($scope.wants_experience) === -1){
+				linkedinProfile.wants.experience.push($scope.wants_experience);
+			}
+			$scope.wants_experience = '';
+
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
+	};
+
+	$scope.removeExperienceWish = function(experience){
+		linkedinProfile.wants.experience = _.without(linkedinProfile.wants.experience, experience);
 		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 

@@ -102,6 +102,37 @@
               <div class="panel-heading">
                  <div class="row">
                   <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Experience</h3>
+                  </div>
+                   <div class="col-xs-7 no-padding">
+                    <select id='experience' ng-model="experience" class="form-control">
+                      <option value="junior">Junior</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="senior">Senior</option>
+                    </select> 
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addExperience()'><span class="glyphicon glyphicon-plus"></span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div ng-if="linkedinProfile.search.experience && linkedinProfile.search.experience.length > 0">
+                  <div class="row">
+                    <div class='col-sm-6 col-sm-4' ng-repeat="experience in linkedinProfile.search.experience track by $index">
+                        <alert type='info' close='removeExperience(experience)'>{{experience}}</alert>              
+                    </div>
+                  </div>
+                </div>
+                <div ng-if="!linkedinProfile.search.experience || linkedinProfile.search.experience.length === 0">
+                 You can refer for any experiences
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                 <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
                     <h3 class="panel-title">Function</h3>
                   </div>
                    <div class="col-xs-7 no-padding">
@@ -218,6 +249,37 @@
                 </div>
                 <div ng-if="!linkedinProfile.wants.locations || linkedinProfile.wants.locations.length === 0">
                   All locations are included in your criterias
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                 <div class="row">
+                  <div class="col-xs-3 no-padding search-panel-title">
+                    <h3 class="panel-title">Experience</h3>
+                  </div>
+                   <div class="col-xs-7 no-padding">
+                    <select id='experience' ng-model="wants_experience" class="form-control">
+                      <option value="junior">Junior</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="senior">Senior</option>
+                    </select> 
+                  </div>
+                  <div class="col-xs-2 no-padding">
+                    <button class="btn btn-primary" ng-click='addExperienceWish()'><span class="glyphicon glyphicon-plus"></span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div ng-if="linkedinProfile.wants.experience && linkedinProfile.wants.experience.length > 0">
+                  <div class="row">
+                    <div class='col-sm-6 col-sm-4' ng-repeat="experience in linkedinProfile.wants.experience track by $index">
+                        <alert type='info' close='removeExperienceWish(experience)'>{{experience}}</alert>              
+                    </div>
+                  </div>
+                </div>
+                <div ng-if="!linkedinProfile.wants.experience || linkedinProfile.wants.experience.length === 0">
+                   All experiences are included in your criterias
                 </div>
               </div>
             </div>
