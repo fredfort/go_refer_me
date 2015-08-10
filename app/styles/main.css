@@ -8052,77 +8052,97 @@ button.close {
 }
 
 /* line 25, _utils.scss */
+.margin-top10 {
+  margin-top: 10px;
+}
+
+/* line 29, _utils.scss */
 .margin-top15 {
   margin-top: 15px;
 }
 
-/* line 29, _utils.scss */
+/* line 33, _utils.scss */
 .margin-bottom15 {
   margin-bottom: 15px;
 }
 
-/* line 33, _utils.scss */
+/* line 37, _utils.scss */
 .margin-bottom10 {
   margin-bottom: 10px;
 }
 
-/* line 37, _utils.scss */
+/* line 41, _utils.scss */
 .margin-vertical10 {
   margin: 10px 0px;
 }
 
-/* line 41, _utils.scss */
+/* line 45, _utils.scss */
 .no-margin {
   margin: 0px;
 }
 
 /*FONT SIZE*/
-/* line 46, _utils.scss */
+/* line 50, _utils.scss */
 .font_size1-1 {
   font-size: 1.1em;
 }
 
-/* line 50, _utils.scss */
+/* line 54, _utils.scss */
 .font_size1-2 {
   font-size: 1.2em;
 }
 
-/* line 54, _utils.scss */
+/* line 58, _utils.scss */
 .font_size1-3 {
   font-size: 1.3em;
 }
 
-/* line 58, _utils.scss */
+/* line 62, _utils.scss */
 .font_size1-6 {
   font-size: 1.6em;
 }
 
-/* line 62, _utils.scss */
+/* line 66, _utils.scss */
 .font_size2-1 {
   font-size: 2.1em;
 }
 
 /*BORDER*/
-/* line 67, _utils.scss */
+/* line 71, _utils.scss */
 .borderTop {
   border-top: solid lightgray 1px;
 }
 
-/* line 71, _utils.scss */
+/* line 75, _utils.scss */
 .borderBottom {
   border-bottom: solid lightgray 1px;
 }
 
 /*IMAGE*/
-/* line 77, _utils.scss */
+/* line 81, _utils.scss */
 .img-90 {
   width: 90%;
 }
 
 /*Colors */
-/* line 82, _utils.scss */
+/* line 86, _utils.scss */
 .error {
   color: #d9534f;
+}
+
+/* line 90, _utils.scss */
+.success {
+  color: #5cb85c;
+}
+
+/* line 94, _utils.scss */
+.warning {
+  color: #f0ad4e;
+}
+
+/* line 98, _utils.scss */
+.break-word {
+  word-break: break-word;
 }
 
 /* line 5, main.scss */

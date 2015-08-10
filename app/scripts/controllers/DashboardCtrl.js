@@ -21,18 +21,22 @@ angular.module('discountdublin')
 		}
 	});
 
+	$scope.$watch('linkedinProfile', function(newValue, oldValue){
+		if(newValue && oldValue && newValue !== oldValue){
+			$scope.saveUserProfile($scope.linkedinProfile);
+		}
+	}, true);
+
 	//Industries
 	$scope.addIndustry = function(){
 		if($scope.industry && $scope.industry.length){
 			linkedinProfile.search.industries.push($scope.industry);
 			$scope.industry = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeIndustry = function(industry){
 		linkedinProfile.search.industries = _.without(linkedinProfile.search.industries, industry);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	//Location
@@ -40,13 +44,11 @@ angular.module('discountdublin')
 		if($scope.location && $scope.location.length){
 			linkedinProfile.search.locations.push($scope.location);
 			$scope.location = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeLocation = function(location){
 		linkedinProfile.search.locations = _.without(linkedinProfile.search.locations, location);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	//Function
@@ -57,13 +59,11 @@ angular.module('discountdublin')
 			}
 			linkedinProfile.search.functions.push($scope.function);
 			$scope.function = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeFunction = function(myfunction){
 		linkedinProfile.search.functions = _.without(linkedinProfile.search.functions, myfunction);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	//Function
@@ -76,14 +76,11 @@ angular.module('discountdublin')
 				linkedinProfile.search.experience.push($scope.experience);
 			}
 			$scope.experience = '';
-
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeExperience = function(experience){
 		linkedinProfile.search.experience = _.without(linkedinProfile.search.experience, experience);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	$scope.addLanguage = function(){
@@ -93,13 +90,11 @@ angular.module('discountdublin')
 			}
 			linkedinProfile.search.languages.push($scope.language);
 			$scope.language = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeLanguage = function(language){
 		linkedinProfile.search.languages = _.without(linkedinProfile.search.languages, language);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 
@@ -108,13 +103,11 @@ angular.module('discountdublin')
 		if($scope.wants_location && $scope.wants_location.length){
 			linkedinProfile.wants.locations.push($scope.wants_location);
 			$scope.wants_location = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeLocationWish = function(location){
 		linkedinProfile.wants.locations = _.without(linkedinProfile.wants.locations, location);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	$scope.addExperienceWish = function(){
@@ -126,40 +119,33 @@ angular.module('discountdublin')
 				linkedinProfile.wants.experience.push($scope.wants_experience);
 			}
 			$scope.wants_experience = '';
-
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeExperienceWish = function(experience){
 		linkedinProfile.wants.experience = _.without(linkedinProfile.wants.experience, experience);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	$scope.addCompanyWish = function(){
 		if($scope.wants_company && $scope.wants_company.length){
 			linkedinProfile.wants.companies.push($scope.wants_company);
 			$scope.wants_company = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeCompanyWish = function(company){
 		linkedinProfile.wants.companies = _.without(linkedinProfile.wants.companies, company);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	$scope.addIndustryWish = function(){
 		if($scope.wants_company && $scope.wants_company.length){
 			linkedinProfile.wants.industries.push($scope.wants_industry);
 			$scope.wants_company = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeIndustryWish = function(industry){
 		linkedinProfile.wants.industries = _.without(linkedinProfile.wants.industries, industry);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 
@@ -170,13 +156,11 @@ angular.module('discountdublin')
 			}
 			linkedinProfile.wants.functions.push($scope.wants_function);
 			$scope.wants_function = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeFunctionWish = function(myfunction){
 		linkedinProfile.wants.functions = _.without(linkedinProfile.wants.functions, myfunction);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 
@@ -187,13 +171,11 @@ angular.module('discountdublin')
 			}
 			linkedinProfile.wants.languages.push($scope.wants_language);
 			$scope.wants_language = '';
-			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	};
 
 	$scope.removeLanguageWish = function(language){
 		linkedinProfile.wants.languages = _.without(linkedinProfile.wants.languages, language);
-		$scope.saveUserProfile($scope.linkedinProfile);
 	};
 
 	$scope.searchJobSeeker = function(){

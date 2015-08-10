@@ -30,7 +30,6 @@ angular.module('discountdublin')
       Linkedin.authorization().then(function(data){
         Linkedin.getUserInformation().then(function(user){
           user.currentJob = $scope.getJob(user.positions.values[0]);
-          debugger;
           API.createUser(user)
           .then(function(userToken){
             User.setUser(userToken);
@@ -74,10 +73,8 @@ angular.module('discountdublin')
           password     : md5.createHash($scope.password)
         };
         API.createUser(user).then(function(userToken){
-            User.setUser(userToken);
-            $state.go('main.dashboard');
-            $rootScope.modalInstance.close();
-          }).catch(function(err){
+          $scope.haveAccount=true;   
+        }).catch(function(err){
             alert('User creation error '+err);
           });
       }else{
@@ -88,10 +85,8 @@ angular.module('discountdublin')
     $scope.login = function(){
       $scope.checked = true;
       $scope.wrongCredential = false;
-      debugger;
       if($scope.emailAddress && $scope.password){
-        $scope.formValid = true;
-        debugger;
+        $scope.formValid = true;;
         API.login($scope.emailAddress, md5.createHash($scope.password)).then(function(userToken){
          if(userToken.data && userToken.data.user){//if login successful
             User.setUser(userToken);
@@ -99,8 +94,9 @@ angular.module('discountdublin')
             $rootScope.modalInstance.close();
          }else{
           $scope.wrongCredential = true;
+          $scope.apiMessageError = userToken.data.error;
          }
-        });
+        })
       }else{
         $scope.formValid = false;
       }
