@@ -48,3 +48,23 @@ mod.filter('firstLetter', function() {
      return returnedString;
    }
 });
+
+
+mod.filter('plurial', function() {
+  return function(input) {
+     if(input && input.length){
+       return input+"s";
+     }
+    
+   }
+});
+
+
+mod.filter('firstLetterUpperCase', function() {
+  return function(input) {
+     if(input && input.length){
+       return input.charAt(0).toUpperCase() + input.substr(1).toLowerCase()
+     }
+   }
+});
+

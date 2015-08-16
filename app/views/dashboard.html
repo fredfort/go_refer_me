@@ -5,216 +5,30 @@
         <h3 class="panel-title">Profile</h3>
       </div>
       <div class="panel-body">
-        <div class="row">
-          <div class="col-xs-4 col-md-offset-1 col-md-3 text-center">
-            <div>
-              <img ng-src="{{linkedinProfile.pictureUrl || '../images/user.svg'}}" class="profile-img" />
-            </div> 
-          </div>
-          <div class="col-xs-8 col-md-7 text-left">
-            <div class="row">
-              <div class="col-xs-4 text-right">
-                <b>Name</b>
-              </div>
-              <div class="col-xs-6">
-               {{linkedinProfile.firstName}} {{linkedinProfile.lastName}}
-              </div>
-              <div class="col-xs-2">
-                <span class="glyphicon glyphicon-eye-close warning font_size1-3" 
-                      title='Only visible by connected people' popover='Only visible by connected people' popover-trigger='monseenter'>
-                </span>
-              </div>
-            </div>
-            <div class="row margin-top5">
-              <div class="col-xs-4 text-right">
-                <b>Job</b>
-              </div>
-              <div class="col-xs-6">
-               {{linkedinProfile.currentJob.title || linkedinProfile.headline}}
-              </div>
-              <div class="col-xs-2">
-                <span class="glyphicon glyphicon-eye-open success font_size1-3" title='Always visible by others' popover='Always visible by others' popover-trigger='monseenter'></span>
-              </div>
-            </div>
-            <div class="row margin-top5">
-              <div class=" col-xs-4 text-right">
-                <b>Location</b>
-              </div>
-              <div class="col-xs-6">
-               {{linkedinProfile.location.name}}
-              </div>
-              <div class="col-xs-2">
-                <span class="glyphicon glyphicon-eye-open success font_size1-3" title='Always visible by others' popover='Always visible by others' popover-trigger='monseenter'></span>
-              </div>
-            </div>
-            <div class="row margin-top5">
-              <div class=" col-xs-4 text-right">
-                <b>Company</b>
-              </div>
-              <div class="col-xs-6">
-               {{linkedinProfile.currentJob.company}}
-              </div>
-              <div class="col-xs-2">
-                <span class="glyphicon glyphicon-eye-open success font_size1-3" title='Always visible by others' popover='Always visible by others' popover-trigger='monseenter'></span>
-              </div>
-            </div>
-            <div class="row margin-top5">
-              <div class="col-xs-4 text-right">
-                <label for='category'><b>Category</b></label>
-              </div>
-              <div class="col-xs-6">
-                <select id='category' ng-model="linkedinProfile.category" ng-change="saveUserProfile(linkedinProfile)">
-                  <option value="referer">{{'referer' | categoryFilter}}</option>
-                  <option value="looking_for_job">{{'looking_for_job' | categoryFilter}}</option>
-                </select>
-              </div>
-              <div class="col-xs-2">
-                <span class="glyphicon glyphicon-eye-open success font_size1-3" title='Always visible by others' popover='Always visible by others' popover-trigger='monseenter'></span>
-              </div>
-            </div>
-            <div class="row margin-top5">
-              <div class=" col-xs-4 text-right">
-                <b>Id</b>
-              </div>
-              <div class="col-xs-6 break-word">
-               {{linkedinProfile._id}}
-              </div>
-              <div class="col-xs-2">
-                <span class="glyphicon glyphicon-eye-close error font_size1-3" title='Private' popover='Private' popover-trigger='monseenter'></span>
-              </div>
-            </div>
-            <div class="row margin-top5 text-center" ng-show='!linkedinProfile.category'>
-              <alert type="info" >Please choose a category</alert>
-            </div>
-          </div>
-        </div>
-         <div class="margin-top5 text-center" ng-show='linkedinProfile.category'>
+
+        <div profile="linkedinProfile"></div>
+
+        <div class="margin-top5 text-center" ng-show='linkedinProfile.category'>
               <alert type="info" ng-show='linkedinProfile.category === "looking_for_job"'>
-                Describe your dream job thanks to the following criterias </alert>
+                Describe your dream job thanks to the following criterias 
+              </alert>
               <alert type="info" ng-show='linkedinProfile.category === "referer"'>
-                Indicate on which locations, departement and languages you can refer someone.</alert>
+                Indicate on which locations, departement and languages you can refer someone.
               </alert>
         </div>
+
         <div>
           <div ng-show="linkedinProfile.category === 'referer'">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Location</h3>
-                  </div>
-                  <div class="col-xs-7 no-padding">
-                    <input type="text" ng-model='location' class="form-control" 
-                        typeahead-on-select="addLocation()" 
-                        typeahead="country for country in countries | filter:$viewValue | limitTo:15"/> 
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addLocation()'><span class="glyphicon glyphicon-plus"></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.search.locations && linkedinProfile.search.locations.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="location in linkedinProfile.search.locations track by $index">
-                        <alert type='info' close='removeLocation(location)'>{{location}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.search.locations || linkedinProfile.search.locations.length === 0">
-                  You can refer in any locations
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                 <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Experience</h3>
-                  </div>
-                   <div class="col-xs-7 no-padding">
-                    <select id='experience' ng-model="experience" class="form-control">
-                      <option value="junior">Junior</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="senior">Senior</option>
-                    </select> 
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addExperience()'><span class="glyphicon glyphicon-plus"></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.search.experience && linkedinProfile.search.experience.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="experience in linkedinProfile.search.experience track by $index">
-                        <alert type='info' close='removeExperience(experience)'>{{experience}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.search.experience || linkedinProfile.search.experience.length === 0">
-                 You can refer for any experiences
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                 <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Function</h3>
-                  </div>
-                   <div class="col-xs-7 no-padding">
-                    <input type="text" ng-model='function' class="form-control" 
-                    typeahead-on-select="addFunction()" 
-                    typeahead="function for function in functions | filter:$viewValue | limitTo:15"/> 
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addFunction()'><span class="glyphicon glyphicon-plus"></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.search.functions && linkedinProfile.search.functions.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="function in linkedinProfile.search.functions track by $index">
-                        <alert type='info' close='removeFunction(function)'>{{function}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.search.functions || linkedinProfile.search.functions.length === 0">
-                 You can refer in any functions
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Language</h3>
-                  </div>
-                  <div class="col-xs-7 no-padding">
-                    <input type="text" ng-model='language' class="form-control" 
-                    typeahead-on-select="addLanguage()" 
-                    typeahead="language for language in languages | filter:$viewValue | limitTo:15"/>
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addLanguage()'><span class="glyphicon glyphicon-plus"></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.search.languages && linkedinProfile.search.languages.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="language in linkedinProfile.search.languages track by $index">
-                        <alert type='info' close='removeLanguage(language)'>{{language}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.search.languages || linkedinProfile.search.languages.length === 0">
-                  You can refer in any languages
-                </div>
-              </div>
-            </div>
+            
+            <div search-criteria items='linkedinProfile.search.locations' item-type='location' typeahead-items='countries'></div>
+            
+             <div search-criteria items='linkedinProfile.search.experience' item-type='experience'></div>
+
+            <div search-criteria items='linkedinProfile.search.functions' item-type='function' typeahead-items='functions'></div>
+
+
+            <div search-criteria items='linkedinProfile.search.languages' item-type='language' typeahead-items='languages'></div>
+
             <div class="row">
               <div class="col-xs-10 margin-top10">
                 <label for="search_all_criteria">Only display profiles who match all criterias</label>
@@ -229,183 +43,21 @@
               </div>
             </div>
           </div>
+
           <div ng-show="linkedinProfile.category === 'looking_for_job'">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                 <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Company</h3>
-                  </div>
-                   <div class="col-xs-7 no-padding">
-                    <input type="text" ng-model='wants_company' class="form-control" 
-                        typeahead-on-select="addCompanyWish()"
-                        typeahead="company for company in companiesArray | filter:$viewValue | limitTo:15" />
-                   </div>
-                   <div class="col-xs-2 no-padding"> 
-                      <button class="btn btn-primary" ng-click='addCompanyWish()'><span class='glyphicon glyphicon-plus'></span></button>
-                   </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.wants.companies && linkedinProfile.wants.companies.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="company in linkedinProfile.wants.companies track by $index">
-                        <alert type='info' close='removeCompanyWish(company)'>{{company}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.wants.companies || linkedinProfile.wants.companies.length === 0">
-                  All companies are included in your criterias
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Location</h3>
-                  </div>
-                  <div class="col-xs-7 no-padding">
-                     <input type="text" ng-model='wants_location' class="form-control" 
-                    typeahead-on-select="addLocationWish()" 
-                    typeahead="country for country in countries | filter:$viewValue | limitTo:15"/> 
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addLocationWish()'><span class='glyphicon glyphicon-plus'></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.wants.locations && linkedinProfile.wants.locations.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="location in linkedinProfile.wants.locations track by $index">
-                        <alert type='info' close='removeLocationWish(location)'>{{location}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.wants.locations || linkedinProfile.wants.locations.length === 0">
-                  All locations are included in your criterias
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                 <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Experience</h3>
-                  </div>
-                   <div class="col-xs-7 no-padding">
-                    <select id='experience' ng-model="wants_experience" class="form-control">
-                      <option value="junior">Junior</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="senior">Senior</option>
-                    </select> 
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addExperienceWish()'><span class="glyphicon glyphicon-plus"></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.wants.experience && linkedinProfile.wants.experience.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="experience in linkedinProfile.wants.experience track by $index">
-                        <alert type='info' close='removeExperienceWish(experience)'>{{experience}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.wants.experience || linkedinProfile.wants.experience.length === 0">
-                   All experiences are included in your criterias
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Industries</h3>
-                  </div>
-                  <div class="col-xs-7 no-padding">
-                    <input type="text" ng-model='wants_industry' class="form-control" 
-                        typeahead-on-select="addIndustryWish()" 
-                        typeahead="industry for industry in sub_industries | filter:$viewValue | limitTo:15" />
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addIndustryWish()'><span class='glyphicon glyphicon-plus'></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.wants.industries && linkedinProfile.wants.industries.length > 0">
-                  <div class="row text-center">
-                    <div class="col-sm-6 col-md-4" ng-repeat="industry in linkedinProfile.wants.industries track by $index">
-                     <alert type='info' close='removeIndustryWish(industry)'>{{industry}}</alert>
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.wants.industries || linkedinProfile.wants.industries.length === 0">
-                  All industries are included in your criterias
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Function</h3>
-                  </div>
-                  <div class="col-xs-7 no-padding">
-                    <input type="text" ng-model='wants_function' class="form-control" 
-                    typeahead-on-select="addFunctionWish()" 
-                    typeahead="function for function in functions | filter:$viewValue | limitTo:15"/>
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addFunctionWish()'><span class='glyphicon glyphicon-plus'></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.wants.functions && linkedinProfile.wants.functions.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="function in linkedinProfile.wants.functions track by $index">
-                        <alert type='info' close='removeFunctionWish(function)'>{{function}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.wants.functions || linkedinProfile.wants.functions.length === 0">
-                  All functions are included in your criterias
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-3 no-padding search-panel-title">
-                    <h3 class="panel-title">Language</h3>
-                  </div>
-                  <div class="col-xs-7 no-padding">
-                    <input type="text" ng-model='wants_language' class="form-control" 
-                    typeahead-on-select="addLanguageWish()" 
-                    typeahead="language for language in languages | filter:$viewValue | limitTo:15"/>
-                  </div>
-                  <div class="col-xs-2 no-padding">
-                    <button class="btn btn-primary" ng-click='addLanguage()'><span class='glyphicon glyphicon-plus'></span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div ng-if="linkedinProfile.wants.languages && linkedinProfile.wants.languages.length > 0">
-                  <div class="row">
-                    <div class='col-sm-6 col-sm-4' ng-repeat="language in linkedinProfile.wants.languages track by $index">
-                        <alert type='info' close='removeLanguageWish(language)'>{{language}}</alert>              
-                    </div>
-                  </div>
-                </div>
-                <div ng-if="!linkedinProfile.wants.languages || linkedinProfile.wants.languages.length === 0">
-                  All languages are included in your criterias
-                </div>
-              </div>
-            </div>
+           
+            <div search-criteria items='linkedinProfile.wants.companies' item-type='company' typeahead-items='companiesArray'></div>
+    
+            <div search-criteria items='linkedinProfile.wants.locations' item-type='location' typeahead-items='countries'></div>
+
+            <div search-criteria items='linkedinProfile.wants.experience' item-type='experience'></div>
+
+            <div search-criteria items='linkedinProfile.wants.industries' item-type='industry' typeahead-items='sub_industries'></div>
+
+            <div search-criteria items='linkedinProfile.wants.functions'  item-type='function' typeahead-items='functions'></div>
+
+            <div search-criteria items='linkedinProfile.wants.languages'  item-type='language' typeahead-items='languages'></div>
+
             <div class="row">
               <div class="col-xs-10 margin-top10">
                 <label for="wants_all_criteria">Only display profiles who match all criterias</label>

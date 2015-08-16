@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-3 no-padding search-panel-title">
+        <h3 class="panel-title">{{itemType | firstLetterUpperCase}}</h3>
+      </div>
+      <div class="col-xs-7 no-padding">
+
+          <input type="text" ng-model='item' class="form-control" ng-show='itemType !== "experience"'
+            typeahead-on-select="addItem()" 
+            typeahead="item for item in typeaheadItems | filter:$viewValue | limitTo:15"
+          /> 
+          
+          <select id='experience' ng-model="item" class="form-control" ng-show='itemType === "experience"'>
+                      <option value="junior">Junior</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="senior">Senior</option>
+          </select> 
+      
+      </div>
+      <div class="col-xs-2 no-padding">
+        <button class="btn btn-primary" ng-click='addItem()'><span class="glyphicon glyphicon-plus"></span></button>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div ng-if="items && items.length > 0">
+      <div class="row">
+        <div class='col-sm-6 col-sm-4' ng-repeat="item in items track by $index">
+            <alert type='info' close='removeItem(item)'>{{item}}</alert>              
+        </div>
+      </div>
+    </div>
+    <div ng-if="!items || items.length === 0">
+      You can refer in any {{itemType | plurial}}
+    </div>
+  </div>
+</div>

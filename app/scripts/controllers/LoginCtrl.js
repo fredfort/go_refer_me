@@ -107,7 +107,5 @@ angular.module('discountdublin')
         toaster.pop('success','An email has been sent to '+$scope.emailAddress);
       });
     };
-
-
     $scope.industries = $scope.getIndustriesArray();
   }]);

@@ -1,13 +1,11 @@
 'use strict';
 
-
 angular.module('discountdublin')
   .controller('FriendRequestCtrl',['$scope','$state','API', 'invitations', 'friends', 'invitationsSent', 'toaster',
       function ($scope,$state, API, invitations, friends,invitationsSent, toaster) {
 
     $scope.invitations     = invitations;
     $scope.friends         = friends;
-    
 
     angular.forEach($scope.friends, function(friends){//map every friend with the personal frienship details
       angular.forEach($scope.user.friends, function(friend){
@@ -17,7 +15,6 @@ angular.module('discountdublin')
          friends.last_update  = friend.last_update;
         }
       });
-
     });
 
     $scope.invitationsSent = invitationsSent;
@@ -56,5 +53,4 @@ angular.module('discountdublin')
     $scope.changeFriendShipStatus = function(user){
       API.changeFriendShipStatus(user)
     }
-
   }]);

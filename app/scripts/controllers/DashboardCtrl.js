@@ -6,6 +6,7 @@ angular.module('discountdublin')
 		$state.go('login');//TODO dirty change that
 	}
 
+	//Init user profile
 	$scope.linkedinProfile = linkedinProfile;
 	if(!$scope.linkedinProfile.search){
 		$scope.linkedinProfile.search = { industries:[], locations:[], functions:[], languages:[]};
@@ -21,163 +22,14 @@ angular.module('discountdublin')
 		}
 	});
 
+	//watch any change on the user profile and save them in database
 	$scope.$watch('linkedinProfile', function(newValue, oldValue){
 		if(newValue && oldValue && newValue !== oldValue){
 			$scope.saveUserProfile($scope.linkedinProfile);
 		}
 	}, true);
 
-	//Industries
-	$scope.addIndustry = function(){
-		if($scope.industry && $scope.industry.length){
-			linkedinProfile.search.industries.push($scope.industry);
-			$scope.industry = '';
-		}
-	};
-
-	$scope.removeIndustry = function(industry){
-		linkedinProfile.search.industries = _.without(linkedinProfile.search.industries, industry);
-	};
-
-	//Location
-	$scope.addLocation = function(){
-		if($scope.location && $scope.location.length){
-			linkedinProfile.search.locations.push($scope.location);
-			$scope.location = '';
-		}
-	};
-
-	$scope.removeLocation = function(location){
-		linkedinProfile.search.locations = _.without(linkedinProfile.search.locations, location);
-	};
-
-	//Function
-	$scope.addFunction = function(){
-		if($scope.function && $scope.function.length){
-			if(!linkedinProfile.search.functions){
-				linkedinProfile.search.functions = [];
-			}
-			linkedinProfile.search.functions.push($scope.function);
-			$scope.function = '';
-		}
-	};
-
-	$scope.removeFunction = function(myfunction){
-		linkedinProfile.search.functions = _.without(linkedinProfile.search.functions, myfunction);
-	};
-
-	//Function
-	$scope.addExperience = function(){
-		if($scope.experience && $scope.experience.length){
-			if(!linkedinProfile.search.experience){
-				linkedinProfile.search.experience = [];
-			}
-			if(linkedinProfile.search.experience.indexOf($scope.experience) === -1){
-				linkedinProfile.search.experience.push($scope.experience);
-			}
-			$scope.experience = '';
-		}
-	};
-
-	$scope.removeExperience = function(experience){
-		linkedinProfile.search.experience = _.without(linkedinProfile.search.experience, experience);
-	};
-
-	$scope.addLanguage = function(){
-		if($scope.language && $scope.language.length){
-			if(!linkedinProfile.search.languages){
-				linkedinProfile.search.languages = [];
-			}
-			linkedinProfile.search.languages.push($scope.language);
-			$scope.language = '';
-		}
-	};
-
-	$scope.removeLanguage = function(language){
-		linkedinProfile.search.languages = _.without(linkedinProfile.search.languages, language);
-	};
-
-
-	/*Job seeker*/
-	$scope.addLocationWish = function(){
-		if($scope.wants_location && $scope.wants_location.length){
-			linkedinProfile.wants.locations.push($scope.wants_location);
-			$scope.wants_location = '';
-		}
-	};
-
-	$scope.removeLocationWish = function(location){
-		linkedinProfile.wants.locations = _.without(linkedinProfile.wants.locations, location);
-	};
-
-	$scope.addExperienceWish = function(){
-		if($scope.wants_experience && $scope.wants_experience.length){
-			if(!linkedinProfile.wants.experience){
-				linkedinProfile.wants.experience = [];
-			}
-			if(linkedinProfile.wants.experience.indexOf($scope.wants_experience) === -1){
-				linkedinProfile.wants.experience.push($scope.wants_experience);
-			}
-			$scope.wants_experience = '';
-		}
-	};
-
-	$scope.removeExperienceWish = function(experience){
-		linkedinProfile.wants.experience = _.without(linkedinProfile.wants.experience, experience);
-	};
-
-	$scope.addCompanyWish = function(){
-		if($scope.wants_company && $scope.wants_company.length){
-			linkedinProfile.wants.companies.push($scope.wants_company);
-			$scope.wants_company = '';
-		}
-	};
-
-	$scope.removeCompanyWish = function(company){
-		linkedinProfile.wants.companies = _.without(linkedinProfile.wants.companies, company);
-	};
-
-	$scope.addIndustryWish = function(){
-		if($scope.wants_company && $scope.wants_company.length){
-			linkedinProfile.wants.industries.push($scope.wants_industry);
-			$scope.wants_company = '';
-		}
-	};
-
-	$scope.removeIndustryWish = function(industry){
-		linkedinProfile.wants.industries = _.without(linkedinProfile.wants.industries, industry);
-	};
-
-
-	$scope.addFunctionWish = function(){
-		if($scope.wants_function && $scope.wants_function.length){
-			if(!linkedinProfile.wants.functions){
-				linkedinProfile.wants.functions = [];
-			}
-			linkedinProfile.wants.functions.push($scope.wants_function);
-			$scope.wants_function = '';
-		}
-	};
-
-	$scope.removeFunctionWish = function(myfunction){
-		linkedinProfile.wants.functions = _.without(linkedinProfile.wants.functions, myfunction);
-	};
-
-
-	$scope.addLanguageWish = function(){
-		if($scope.wants_language && $scope.wants_language.length){
-			if(!linkedinProfile.wants.languages){
-				linkedinProfile.wants.languages = [];
-			}
-			linkedinProfile.wants.languages.push($scope.wants_language);
-			$scope.wants_language = '';
-		}
-	};
-
-	$scope.removeLanguageWish = function(language){
-		linkedinProfile.wants.languages = _.without(linkedinProfile.wants.languages, language);
-	};
-
+	//Look for match
 	$scope.searchJobSeeker = function(){
 		$state.go('main.search');
 	};
@@ -185,6 +37,4 @@ angular.module('discountdublin')
 	$scope.searchReferer = function(){;
 		$state.go('main.search');
 	};
-
 }]);
-

@@ -2,6 +2,7 @@
   "name": "discount_dublin",
   "version": "0.0.0",
   "dependencies": {
+    "angular-animate": "^1.4.3",
     "angular-md5": "^0.1.7",
     "karma": "^0.12.31"
   },

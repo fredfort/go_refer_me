@@ -53,7 +53,6 @@ angular.module('discountdublin')
 
 	$scope.contactProfile = function(profile){
 		API.sendInvitation(profile).then(function(user){
-			debugger;
 			toaster.pop('success','An invitation has been sent');
 			$scope.next();
 		}).catch(function(err){
