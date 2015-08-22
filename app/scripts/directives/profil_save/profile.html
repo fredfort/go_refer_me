@@ -1,0 +1,78 @@
+<div class="profile row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-3 text-right">
+        <b>Name</b>
+      </div>
+      <div class="col-xs-7">
+       {{profile.firstName}} {{profile.lastName}}
+      </div>
+      <div class="col-xs-2">
+        <span class="glyphicon glyphicon-eye-close warning font_size1-3" 
+              title='Only visible by connected people' popover='Only visible by connected people' popover-trigger='monseenter'>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3 text-right">
+        <b>Job</b>
+      </div>
+      <div class="col-xs-7">
+       {{profile.currentJob.title || profile.headline}}
+      </div>
+      <div class="col-xs-2">
+        <span class="glyphicon glyphicon-eye-open success font_size1-3" title='Always visible by others' popover='Always visible by others' popover-trigger='monseenter'></span>
+      </div>
+    </div>
+   <!--  <div class="row">
+      <div class=" col-xs-3 text-right">
+        <b>Location</b>
+      </div>
+      <div class="col-xs-7">
+       {{profile.location.name}}
+      </div>
+      <div class="col-xs-2">
+        <span class="glyphicon glyphicon-eye-open success font_size1-3" title='Always visible by others' popover='Always visible by others' popover-trigger='monseenter'></span>
+      </div>
+    </div> -->
+   <!--  <div class="row">
+      <div class=" col-xs-3 text-right">
+        <b>Company</b>
+      </div>
+      <div class="col-xs-7">
+       {{profile.currentJob.company}}
+      </div>
+      <div class="col-xs-2">
+        <span class="glyphicon glyphicon-eye-open success font_size1-3" title='Always visible by others' popover='Always visible by others' popover-trigger='monseenter'></span>
+      </div>
+    </div> -->
+    <div class="row margin-top5 text-center" ng-show='!profile.category'>
+      <alert type="info" >Please choose a category</alert>
+    </div>
+    <div class="row">
+      <div class="col-xs-3 text-right">
+        <label for='category'><b>Category</b></label>
+      </div>
+      <div class="col-xs-7">
+        <select id='category' ng-model="profile.category" ng-change="saveUserProfile(profile)">
+          <option value="referer">{{'referer' | categoryFilter}}</option>
+          <option value="looking_for_job">{{'looking_for_job' | categoryFilter}}</option>
+        </select>
+      </div>
+      <div class="col-xs-2">
+        <span class="glyphicon glyphicon-eye-open success font_size1-3" title='Always visible by others' popover='Always visible by others' popover-trigger='monseenter'></span>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class=" col-xs-3 text-right">
+        <b>Id</b>
+      </div>
+      <div class="col-xs-7 break-word" style="font-size: 0.85em;">
+       {{profile._id}}
+      </div>
+      <div class="col-xs-2">
+        <span class="glyphicon glyphicon-eye-close error font_size1-3" title='Private' popover='Private' popover-trigger='monseenter'></span>
+      </div>
+    </div> -->
+  </div>
+</div>

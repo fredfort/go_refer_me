@@ -1,0 +1,25 @@
+.menu{
+	.profile-menu{
+	    border-top: lightgray 1px solid;
+		padding: 8px;
+		margin-bottom: -5px;
+	}
+	.app-menu{
+
+
+		div{
+ 			
+			padding: 10px;
+			border-bottom: lightgray 1px solid;
+
+			&:first-child{
+ 				border-top: lightgray 1px solid;
+ 				margin-top:5px;
+ 			}
+
+			a{
+				color:#757474;
+			}
+		}
+	}
+}

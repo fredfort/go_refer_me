@@ -1,0 +1,47 @@
+<div class="menu">
+  <div class="profile-menu row">
+    <div class="col-xs-4 col-md-offset-1 col-md-3 text-center">
+      <div>
+        <img ng-src="{{profileMenu.pictureUrl || '../images/user.svg'}}" class="profileMenu-img" />
+      </div> 
+    </div>
+    <div class="font_size1-3">
+        {{profileMenu.firstName}} {{profileMenu.lastName}}
+    </div>
+    <div style="font-size: 0.9em;">
+         {{ profileMenu.headline || profileMenu.currentJob.title}}
+    </div>
+  </div>
+  <div class="app-menu">
+    <!-- <div ng-show="user.invitationsReceived.length">
+      <a ui-sref='main.friendsRequest'  ng-click="collapse = true" ng-show="user.invitationsReceived.length"> 
+        <span class="badge notification notification-sm" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
+      </a>
+    </div> -->
+    <div>
+      <a ui-sref='main.dashboard'  ng-click="collapse = true">
+        <span class="glyphicon glyphicon-user"></span> Profile
+      </a>
+    </div>
+    <div>
+      <a ui-sref='main.friendsRequest' ng-click='collapse = true'>
+        <span class='glyphicon glyphicon-globe'></span> Connections
+      </a>
+    </div>
+    <div>
+      <a ui-sref='main.info'  ng-click="collapse = true">
+        <span class="glyphicon glyphicon-info-sign"></span> More info
+      </a>
+    </div>
+    <div>
+      <a ui-sref='main.credit' ng-click="collapse = true">
+        <span class="glyphicon glyphicon-piggy-bank"></span> Credit 
+      </a>
+    </div>
+    <div> 
+      <a href='#' ng-click='logout()'>
+        <span class="glyphicon glyphicon-log-out"></span> Logout
+      </a>
+    </div>
+  </div>
+</div>

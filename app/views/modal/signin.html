@@ -65,7 +65,8 @@
 				      <span class='description error' ng-show='!password && checked'>Password must be at leat 8 caracters long</span>
 				    </div>
 				  </div>
-				  <div class="form-group" ng-show="!haveAccount && !passwordForgotten" ng-class="{'has-error':(!password_confirm || password !== password_confirm) && checked}"}>
+				  <div class="form-group" ng-show="!haveAccount && !passwordForgotten" 
+				      ng-class="{'has-error':(!password_confirm || password !== password_confirm) && checked}">
 				    <label for="password_confirm" class="col-sm-3  control-label">Password confirm</label>
 				    <div class="col-sm-9">
 				      <input type="password" ng-model='password_confirm' ng-minlength="8" class="form-control" id="password_confirm" placeholder="Password">

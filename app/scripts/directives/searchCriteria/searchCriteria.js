@@ -6,12 +6,15 @@ angular.module('discountdublin')
 		scope:{
 			itemType:'@',
 			items:'=',
-			typeaheadItems:'='
+			typeaheadItems:'=',
+			hideSave:'='
 		},
 		link: function (scope, iElement, iAttrs) {
-			
+
+
+			scope.experiences = ['junior','intermediate','senior'];
+
 			scope.addItem = function(){
-				debugger;
 				if(scope.item && scope.item.length){
 					scope.items.push(scope.item);
 					scope.item = '';
@@ -20,6 +23,14 @@ angular.module('discountdublin')
 
 			scope.removeItem = function(item){
 				scope.items = _.without(scope.items, item);
+			};
+
+			scope.selectAll = function(){
+				scope.items = scope.typeaheadItems;
+			};
+
+			scope.deselectAll = function(){
+				scope.items = [];
 			};
 
 		}

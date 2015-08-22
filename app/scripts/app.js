@@ -19,7 +19,8 @@ angular
     'toaster',
     'angular-md5',
     'angularMoment',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'pageslide-directive'
   ])
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
 
@@ -44,6 +45,11 @@ angular
             }).catch(function(err){
               $state.go('login');
             });
+          }],
+          companies:['API', function(API){
+            return API.searchCompanies().then(function(companies){
+              return companies.data;
+            });
           }]
         }
       })
@@ -52,23 +58,17 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .state('test`',{
-        url:'/test',
-        templateUrl: 'views/test.html',
-        controller:'TestController'
-      })
       .state('reinitPassword',{
         url:'/reinitPassword/:token',
         templateUrl: 'views/reinitPassword.html',
         controller: 'reinitPasswordCtrl'
       })
       .state('activateAccount',{
-        url:'/activateAccount/:token',
+        url:'/activateAccount?access_token',
         templateUrl: 'views/activateAccount.html',
         resolve:{
-          active:['API', function(API){
-            debugger;
-            return API.activateAccount();
+          active:['API','$stateParams', function(API,$stateParams){
+            return API.activateAccount($stateParams.access_token);
           }]
         }
       })
@@ -77,12 +77,10 @@ angular
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
         resolve:{
-          linkedinProfile:['User','$state', function(User, $state){
-            return User.getUser();
-          }],
-          companies:['API', function(API){
-            return API.searchCompanies().then(function(companies){
-              return companies.data;
+          usersSearched:['API', 'User', function(API,User){
+            var userTrash = User.getUser().trash;
+            return API.searchUsers().then(function(people){
+              return people.data;
             });
           }]
         }
@@ -93,7 +91,7 @@ angular
         controller: 'SearchCtrl',
         resolve:{
           search:['API', 'User', function(API,User){
-             var userTrash = User.getUser().trash;
+            var userTrash = User.getUser().trash;
             return API.searchUsers().then(function(people){
               var people = people.data;
               return _.filter(people, function(person){
@@ -102,6 +100,11 @@ angular
             });
           }]
         }
+      })
+      .state('main.filter',{
+        url:'filters/:filterType',
+        templateUrl: 'views/filter.html',
+        controller: 'FilterCtrl',
       })
       .state('main.userSaved',{
         url:'userSaved',

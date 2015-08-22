@@ -23,8 +23,8 @@ angular.module('discountdublin')
 			return $http.put(baseURL+'user/',{user:user});
 		},
 
-		searchUsers :function(){
-			return $http.get(baseURL+'user');
+		searchUsers :function(category){
+			return $http.get(baseURL+'user?category='+category);
 		}, 
 
 		searchUsersByIds:function(ids){
@@ -67,8 +67,8 @@ angular.module('discountdublin')
 			return $http.post(baseURL+'user/reinitPassword',{emailAddress:email});
 		},
 
-		activateAccount:function(){
-			return $http.post(baseURL+'user/activateAccount');
+		activateAccount:function(access_token){
+			return $http.post(baseURL+'user/activateAccount?access_token='+access_token);
 		},
 
 		changePassword:function(password,token){

@@ -1,38 +1,76 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="row">
-      <div class="col-xs-3 no-padding search-panel-title">
-        <h3 class="panel-title">{{itemType | firstLetterUpperCase}}</h3>
-      </div>
-      <div class="col-xs-7 no-padding">
-
-          <input type="text" ng-model='item' class="form-control" ng-show='itemType !== "experience"'
-            typeahead-on-select="addItem()" 
-            typeahead="item for item in typeaheadItems | filter:$viewValue | limitTo:15"
-          /> 
-          
-          <select id='experience' ng-model="item" class="form-control" ng-show='itemType === "experience"'>
-                      <option value="junior">Junior</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="senior">Senior</option>
-          </select> 
-      
-      </div>
-      <div class="col-xs-2 no-padding">
-        <button class="btn btn-primary" ng-click='addItem()'><span class="glyphicon glyphicon-plus"></span></button>
-      </div>
+<div class="search-criteria">
+  <div class="row">
+    <div class="col-xs-8">
+      <strong>Filter by {{itemType | firstLetterUpperCase}}</strong>
+    </div>
+    <div class="col-xs-4 text-right" ng-hide="hideSave">
+      <a class="btn btn-sm btn-primary" ui-sref="main.dashboard">SAVE</a>
     </div>
   </div>
-  <div class="panel-body">
-    <div ng-if="items && items.length > 0">
-      <div class="row">
-        <div class='col-sm-6 col-sm-4' ng-repeat="item in items track by $index">
-            <alert type='info' close='removeItem(item)'>{{item}}</alert>              
+  <br />
+  <div class="row">
+
+    <div ng-show='itemType === "company" || itemType === "experience"' class="col-xs-12">
+
+      <div ng-show='itemType === "experience"' id='experience'>
+          <div ng-repeat="item in experiences" class="company row">
+            <div class="col-xs-10">
+              {{item}}
+            </div>
+            <div class="col-xs-2">
+              <input type="checkbox" ng-checked="items.indexOf(item) !== -1" ng-click="items.push(item)"/>
+            </div>
+        </div>
+      </div> 
+
+      <div ng-show='itemType === "company"'>
+        <div ng-repeat="item in typeaheadItems track by $index" class="company row">
+          <div class="col-xs-10">
+            {{item}}
+          </div>
+          <div class="col-xs-2">
+            <input type="checkbox" ng-checked="items.indexOf(item) !== -1" ng-click="items.push(item)"/>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-xs-6">
+            <button class="btn btn-default btn-block" ng-click="selectAll()">SELECT ALL</button>
+          </div>
+          <div class="col-xs-6">
+            <button class="btn btn-default  btn-block" ng-click="deselectAll()">DESELECT ALL</button>
+          </div>
         </div>
       </div>
     </div>
-    <div ng-if="!items || items.length === 0">
-      You can refer in any {{itemType | plurial}}
+        
+    <div ng-hide='itemType === "company" || itemType === "experience"' class="col-xs-10">
+           
+
+     <input ng-hide='itemType === "experience" || itemType === "company"' type="text" ng-model='item' class="form-control" 
+        typeahead-on-select="addItem()" 
+        typeahead="item for item in typeaheadItems | filter:$viewValue | limitTo:15"
+      /> 
+
+    </div>
+    <div ng-hide='itemType === "company" || itemType === "experience"'  class="col-xs-2 no-padding">
+      <button class="btn btn-primary" ng-click='addItem()'><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+  </div>
+  <br />
+  <div ng-hide='itemType === "company" || itemType === "experience"'>
+    <div ng-if="items && items.length > 0">
+      <div class="row">
+        <div class='col-sm-6 col-md-4 text-center' ng-repeat="item in items track by $index">
+            <alert type='info' close='removeItem(item)'>{{item}}</alert>             
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center" ng-if="!items || items.length === 0">
+        <alert type="info">You haven't set any filter on {{itemType | plurial}}</alert>
+      </div>
     </div>
   </div>
 </div>

@@ -1,13 +1,17 @@
 'use strict';
 
 angular.module('discountdublin')
-.controller('DashboardCtrl',['$scope','$state','linkedinProfile', 'API','User','companies', 'toaster', function ($scope,$state,linkedinProfile, API,User, companies, toaster) { 
-	if(!linkedinProfile){
+.controller('DashboardCtrl',['$scope','$state', 'API','User', 'toaster','usersSearched',
+	function ($scope,$state, API,User, toaster, usersSearched) { 
+
+
+	if(!$scope.user){
 		$state.go('login');//TODO dirty change that
 	}
 
 	//Init user profile
-	$scope.linkedinProfile = linkedinProfile;
+	$scope.linkedinProfile = $scope.user; 
+	$scope.usersSearched    = usersSearched;
 	if(!$scope.linkedinProfile.search){
 		$scope.linkedinProfile.search = { industries:[], locations:[], functions:[], languages:[]};
 	}
@@ -16,11 +20,6 @@ angular.module('discountdublin')
 		$scope.linkedinProfile.wants = { industries:[], locations:[], companies:[], functions:[], languages:[]};
 	}
 
-	$scope.companiesArray = _.map(companies, function(company){
-		if(company.currentJob){
-			return company.currentJob.company;
-		}
-	});
 
 	//watch any change on the user profile and save them in database
 	$scope.$watch('linkedinProfile', function(newValue, oldValue){

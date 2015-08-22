@@ -35,7 +35,7 @@ angular.module('discountdublin')
 		$scope.saveUserProfile($scope.user).then(function(data){
 			$scope.next()
 		});
-	};0
+	};
 
 	$scope.saveProfile = function(profile){
 		if(!$scope.isAlreadySaved(profile)){

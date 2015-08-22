@@ -1,21 +1,33 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "_utils.scss";
-
-.browsehappy {
+@import "_menu.scss"; 
+@import "_navbar.scss";
+@import "_grm-page.scss"; 
+@import "_dashboard.scss";  
+@import "../scripts/directives/filter-menu/filter-menu.scss";
+@import "../scripts/directives/searchCriteria/searchCriteria.scss";
+@import "../scripts/directives/profile/profile.scss";
+@import "../scripts/directives/connection/connection.scss";
+  
+.browsehappy { 
   background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+  color: #000;  
+  padding: 0.2em 0;  
 }
-
+ 
+html,body{
+  height:100%;
+}
+ 
 .navbar-header{
   text-align:text-right;
 }
 footer{
-  bottom:0px;
+  bottom:0px; 
 }
 .notification{
-  padding: 10px 12px;
+  padding: 10px 12px; 
   border-radius: 50%;
   background-color: $brand-success;
   cursor:pointer
@@ -140,10 +152,6 @@ footer{
   height: 350px;
 }
 
-.headerLogo{
-  width:105px;
-}
-
 .profile-img{
   width:100%;
 }
@@ -165,7 +173,7 @@ footer{
       font-size:19px
     }
   }
-
+ 
   .menu1-text,.menu2-text{
     height:600px;
     padding:15px;
@@ -189,10 +197,14 @@ footer{
   }
 
   .alert{
-    margin-right: -5px;
-    margin-left: -5px;
     margin-bottom:10px;
-    padding:5px;
   }
+
+  .filter-margin-bottom{
+      margin-bottom: 60px;
+  }
+
+  
+
 
 }

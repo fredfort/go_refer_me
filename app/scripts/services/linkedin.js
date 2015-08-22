@@ -10,7 +10,6 @@ angular.module('discountdublin')
 			var deferred = $q.defer();
 			var url = 'people/~:(id,positions,specialties,email-address,summary,first-name,last-name,headline,siteStandardProfileRequest,industry,location,skills,picture-url)?format=json';
 			IN.API.Raw(url).method('GET').body().result(function(data){
-				debugger;
 				deferred.resolve(data);
 			});
 			return deferred.promise;

@@ -73,7 +73,8 @@ angular.module('discountdublin')
           password     : md5.createHash($scope.password)
         };
         API.createUser(user).then(function(userToken){
-          $scope.haveAccount=true;   
+          $rootScope.modalInstance.close();
+          toaster.pop('success','Well done, your account have been created successfully. Please check your mail to validate your account');  
         }).catch(function(err){
             alert('User creation error '+err);
           });

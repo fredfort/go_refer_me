@@ -3,21 +3,21 @@
         <div>
           <div class="navbar-header text-right">
 
-            <button type="button" class="navbar-toggle collapsed"  ng-click="collapse = !collapse">
+            <button type="button" class="navbar-toggle collapsed"  style="float:left;margin-left:5px" ng-click="slideOpen = !slideOpen">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/dashboard"><img class="headerLogo" src="../images/logo.png" /></a>
+            <a class="navbar-brand" href="#/dashboard"><img class="headerLogo" src="../images/logo.svg" /></a>
             <a ui-sref='main.friendsRequest' ng-show="user.invitationsReceived.length">  
               <span tabindex='0' class="badge notification-xs notification" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
             </a>
           </div>
 
 
-          <div ng-init="collapse = true" class="collapse navbar-collapse" collapse="collapse">
+      <div ng-init="collapse = true" class="collapse navbar-collapse" collapse="collapse">
             <ul class="nav navbar-nav navbar-right">
               <li class="hidden-xs">
                 <a ui-sref='main.friendsRequest'  ng-click="collapse = true" ng-show="user.invitationsReceived.length"> 
@@ -37,12 +37,22 @@
       </div>
     </div>
 
-    <div class="container">
-        <div ui-view ></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p>Go refer me @2015</p>
-      </div>
+    <div class="container" menu-slideout ng-init="slideOpen=false" ng-swipe-right="slideOpen=true">
+        <pageslide  ng-swipe-left="slideOpen=false" ps-open="slideOpen" ps-side="left" ps-push="true" ps-auto-close="true" class="navbar navbar-default" style="border-right: 3px lightgray;border-style: solid;">
+          <div class="navbar-header"> 
+            <div class="row"> 
+              <div class="col-md-12">  
+                <button type="button" class="navbar-toggle collapsed"  
+                style="float:left;margin-left:5px;margin-bottom: 15px;" ng-click="slideOpen = !slideOpen">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+            </div>
+            <div profile-menu="user"></div>
+          </div>
+        </pageslide>
+        <div ui-view></div>
     </div>

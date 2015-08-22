@@ -1,0 +1,69 @@
+<div>
+      <div ng-show="user.category === 'referer'">
+        <div class="filter-margin-bottom">
+          <div ng-show="filterType === 'location'" 
+            search-criteria items='user.search.locations' item-type='location' typeahead-items='countries'>
+          </div>
+
+          <div ng-show="filterType === 'experience'"  
+            search-criteria items='user.search.experience' item-type='experience'>
+          </div>
+
+          <div ng-show="filterType === 'function'" 
+            search-criteria items='user.search.functions' item-type='function' typeahead-items='functions'>
+          </div>
+
+          <div ng-show="filterType === 'language'" 
+            search-criteria items='user.search.languages' item-type='language' typeahead-items='languages'>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-10 margin-top10">
+              <label for="search_all_criteria">Only display profiles who match all criterias</label>
+            </div>
+            <div class="col-xs-2 form-group">
+              <input class="form-control col-xs-4" type="checkbox" id="search_all_criteria" ng-model="user.search.all_criteria"/>
+            </div>
+          </div>
+        </div>
+        <div filter-menu category="user.category"></div>
+      </div>
+
+      <div ng-show="user.category === 'looking_for_job'">
+        <div class="filter-margin-bottom">
+          <div ng-show="filterType === 'company'" 
+              search-criteria items='user.wants.companies' item-type='company' typeahead-items='companiesArray'>
+          </div>
+
+          <div ng-show="filterType === 'location'" 
+            search-criteria items='user.wants.locations' item-type='location' typeahead-items='countries'>
+          </div>
+
+          <div ng-show="filterType === 'experience'" 
+            search-criteria items='user.wants.experience' item-type='experience'>
+          </div>
+
+          <div ng-show="filterType === 'industry'" 
+            search-criteria items='user.wants.industries' item-type='industry' typeahead-items='sub_industries'>
+          </div>
+
+          <div ng-show="filterType === 'industry'"  
+            search-criteria items='user.wants.functions'  hide-save="true" item-type='function' typeahead-items='functions'>
+          </div>
+
+          <div ng-show="filterType === 'language'" 
+            search-criteria items='user.wants.languages'  item-type='language' typeahead-items='languages'>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-10 margin-top10">
+              <label for="wants_all_criteria">Only display profiles who match all criterias</label>
+            </div>
+            <div class="col-xs-2 form-group">
+              <input class="form-control col-xs-4" type="checkbox" id="wants_all_criteria" ng-model="linkedinProfile.wants.all_criteria"/>
+            </div>
+          </div>
+        </div>
+         <div filter-menu category="user.category"></div>
+      </div>
+    </div> 

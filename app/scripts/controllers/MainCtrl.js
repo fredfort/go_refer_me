@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('discountdublin')
-  .controller('MainCtrl',['$scope','$state','$interval','Linkedin','User','industries','locations','functions','languages','API','linkedinProfile',
-      function ($scope,$state,$interval, Linkedin, User,industries, locations, functions, languages, API,linkedinProfile) {
+  .controller('MainCtrl',['$scope','$state','$interval','Linkedin','User','industries','locations','functions','languages','API','linkedinProfile','companies',
+    function ($scope,$state,$interval, Linkedin, User,industries, locations, functions, languages, API,linkedinProfile,companies) {
     $scope.getIndustriesArray = function(){
       var sub_industries = [];
       angular.forEach($scope.industries, function(value, key) {
@@ -18,14 +18,6 @@ angular.module('discountdublin')
       });
       return country;
     };
-
-  	$scope.logout = function(){
-  		User.clear();
-  		$state.go('login');
-  		Linkedin.logout().catch(function(err){
-  			alert('disconnection error');
-  		});
-  	};
 
     $scope.notImplemented = function(){
       alert("not implemted yet");
@@ -54,7 +46,17 @@ angular.module('discountdublin')
 
     $scope.functions       = functions.getFunctions();
     $scope.languages       = languages.getLanguages();
+    $scope.companies       = companies;
 
     $interval($scope.getUser, 1000 * 30);
+
+
+      //watch any change on the user profile and save them in database
+  $scope.$watch('user', function(newValue, oldValue){
+    if(newValue && oldValue && newValue !== oldValue){
+      $scope.saveUserProfile($scope.user);
+    }
+  }, true);
+
 
   }]);
