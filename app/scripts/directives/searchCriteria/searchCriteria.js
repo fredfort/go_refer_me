@@ -33,6 +33,14 @@ angular.module('discountdublin')
 				scope.items = [];
 			};
 
+			scope.toggleItem = function(item){
+				if(scope.items.indexOf(item) === -1){
+					scope.addItem(item);
+				}else{
+					scope.removeItem(item);
+				}
+			};
+
 		}
 	};
 }])

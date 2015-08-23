@@ -13,28 +13,23 @@
     </div>
   </div>
   <div class="app-menu">
-    <!-- <div ng-show="user.invitationsReceived.length">
-      <a ui-sref='main.friendsRequest'  ng-click="collapse = true" ng-show="user.invitationsReceived.length"> 
-        <span class="badge notification notification-sm" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
-      </a>
-    </div> -->
     <div>
-      <a ui-sref='main.dashboard'  ng-click="collapse = true">
+      <a ui-sref='main.dashboard'  ng-click="slideOpen = false">
         <span class="glyphicon glyphicon-user"></span> Profile
       </a>
     </div>
     <div>
-      <a ui-sref='main.friendsRequest' ng-click='collapse = true'>
+      <a ui-sref='main.friendsRequest' ng-click='slideOpen = false'>
         <span class='glyphicon glyphicon-globe'></span> Connections
       </a>
     </div>
     <div>
-      <a ui-sref='main.info'  ng-click="collapse = true">
+      <a ui-sref='main.info'  ng-click="slideOpen = false">
         <span class="glyphicon glyphicon-info-sign"></span> More info
       </a>
     </div>
     <div>
-      <a ui-sref='main.credit' ng-click="collapse = true">
+      <a ui-sref='main.credit' ng-click="slideOpen = false">
         <span class="glyphicon glyphicon-piggy-bank"></span> Credit 
       </a>
     </div>

@@ -46,6 +46,10 @@
 	margin:0px;	
 }
 
+.margin-auto{
+	margin: auto;
+}
+
 /*FONT SIZE*/
 .font_size1-1{
 	font-size:1.1em;
@@ -102,4 +106,8 @@
 
 .break-word{
 	word-break: break-word;
+}
+
+.verticalTop{
+	vertical-align: text-top;
 }

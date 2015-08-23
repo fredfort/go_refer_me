@@ -1,13 +1,11 @@
-<div class="dashboard row">
-  <div class="col-md-offset-2 col-md-8 horizontal-padding-5">
+<div class="dashboard">
     <div class="grm-page-header text-right">
       <span class="grm-page-header-title">Profile</span>
     </div>
     <div class="filter-margin-bottom text-center">
 	    <div profile="linkedinProfile"></div>
-	    <alert ng-show="linkedinProfile.category" type="info" >You may be interested in the followings profiles</alert>
+	    <alert ng-show="usersSearched && usersSearched.length" ng-show="linkedinProfile.category"  type="info" >You may be interested in the followings profiles</alert>
 	    <div connection users="usersSearched" user-profile="linkedinProfile" save-fct="saveUserProfile"></div>
 	 </div>
     <div ng-show="linkedinProfile.category" filter-menu category="linkedinProfile.category"></div>
-  </div>
 </div>

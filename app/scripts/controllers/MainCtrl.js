@@ -36,6 +36,17 @@ angular.module('discountdublin')
         $scope.user.invitationsReceived = user.data.invitationsReceived;
       });
     };
+
+    $scope.goToConnection = function(){
+      if($state.$current.self.name === 'main.friendsRequest'){
+        $state.reload();
+      }else{
+        $state.go('main.friendsRequest');
+      }
+      
+
+      $scope.collapse = true;
+    };
     
     $scope.user            = linkedinProfile.data;  
     $scope.industries      = industries.getIndustries();

@@ -157,6 +157,6 @@ angular
       .state('main.credit',{
         url:'credit',
         templateUrl: 'views/credit.html',
-        controller:'CreditController'
+        controller:'CreditCtrl'
       });
   });

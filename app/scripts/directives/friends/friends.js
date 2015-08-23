@@ -5,11 +5,22 @@ angular.module('discountdublin')
 		scope:{
 			userProfile:'=',//connected user
 			persons:'=',//possible connections
-			saveFct:'&',
-			personFilter:'='
+			personFilter:'=',
+			sortFilter:'='
 		},
 		templateUrl:'scripts/directives/friends/friends.html',
 		link: function (scope, iElement, iAttrs) {
+
+			scope.changeFriendShipStatus = function(user){
+		      API.changeFriendShipStatus(user)
+		    };
+
+		    scope.unFriend = function(user){
+		      API.unFriend(user).then(function(res){
+		        scope.persons = _.without(scope.persons, user);
+		        toaster.pop('info', 'User unfriended');
+		      });
+		    };
 
 
 		}

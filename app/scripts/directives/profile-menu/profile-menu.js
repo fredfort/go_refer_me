@@ -4,7 +4,8 @@ angular.module('discountdublin')
 		restrict: 'A',
 		templateUrl:'scripts/directives/profile-menu/profile-menu.html',
 		scope:{
-			profileMenu:'='
+			profileMenu:'=',
+			slideOpen:'='
 		},
 		link: function (scope, iElement, iAttrs) {
 		  	scope.logout = function(){

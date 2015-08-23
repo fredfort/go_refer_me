@@ -1,5 +1,5 @@
 angular.module('discountdublin')
-.controller('CreditCtrl.js', function(){
+.controller('CreditCtrl', function(){
 	var embeddedPPFlow = new PAYPAL.apps.DGFlow({trigger: 'submitBtn'});
 
 })

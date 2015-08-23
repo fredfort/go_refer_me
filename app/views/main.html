@@ -11,7 +11,7 @@
             </button>
 
             <a class="navbar-brand" href="#/dashboard"><img class="headerLogo" src="../images/logo.svg" /></a>
-            <a ui-sref='main.friendsRequest' ng-show="user.invitationsReceived.length">  
+            <a ng-click="goToConnection();" ng-show="user.invitationsReceived.length">  
               <span tabindex='0' class="badge notification-xs notification" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
             </a>
           </div>
@@ -20,7 +20,7 @@
       <div ng-init="collapse = true" class="collapse navbar-collapse" collapse="collapse">
             <ul class="nav navbar-nav navbar-right">
               <li class="hidden-xs">
-                <a ui-sref='main.friendsRequest'  ng-click="collapse = true" ng-show="user.invitationsReceived.length"> 
+                <a ng-click="goToConnection();" ng-show="user.invitationsReceived.length"> 
                   <span class="badge notification notification-sm" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
                 </a>
               </li>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="container" menu-slideout ng-init="slideOpen=false" ng-swipe-right="slideOpen=true">
-        <pageslide  ng-swipe-left="slideOpen=false" ps-open="slideOpen" ps-side="left" ps-push="true" ps-auto-close="true" class="navbar navbar-default" style="border-right: 3px lightgray;border-style: solid;">
+        <pageslide  ng-swipe-left="slideOpen=false" ps-open="slideOpen" ps-side="left" ps-push="true" ps-auto-close="false" class="navbar navbar-default" style="border-right: 3px lightgray;border-style: solid;">
           <div class="navbar-header"> 
             <div class="row"> 
               <div class="col-md-12">  
@@ -50,7 +50,7 @@
                 </button>
               </div>
             </div>
-            <div profile-menu="user"></div>
+            <div profile-menu="user" slide-open="slideOpen"></div>
           </div>
         </pageslide>
         <div ui-view class="container"></div>

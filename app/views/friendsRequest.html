@@ -1,4 +1,4 @@
-<div class="friends row">
+<div class="friends">
     <div class="grm-page-header text-right">
       <span class="grm-page-header-title">Connections</span>
     </div>
@@ -6,12 +6,25 @@
 	<div class="profile row margin-bottom10">
 	  	<!-- FILTER -->
 		<div class="input-group margin-vertical10" >
-	      <input type="text" class="form-control" id="exampleInputAmount" ng-model="personFilter" placeholder="Search">
+	      <input type="text" class="form-control" id="exampleInputAmount" ng-model="personFilter" placeholder="Filter by">
 	     	<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3 col-sm-2">
+				<strong class="font_size1-2 verticalTop">Sort by</strong>
+			</div>
+			<div class="col-xs-9 col-sm-10 margin-bottom10">
+		      	<select class="form-control" ng-model="sortFilter" ng-init="sortFilter='-last_update'">
+			     	<option value="-last_update" selected="selected">Last Update</option>
+			     	<option value="-date_connection">Connection date</option>
+			     	<option value="lastName">Last name</option>
+			     	<option value="status">Status</option>
+				</select>
+			</div>
 		</div>
 	</div>
 
-	<div friends persons="friends" person-filter="personFilter"></div>
+	<div friends persons="friends" person-filter="personFilter" sort-filter="sortFilter"></div>
 
 	<div class="row" ng-show='invitations && invitations.length'>
 		<div class="col-md-6">

@@ -8827,73 +8827,83 @@ button.close {
   margin: 0px;
 }
 
+/* line 49, _utils.scss */
+.margin-auto {
+  margin: auto;
+}
+
 /*FONT SIZE*/
-/* line 50, _utils.scss */
+/* line 54, _utils.scss */
 .font_size1-1 {
   font-size: 1.1em;
 }
 
-/* line 54, _utils.scss */
+/* line 58, _utils.scss */
 .font_size1-2 {
   font-size: 1.2em;
 }
 
-/* line 58, _utils.scss */
+/* line 62, _utils.scss */
 .font_size1-3 {
   font-size: 1.3em;
 }
 
-/* line 62, _utils.scss */
+/* line 66, _utils.scss */
 .font_size1-6 {
   font-size: 1.6em;
 }
 
-/* line 66, _utils.scss */
+/* line 70, _utils.scss */
 .font_size2-1 {
   font-size: 2.1em;
 }
 
 /*BORDER*/
-/* line 71, _utils.scss */
+/* line 75, _utils.scss */
 .borderTop {
   border-top: solid lightgray 1px;
 }
 
-/* line 75, _utils.scss */
+/* line 79, _utils.scss */
 .borderBottom {
   border-bottom: solid lightgray 1px;
 }
 
-/* line 79, _utils.scss */
+/* line 83, _utils.scss */
 .btn.rounded {
   border-radius: 18px;
 }
 
 /*IMAGE*/
-/* line 86, _utils.scss */
+/* line 90, _utils.scss */
 .img-90 {
   width: 90%;
 }
 
 /*Colors */
-/* line 91, _utils.scss */
+/* line 95, _utils.scss */
 .error {
   color: #d9534f;
 }
 
-/* line 95, _utils.scss */
+/* line 99, _utils.scss */
 .success {
   color: #5cb85c;
 }
 
-/* line 99, _utils.scss */
+/* line 103, _utils.scss */
 .warning {
   color: #f0ad4e;
 }
 
-/* line 103, _utils.scss */
+/* line 107, _utils.scss */
 .break-word {
   word-break: break-word;
+}
+
+/* line 111, _utils.scss */
+.verticalTop {
+  vertical-align: text-top;
 }
 
 /* line 2, _menu.scss */
