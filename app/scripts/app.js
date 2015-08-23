@@ -78,7 +78,6 @@ angular
         controller: 'DashboardCtrl',
         resolve:{
           usersSearched:['API', 'User', function(API,User){
-            var userTrash = User.getUser().trash;
             return API.searchUsers().then(function(people){
               return people.data;
             });

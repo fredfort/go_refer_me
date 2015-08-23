@@ -30,7 +30,6 @@ angular.module('discountdublin')
 				if(!scope.isTrashed(profile)){
 					scope.userProfile.trash.push(profile._id);
 					scope.saveFct(scope.userProfile);
-					scope.users = _.without(scope.users, profile);
 				}
 			};
 
@@ -67,7 +66,6 @@ angular.module('discountdublin')
 			});
 
 			var refreshUsers = function(category){
-				var userTrash = User.getUser().trash;
 				scope.users = [];
             	API.searchUsers(category).then(function(people){
               		scope.users = people.data;

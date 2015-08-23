@@ -1,0 +1,70 @@
+<div class="connections row">
+	
+	<div class="col-xs-12">
+		<alert type="info">List of your connections</alert>
+	</div>
+
+	<!-- FRIENDS -->
+	<div  ng-repeat="person in persons | filter:personFilter | orderBy:'-last_update'"
+			class="col-xs-6 col-md-4 text-center connection">
+		<!-- <div class="col-md-3 text-center">
+	 		<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" class="img img-responsive" />
+	 	</div> -->
+		<div class="col-xs-12">
+			<div ng-show="!person.toRemove">
+				<p>
+					<b>Name</b><br />{{person.firstName}} {{person.lastName}}
+				</p>
+				<p>
+					<b>Location</b><br />{{person.location.name}}
+				</p>
+				<p>
+					<b>Company</b><br /> {{person.currentJob.company}}
+				</p>
+				<p>  
+					<b>Profile</b><br /> <a ng-href="{{person.siteStandardProfileRequest.url}}" target="_blank">Linkedin profile</a>
+				</p>
+				<p>
+					<b>Email</b><br /> <a ng-href='mailto:{{person.emailAddress}}'>{{person.emailAddress}}</a>
+				</p>
+				<span ng-show='person.date_connection'><b>Friends since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}<br /></span>
+				<label ng-show='person.status'><b>Status:</b></label>
+				<select id='experience' ng-model="person.status" class="form-control" ng-change="changeFriendShipStatus(person)">
+		          <option value="connected">Connected</option>
+		          <option value="cv_granted">CV granted</option>
+		          <option value="cv_forwarded">CV forwarded to HR</option>
+		          <option value="hired">Hired</option>
+		          <option value="not_hired">Not hired</option>
+		        </select>
+
+		        <div class="row margin-top5">
+					<div class="col-xs-4 col-xs-offset-8">
+						<button ng-click='person.toRemove = true' title="unfriend" class="btn btn-default rounded">
+							<span class="error">R</span>
+						</button>
+					</div>
+				</div>
+		    </div>
+		    <div ng-show="person.toRemove">
+		    	<p>
+		    		Do you really want to break the connection with {{person.firstName}} {{person.lastName}}?
+		    	</p>
+		    	<div class="row">
+					<div class="col-sm-3 col-sm-offset-3 col-xs-offset-1 col-xs-5">
+						<button class="btn btn-default" ng-click="person.toRemove = false">No</button>
+					</div>
+					<div class="col-sm-3 col-xs-5">
+						<button class="btn btn-default">Yes</button>
+					</div>
+		    	</div>
+
+		    </div>
+
+		</div>
+	</div>
+
+	<!-- NO FRIENDS -->
+	<div ng-show='!persons || persons.length === 0' class="well text-center">
+		You havn't made any connection yet
+	</div>
+</div>

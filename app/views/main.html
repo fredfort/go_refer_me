@@ -26,7 +26,6 @@
               </li>
               <li><a ui-sref='main.dashboard'  ng-click="collapse = true"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
               <li><a ui-sref='main.friendsRequest' ng-click='collapse = true'><span class='glyphicon glyphicon-globe'></span> Connections</a></li>
-              <li><a ui-sref='main.search'  ng-click="collapse = true"><span class="glyphicon glyphicon-search"></span> Search</a></li>
               <li><a ui-sref='main.info'  ng-click="collapse = true"><span class="glyphicon glyphicon-info-sign"></span> More info</a></li>
               <li><a ui-sref='main.credit' ng-click="collapse = true"><span class="glyphicon glyphicon-piggy-bank"></span> Credit </a></li>
               <li class="divider"></li>
@@ -54,5 +53,5 @@
             <div profile-menu="user"></div>
           </div>
         </pageslide>
-        <div ui-view></div>
+        <div ui-view class="container"></div>
     </div>
