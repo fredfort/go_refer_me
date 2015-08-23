@@ -35,7 +35,7 @@ angular.module('discountdublin')
 
 			scope.toggleItem = function(item){
 				if(scope.items.indexOf(item) === -1){
-					scope.addItem(item);
+					scope.items.push(item);
 				}else{
 					scope.removeItem(item);
 				}
