@@ -3,6 +3,7 @@ angular.module('discountdublin')
 .factory('API',['$http',function($http){
 	var nodeAPI = 'http://localhost:3000/';
 	//var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
+	//var nodeAPI = 'http://default-environment-2mdvympgb6.elasticbeanstalk.com/';
 	var baseURL = nodeAPI;
 	var user = null;
 
@@ -23,8 +24,9 @@ angular.module('discountdublin')
 			return $http.put(baseURL+'user/',{user:user});
 		},
 
-		searchUsers :function(category){
-			return $http.get(baseURL+'user?category='+category);
+		searchUsers :function(category, page){
+			var pageNumber = (page)?page:0;
+			return $http.get(baseURL+'user?category='+category+'&page='+pageNumber+'&pageSize=20');
 		}, 
 
 		searchUsersByIds:function(ids){
@@ -81,6 +83,6 @@ angular.module('discountdublin')
 				}
 			});
 		}
-	}
+	};
 
 }]);

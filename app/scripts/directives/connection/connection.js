@@ -9,6 +9,11 @@ angular.module('discountdublin')
 		},
 		templateUrl:'scripts/directives/connection/connection.html',
 		link: function (scope, iElement, iAttrs) {
+			var maxElemByPage = 20;
+
+			scope.page =1;
+			scope.hasNext = (scope.users.length === maxElemByPage);
+			scope.hasPrevious = (scope.page != 1);
 
 			scope.isAlreadySaved = function(linkedinProfile){
 				return scope.userProfile.saved.indexOf(linkedinProfile._id) !== -1;
@@ -61,14 +66,26 @@ angular.module('discountdublin')
 
 			scope.$watch('userProfile.category',function(newCategory, oldCategory){
 				if(newCategory !== oldCategory){
-					refreshUsers(newCategory);
+					refreshUsers(newCategory,1);
 				}
 			});
 
-			var refreshUsers = function(category){
+			scope.previousPage = function(){
+				scope.page--;
+				refreshUsers(null,scope.page);
+			};
+
+			scope.nextPage = function(){
+				scope.page++;
+				refreshUsers(null,scope.page);
+			}
+
+			var refreshUsers = function(category,page){
 				scope.users = [];
-            	API.searchUsers(category).then(function(people){
+            	API.searchUsers(category,page).then(function(people){
               		scope.users = people.data;
+              		scope.hasNext = (scope.users.length === maxElemByPage);
+              		scope.hasPrevious = (scope.page != 1);
             	});
 			}
 		}

@@ -40,5 +40,14 @@
 				Nobody matches your expectations, make sure that your filters are well configured or think aboult clearing your trash
 			</alert>
 		</div>
+		<br />
+		<div class="row" ng-show="hasNext || hasPrevious">
+			<div ng-show="hasPrevious" class="col-md-6 text-left">
+				<button ng-click="previousPage()" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left">Previous</span></button>
+			</div>
+			<div ng-show="hasNext" class="col-md-6 text-right">
+				<button ng-click="nextPage()" class="btn btn-default"> Next<span class="glyphicon glyphicon-chevron-right"></span></button>
+			</div>
+		</div>
 	</div>
 </div>
