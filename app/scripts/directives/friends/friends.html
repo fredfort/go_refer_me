@@ -1,4 +1,4 @@
-<div class="connections row">
+<div class="friends row">
 	
 	<div ng-show='persons && persons.length' class="col-xs-12" >
 		<alert type="info">List of your connections</alert>
@@ -6,7 +6,7 @@
 
 	<!-- FRIENDS -->
 	<div  ng-repeat="person in persons | filter:personFilter | orderBy:sortFilter"
-			class="col-xs-6 col-md-4 text-center connection">
+			class="col-xs-6 col-md-4 text-center friend">
 		<div class="col-xs-12">
 			<div ng-show="!person.toRemove">
 				<p>

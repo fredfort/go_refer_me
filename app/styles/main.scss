@@ -5,10 +5,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "_navbar.scss";
 @import "_grm-page.scss"; 
 @import "_dashboard.scss";  
-@import "../scripts/directives/filter-menu/filter-menu.scss";
+@import "../scripts/directives/filter-menu/filter-menu.scss";  
 @import "../scripts/directives/searchCriteria/searchCriteria.scss";
 @import "../scripts/directives/profile/profile.scss";
 @import "../scripts/directives/connection/connection.scss";
+@import "../scripts/directives/friends/friends.scss"; 
+
   
 .browsehappy { 
   background: #ccc;
@@ -168,7 +170,7 @@ footer{
     top: 50%;
   }
 
-  
+
   .filter-margin-bottom{
       margin-bottom: 65px;
   }
