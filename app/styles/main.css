@@ -9192,50 +9192,57 @@ cursor:pointer
   padding-top: 9px;
 }
 
+/* line 165, main.scss */
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+/* line 172, main.scss */
+.filter-margin-bottom {
+  margin-bottom: 65px;
+}
+
 @media (max-width: 768px) {
-  /* line 167, main.scss */
+  /* line 178, main.scss */
   .notification-xs {
     display: inline-block;
   }
 
-  /* line 172, main.scss */
+  /* line 183, main.scss */
   .mainIntro h3 {
     font-size: 19px;
   }
 
-  /* line 177, main.scss */
+  /* line 188, main.scss */
   .menu1-text, .menu2-text {
     height: 600px;
     padding: 15px;
   }
-  /* line 180, main.scss */
+  /* line 191, main.scss */
   .menu1-text p, .menu2-text p {
     font-size: 1.2em;
   }
 
-  /* line 186, main.scss */
+  /* line 197, main.scss */
   .search-panel-title .panel-title {
     font-size: 14px;
   }
 
-  /* line 191, main.scss */
+  /* line 202, main.scss */
   .panel-body {
     padding: 10px;
   }
 
-  /* line 195, main.scss */
+  /* line 206, main.scss */
   .navbar {
     margin-bottom: 10px;
   }
 
-  /* line 199, main.scss */
+  /* line 210, main.scss */
   .alert {
     margin-bottom: 10px;
-  }
-
-  /* line 203, main.scss */
-  .filter-margin-bottom {
-    margin-bottom: 65px;
   }
 }
 

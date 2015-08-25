@@ -1,19 +1,19 @@
 <div>
-      <div ng-show="user.category === 'referer'">
+      <div ng-if="user.category === 'referer'">
         <div class="filter-margin-bottom">
-          <div ng-show="filterType === 'location'" 
+          <div ng-if="filterType === 'location'" 
             search-criteria items='user.search.locations' item-type='location' typeahead-items='countries'>
           </div>
 
-          <div ng-show="filterType === 'experience'"  
+          <div ng-if="filterType === 'experience'"  
             search-criteria items='user.search.experience' item-type='experience'>
           </div>
 
-          <div ng-show="filterType === 'function'" 
+          <div ng-if="filterType === 'function'" 
             search-criteria items='user.search.functions' item-type='function' typeahead-items='functions'>
           </div>
 
-          <div ng-show="filterType === 'language'" 
+          <div ng-if="filterType === 'language'" 
             search-criteria items='user.search.languages' item-type='language' typeahead-items='languages'>
           </div>
 
@@ -29,29 +29,29 @@
         <div filter-menu category="user.category"></div>
       </div>
 
-      <div ng-show="user.category === 'looking_for_job'">
+      <div ng-if="user.category === 'looking_for_job'">
         <div class="filter-margin-bottom">
-          <div ng-show="filterType === 'company'" 
+          <div ng-if="filterType === 'company'" 
               search-criteria items='user.wants.companies' item-type='company' typeahead-items='companiesArray'>
           </div>
 
-          <div ng-show="filterType === 'location'" 
+          <div ng-if="filterType === 'location'" 
             search-criteria items='user.wants.locations' item-type='location' typeahead-items='countries'>
           </div>
 
-          <div ng-show="filterType === 'experience'" 
+          <div ng-if="filterType === 'experience'" 
             search-criteria items='user.wants.experience' item-type='experience'>
           </div>
 
-          <div ng-show="filterType === 'industry'" 
+          <div ng-if="filterType === 'industry'" 
             search-criteria items='user.wants.industries' item-type='industry' typeahead-items='sub_industries'>
           </div>
 
-          <div ng-show="filterType === 'industry'"  
+          <div ng-if="filterType === 'industry'"  
             search-criteria items='user.wants.functions'  hide-save="true" item-type='function' typeahead-items='functions'>
           </div>
 
-          <div ng-show="filterType === 'language'" 
+          <div ng-if="filterType === 'language'" 
             search-criteria items='user.wants.languages'  item-type='language' typeahead-items='languages'>
           </div>
 

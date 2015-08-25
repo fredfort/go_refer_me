@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('discountdublin')
-  .controller('MainCtrl',['$scope','$state','$interval','Linkedin','User','industries','locations','functions','languages','API','linkedinProfile','companies',
-    function ($scope,$state,$interval, Linkedin, User,industries, locations, functions, languages, API,linkedinProfile,companies) {
+  .controller('MainCtrl',['$rootScope','$scope','$state','$interval','toaster','User','industries','locations','functions','languages','API','linkedinProfile','companies',
+    function ($rootScope, $scope,$state,$interval, toaster, User,industries, locations, functions, languages, API,linkedinProfile,companies) {
     $scope.getIndustriesArray = function(){
       var sub_industries = [];
       angular.forEach($scope.industries, function(value, key) {
@@ -68,6 +68,20 @@ angular.module('discountdublin')
       $scope.saveUserProfile($scope.user);
     }
   }, true);
+
+
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
+    $scope.isLoading =  true;
+  })
+
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+    $scope.isLoading =  false;
+  });
+
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+    $scope.isLoading =  false;
+    toaster.pop('error',error);
+  });
 
 
   }]);

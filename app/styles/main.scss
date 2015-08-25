@@ -161,6 +161,17 @@ footer{
   padding-top: 9px;
 }
 
+  //LOADER
+  .loader{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+
+  
+  .filter-margin-bottom{
+      margin-bottom: 65px;
+  }
 
 
 @media (max-width: $screen-sm-min){
@@ -199,12 +210,5 @@ footer{
   .alert{
     margin-bottom:10px;
   }
-
-  .filter-margin-bottom{
-      margin-bottom: 65px;
-  }
-
-  
-
 
 }
