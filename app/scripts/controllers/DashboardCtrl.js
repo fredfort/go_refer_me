@@ -11,7 +11,7 @@ angular.module('discountdublin')
 
 	//Init user profile
 	$scope.linkedinProfile = $scope.user; 
-	$scope.usersSearched    = usersSearched;
+	$scope.usersSearched   = usersSearched;
 	if(!$scope.linkedinProfile.search){
 		$scope.linkedinProfile.search = { industries:[], locations:[], functions:[], languages:[]};
 	}
@@ -19,6 +19,9 @@ angular.module('discountdublin')
 	if(!$scope.linkedinProfile.wants){
 		$scope.linkedinProfile.wants = { industries:[], locations:[], companies:[], functions:[], languages:[]};
 	}
+
+
+
 
 
 	//watch any change on the user profile and save them in database
@@ -36,4 +39,28 @@ angular.module('discountdublin')
 	$scope.searchReferer = function(){;
 		$state.go('main.search');
 	};
+
+
+	$scope.hasFilter = function(){
+		var hasFilter = false;
+		if($scope.user && $scope.user.category === 'looking_for_job'){
+			var wants = $scope.user.wants;
+			hasFilter = wants.industries.length || 
+						wants.locations.length  ||
+						wants.companies.length  ||
+						wants.functions.length  ||
+						wants.languages.length  ||
+						wants.experience.length
+
+		}else if($scope.user && $scope.user.category === 'referer'){
+			var search = $scope.user.search;
+			hasFilter  = search.industries.length ||
+						 search.locations.length  ||
+						 search.functions.length  ||
+						 search.languages.length  ||
+						 search.experience.length
+		}
+		return hasFilter;
+	}
+
 }]);

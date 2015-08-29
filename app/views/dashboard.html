@@ -3,9 +3,25 @@
       <span class="grm-page-header-title">Profile</span>
     </div>
     <div class="filter-margin-bottom text-center">
+	    
 	    <div profile="linkedinProfile"></div>
-	    <alert ng-show="usersSearched && usersSearched.length" ng-show="linkedinProfile.category"  type="info" >You may be interested in the followings profiles</alert>
+	    
+
+	    <alert ng-show='!user.category' type="info" >
+	      	Please choose a category
+	    </alert>
+	    <alert ng-show="usersSearched && usersSearched.length && linkedinProfile.category"  type="info" >
+	    	You may be interested in the followings profiles
+	    </alert>
+	    <alert ng-show='user.category && !hasFilter()' type="info" >
+	      	You have to define at least one filter at the bottom of the page to display people matching your expectation
+	    </alert>
+	    <alert ng-show='user.category && hasFilter() && !usersSearched.length' type="info" >
+			Nobody matches your expectations, make sure that your filters are well configured or think aboult clearing your trash
+		</alert>
+	    
 	    <div connection users="usersSearched" user-profile="linkedinProfile" save-fct="saveUserProfile"></div>
-	 </div>
+	 
+	</div>
     <div ng-show="linkedinProfile.category" filter-menu category="linkedinProfile.category"></div>
 </div>

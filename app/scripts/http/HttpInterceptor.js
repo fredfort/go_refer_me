@@ -18,8 +18,7 @@ angular.module('discountdublin').factory('HttpInterceptor',['$window','$q','User
 
       responseError: function(rejection){
         if(rejection.status === 403 || rejection.status === 401){
-          $window.location.replace('#/login');
-          localStorage.removeItem('token');
+          User.logout();
           toaster.pop('error', rejection.data);
         }else if(rejection.status !== 404){
           toaster.pop('error', rejection.data);

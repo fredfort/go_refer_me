@@ -43,9 +43,11 @@ angular.module('discountdublin')
       }else{
         $state.go('main.friendsRequest');
       }
-      
-
       $scope.collapse = true;
+    };
+
+    $scope.logout = function(){
+        User.logout();
     };
     
     $scope.user            = linkedinProfile.data;  
@@ -59,7 +61,7 @@ angular.module('discountdublin')
     $scope.languages       = languages.getLanguages();
     $scope.companies       = companies;
 
-    $interval($scope.getUser, 1000 * 30);
+   User.setFetchUserInterval($scope.getUser);
 
 
       //watch any change on the user profile and save them in database

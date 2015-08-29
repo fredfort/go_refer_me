@@ -9,12 +9,8 @@ angular.module('discountdublin')
 		},
 		link: function (scope, iElement, iAttrs) {
 		  	scope.logout = function(){
-			User.clear();
-	  		$state.go('login');
-	  		Linkedin.logout().catch(function(err){
-	  			alert('disconnection error');
-	  		});
-  	};
+				User.logout();
+	  		};
 		}
 	};
 }])

@@ -1,7 +1,7 @@
 angular.module('discountdublin')
 
-.factory('User', function(){
-	var user = null;
+.factory('User', ['$location', '$interval','Linkedin', function($location, $interval, Linkedin){
+	var user = null,fetchUserinterval;
 	return {
 		setUser: function(userToken){
 			this.user = userToken.data.user;
@@ -36,7 +36,26 @@ angular.module('discountdublin')
 		clear: function(){
 			localStorage.clear();
 			return null;
-		}
+		},
+
+		logout: function(){
+			this.clear();
+			$location.path('/');
+	  		Linkedin.logout().catch(function(err){
+	  			alert('disconnection error');
+	  		});
+	  		this.stopUserInterval();
+	  	},
+
+	  	setFetchUserInterval: function(fetchUserFct){
+	  		 this.fetchUserinterval = $interval(fetchUserFct, 1000 * 30);
+	  	},
+
+	  	stopUserInterval: function(){
+	  		$interval.cancel(this.fetchUserinterval);
+	  	},
+
+
 	}
 
-});
+}]);

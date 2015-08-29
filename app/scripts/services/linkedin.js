@@ -1,6 +1,6 @@
 angular.module('discountdublin')
 
-.factory('Linkedin',['$http','$q',function($http, $q){
+.factory('Linkedin',['$q',function($q){
 
 	var vm = this;
 
