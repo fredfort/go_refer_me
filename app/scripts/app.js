@@ -150,9 +150,10 @@ angular
           }]
         }
       })
-      .state('main.info',{
-        url:'info',
-        templateUrl: 'views/info.html'
+      .state('main.settings',{
+        url:'settings',
+        controller:'SettingsCtrl',
+        templateUrl: 'views/settings.html'
       })
       .state('main.credit',{
         url:'credit',

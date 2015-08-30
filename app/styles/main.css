@@ -8949,6 +8949,26 @@ button.close {
   margin-bottom: -40px;
 }
 
+/* line 2, _settings.scss */
+.settings .address {
+  border: 1px solid lightgray;
+  padding: 5px 0px;
+  min-height: 220px;
+}
+/* line 9, _settings.scss */
+.settings .toDelete .btn.rounded {
+  padding: 22px 40px;
+  border-radius: 55px;
+}
+/* line 14, _settings.scss */
+.settings .toDelete .error {
+  font-size: 3em;
+}
+/* line 18, _settings.scss */
+.settings .category {
+  vertical-align: sub;
+}
+
 /* line 1, ../scripts/directives/filter-menu/filter-menu.scss */
 .filter-menu {
   position: fixed;
@@ -9020,61 +9040,61 @@ button.close {
   padding: 15px 0px;
 }
 
-/* line 15, main.scss */
+/* line 16, main.scss */
 .browsehappy {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
 }
 
-/* line 21, main.scss */
+/* line 22, main.scss */
 html, body {
   height: 100%;
 }
 
-/* line 25, main.scss */
+/* line 26, main.scss */
 .navbar-header {
   text-align: text-right;
 }
 
-/* line 28, main.scss */
+/* line 29, main.scss */
 footer {
   bottom: 0px;
 }
 
-/* line 31, main.scss */
+/* line 32, main.scss */
 .notification {
   padding: 10px 12px;
   border-radius: 50%;
   background-color: #5cb85c;
 }
-/* line 35, main.scss */
+/* line 36, main.scss */
 cursor:pointer
 .notification:hover {
   background-color: #a3d7a3;
 }
 
-/* line 41, main.scss */
+/* line 42, main.scss */
 .notification-xs {
   display: none;
   margin: 9px;
 }
 
-/* line 45, main.scss */
+/* line 46, main.scss */
 .notification-sm {
   margin-top: -10px;
   margin-bottom: -10px;
 }
 
 /* Custom page footer */
-/* line 52, main.scss */
+/* line 53, main.scss */
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 59, main.scss */
+/* line 60, main.scss */
 .loginImage {
   background-image: url("../images/logo.png");
   background-size: cover;
@@ -9082,20 +9102,20 @@ cursor:pointer
   height: 500px;
 }
 
-/* line 66, main.scss */
+/* line 67, main.scss */
 .tabHeader {
   padding: 5px;
   font-weight: bold;
   border: 1px lightgray solid;
 }
 
-/* line 71, main.scss */
+/* line 72, main.scss */
 .tabRow {
   padding: 5px;
   border: 1px lightgray solid;
 }
 
-/* line 76, main.scss */
+/* line 77, main.scss */
 .mainTitle {
   color: white;
   font-size: 2.4em;
@@ -9103,20 +9123,20 @@ cursor:pointer
   opacity: 0.8;
 }
 
-/* line 83, main.scss */
+/* line 84, main.scss */
 .menuItem {
   margin: 0px;
   background-color: whitesmoke;
   padding: 30px;
   border-top: lightgray 1px solid;
 }
-/* line 89, main.scss */
+/* line 90, main.scss */
 .menuItem div p {
   padding: 15px;
   font-size: 1.3em;
 }
 
-/* line 96, main.scss */
+/* line 97, main.scss */
 .shoppingBackground {
   background: url("../images/shopping.jpg");
   background-size: cover;
@@ -9124,7 +9144,7 @@ cursor:pointer
   height: 350px;
 }
 
-/* line 103, main.scss */
+/* line 104, main.scss */
 .merchantBackground {
   background: url("../images/merchants.jpg");
   background-size: cover;
@@ -9132,17 +9152,17 @@ cursor:pointer
   height: 320px;
 }
 
-/* line 110, main.scss */
+/* line 111, main.scss */
 .intro {
   padding: 75px;
 }
-/* line 112, main.scss */
+/* line 113, main.scss */
 .intro p {
   font-size: 1.4em;
   color: #555555;
 }
 
-/* line 118, main.scss */
+/* line 119, main.scss */
 .LoginHeading {
   height: 450px;
   background: url("../images/mainImg.jpg");
@@ -9150,24 +9170,24 @@ cursor:pointer
   background-position: center;
   padding-top: 50px;
 }
-/* line 125, main.scss */
+/* line 126, main.scss */
 .LoginHeading .mainLogo {
   width: 50%;
   max-width: 350px;
 }
 
-/* line 131, main.scss */
+/* line 132, main.scss */
 .opacity-background {
   background-color: white;
   opacity: 0.7;
 }
 
-/* line 136, main.scss */
+/* line 137, main.scss */
 .menu1-text {
   height: 350px;
 }
 
-/* line 139, main.scss */
+/* line 140, main.scss */
 .menu1 {
   background: url("../images/menu1.jpg");
   background-size: cover;
@@ -9175,12 +9195,12 @@ cursor:pointer
   height: 350px;
 }
 
-/* line 146, main.scss */
+/* line 147, main.scss */
 .menu2-text {
   height: 350px;
 }
 
-/* line 150, main.scss */
+/* line 151, main.scss */
 .menu2 {
   background: url("../images/menu2.jpg");
   background-size: cover;
@@ -9188,66 +9208,66 @@ cursor:pointer
   height: 350px;
 }
 
-/* line 157, main.scss */
+/* line 158, main.scss */
 .profile-img {
   width: 100%;
 }
 
-/* line 161, main.scss */
+/* line 162, main.scss */
 .search-panel-title {
   padding-left: 5px;
   padding-top: 9px;
 }
 
-/* line 167, main.scss */
+/* line 168, main.scss */
 .loader {
   position: absolute;
   left: 50%;
   top: 50%;
 }
 
-/* line 174, main.scss */
+/* line 175, main.scss */
 .filter-margin-bottom {
   margin-bottom: 65px;
 }
 
 @media (max-width: 768px) {
-  /* line 180, main.scss */
+  /* line 181, main.scss */
   .notification-xs {
     display: inline-block;
   }
 
-  /* line 185, main.scss */
+  /* line 186, main.scss */
   .mainIntro h3 {
     font-size: 19px;
   }
 
-  /* line 190, main.scss */
+  /* line 191, main.scss */
   .menu1-text, .menu2-text {
     height: 600px;
     padding: 15px;
   }
-  /* line 193, main.scss */
+  /* line 194, main.scss */
   .menu1-text p, .menu2-text p {
     font-size: 1.2em;
   }
 
-  /* line 199, main.scss */
+  /* line 200, main.scss */
   .search-panel-title .panel-title {
     font-size: 14px;
   }
 
-  /* line 204, main.scss */
+  /* line 205, main.scss */
   .panel-body {
     padding: 10px;
   }
 
-  /* line 208, main.scss */
+  /* line 209, main.scss */
   .navbar {
     margin-bottom: 10px;
   }
 
-  /* line 212, main.scss */
+  /* line 213, main.scss */
   .alert {
     margin-bottom: 10px;
   }

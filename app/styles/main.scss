@@ -5,6 +5,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "_navbar.scss";
 @import "_grm-page.scss"; 
 @import "_dashboard.scss";  
+@import "_settings.scss";  
 @import "../scripts/directives/filter-menu/filter-menu.scss";  
 @import "../scripts/directives/searchCriteria/searchCriteria.scss";
 @import "../scripts/directives/profile/profile.scss";
@@ -12,10 +13,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "../scripts/directives/friends/friends.scss"; 
 
   
-.browsehappy { 
+.browsehappy {  
   background: #ccc;
   color: #000;  
-  padding: 0.2em 0;  
+  padding: 0.2em 0;   
 } 
  
 html,body{

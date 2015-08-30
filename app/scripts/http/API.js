@@ -82,6 +82,9 @@ angular.module('discountdublin')
 					'x-access-token':token,
 				}
 			});
+		},
+		deleteUser: function(){
+			return $http.delete(baseURL+'user');
 		}
 	};
 

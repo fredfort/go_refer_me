@@ -1,0 +1,21 @@
+.settings{
+	.address{
+		border: 1px solid lightgray;
+		padding: 5px 0px;
+		min-height: 220px;
+	}
+
+	.toDelete{
+		.btn.rounded {
+			padding: 22px 40px;
+		    border-radius: 55px;
+		}
+
+		.error{
+			font-size:3em;
+		}
+	}
+	.category{
+		    vertical-align: sub;
+	}
+}

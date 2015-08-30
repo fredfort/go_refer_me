@@ -9,7 +9,7 @@
         <span class="verticalTop font_size1-2"><b>Category</b></span>
       </div>
       <div class="col-xs-9 col-sm-10">
-        <select id='category' ng-model="profile.category" class="form-control" ng-change="saveUserProfile(profile)">
+        <select id='category' ng-disabled="profile.category" ng-model="profile.category" class="form-control" ng-change="saveUserProfile(profile)">
           <option value="referer">{{'referer' | categoryFilter}}</option>
           <option value="looking_for_job">{{'looking_for_job' | categoryFilter}}</option>
         </select>
