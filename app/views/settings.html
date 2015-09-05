@@ -4,22 +4,38 @@
     </div>
 
 	<div class="row">
-		<div class="col-xs-3">
-			<strong class="category">Category</strong>
+		<div class="col-xs-3 col-sm-2">
+			<strong class="category font_size1-2">Category</strong>
 		</div>
-		<div class="col-xs-9">
+		<div class="col-xs-9 col-sm-10">
 	        <select id='category' ng-model="user.category" class="form-control">
 	          <option value="referer">{{'referer' | categoryFilter}}</option>
 	          <option value="looking_for_job">{{'looking_for_job' | categoryFilter}}</option>
 	        </select>
 		</div>
 	</div>
+	<div class="row margin-top5">
+		<div class="col-xs-3 col-sm-2">
+			<strong class="font_size1-2">Location</strong>
+		</div>
+		<div class="col-xs-9 col-sm-10">
+	        <span>{{user.location.name}}</span>
+		</div>
+	</div>
+	<div class="row margin-top5">
+		<div class="col-xs-3 col-sm-2">
+			<strong class="font_size1-2">Id</strong>
+		</div>
+		<div class="col-xs-9 col-sm-10">
+	        <span>{{user._id}}</span>
+		</div>
+	</div>
 	<br />
-	<div class="row no-margin">
+	<div class="row">
 		<div class="col-xs-6 address">
 			<div class="text-center">
 				<address>
-				  <strong>Go Refer me</strong><br>
+				  <strong>Go Refer me</strong><br><br>
 				  14 Madison court<br>
 				  Dublin, Ireland<br>
 				  <abbr title="Phone">P:</abbr> (353) 872291126
