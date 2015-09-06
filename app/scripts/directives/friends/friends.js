@@ -10,7 +10,6 @@ angular.module('discountdublin')
 		},
 		templateUrl:'scripts/directives/friends/friends.html',
 		link: function (scope, iElement, iAttrs) {
-
 			scope.changeFriendShipStatus = function(user){
 		      API.changeFriendShipStatus(user)
 		    };
