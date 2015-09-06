@@ -1,6 +1,6 @@
 <div class="connections">
 	<div class="row" >
-		<div class="col-xs-6 col-md-4 text-center connection" ng-repeat="user in users"
+		<div class="col-xs-6 col-md-4 text-center connection" ng-if="hasFilter()" ng-repeat="user in users"
 			ng-hide="userProfile.onlyShowSavedProfile && !isAlreadySaved(user) || isTrashed(user)">
 			<p>
 				<strong>TITLE</strong><br />
@@ -36,6 +36,10 @@
 			</div>
 		</div>
 		<br />
+		<div ng-show="users.length && hasFilter()" class="col-xs-12 col-md-8 col-md-offset-2 margin-top15">
+			<button class="btn btn-default btn-block" ng-click="clearFilter()">Clear filters</button>
+		</div>
+		<br />
 		<div class="row" ng-show="hasNext || hasPrevious">
 			<div ng-show="hasPrevious" class="col-md-6 text-left">
 				<button ng-click="previousPage()" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left">Previous</span></button>
@@ -45,4 +49,25 @@
 			</div>
 		</div>
 	</div>
+	<alert class="text-left" ng-show='userProfile.category && hasFilter() && !users.length' type="info" >
+		<p>Nobody matches the following criterias</p>
+		<ul ng-show="userProfile.category === 'referer'">
+			<li ng-if="userProfile.search.experience.length">Experience: {{userProfile.search.experience | arrayToString}}</li>
+			<li ng-if="userProfile.search.locations.length">Locations: {{userProfile.search.locations | arrayToString}}</li>
+			<li ng-if="userProfile.search.functions.length">Functions: {{userProfile.search.functions | arrayToString}}</li>
+			<li ng-if="userProfile.search.languages.length">Languages: {{userProfile.search.languages | arrayToString}}</li>
+		</ul>
+		<ul ng-show="userProfile.category === 'looking_for_job'">
+			<li ng-if="userProfile.wants.experience.length">Experience: {{userProfile.wants.experience | arrayToString}}</li>
+			<li ng-if="userProfile.wants.locations.length">Locations: {{userProfile.wants.locations | arrayToString}}</li>
+			<li ng-if="userProfile.wants.functions.length">Functions: {{userProfile.wants.functions | arrayToString}}</li>
+			<li ng-if="userProfile.wants.languages.length">Languages: {{userProfile.wants.languages | arrayToString}}</li>
+		</ul>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<button class="btn btn-default btn-block" ng-click="clearFilter()">Clear filters</button>
+			</div>
+		</div>
+
+	</alert>
 </div>

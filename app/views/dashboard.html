@@ -16,11 +16,10 @@
 	    <alert ng-show='user.category && !hasFilter()' type="info" >
 	      	You have to define at least one filter at the bottom of the page to display people matching your expectation
 	    </alert>
-	    <alert ng-show='user.category && hasFilter() && !usersSearched.length' type="info" >
-			Nobody matches your expectations, make sure that your filters are well configured or think aboult clearing your trash
-		</alert>
 	    
-	    <div connection users="usersSearched" user-profile="linkedinProfile" save-fct="saveUserProfile"></div>
+	    <div connection users="usersSearched" user-profile="linkedinProfile" 
+	    									  save-fct="saveUserProfile"
+	    									  has-filter="hasFilter()"></div>
 	 
 	</div>
     <div ng-show="linkedinProfile.category" filter-menu category="linkedinProfile.category"></div>

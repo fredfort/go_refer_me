@@ -1,11 +1,12 @@
 angular.module('discountdublin')
-.directive('connection', ['$state','API', 'toaster', 'User', function ($state,API,toaster,User) {
+.directive('connection', ['$state','$timeout', 'API', 'toaster', 'User', function ($state,$timeout,API,toaster,User) {
 	return {
 		restrict: 'A',
 		scope:{
 			userProfile:'=',//connected user
 			users:'=',//possible connections
-			saveFct:'&'
+			saveFct:'&',
+			hasFilter:'&'
 		},
 		templateUrl:'scripts/directives/connection/connection.html',
 		link: function (scope, iElement, iAttrs) {
@@ -62,6 +63,27 @@ angular.module('discountdublin')
 				}else{
 					toaster.pop('info','An invitation has already been sent to this profile');
 				}
+			};
+
+			scope.clearFilter = function(){
+				if(scope.userProfile && scope.userProfile.category === 'looking_for_job'){
+					var wants = scope.userProfile.wants;
+					wants.companies  = [];
+					wants.experience = [];
+					wants.functions  = [];
+					wants.industries = [];
+					wants.languages  = [];
+					wants.locations  = [];
+					
+				}else if(scope.userProfile && scope.userProfile.category === 'referer'){
+					var search =scope.userProfile.search;
+					search.experience = [];
+					search.functions  = [];
+					search.industries = [];
+					search.languages  = [];
+					search.locations  = [];
+				}
+				$timeout(function(){refreshUsers(null,scope.page)}, 500);//AWFUL
 			};
 
 			scope.$watch('userProfile.category',function(newCategory, oldCategory){

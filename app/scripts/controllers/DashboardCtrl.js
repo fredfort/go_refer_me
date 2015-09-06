@@ -61,6 +61,15 @@ angular.module('discountdublin')
 						 search.experience.length
 		}
 		return hasFilter;
-	}
+	};
+
+	$scope.clearFilter = function(){
+		if($scope.user && $scope.user.category === 'looking_for_job'){
+			$scope.user.wants =[];
+			
+		}else if($scope.user && $scope.user.category === 'referer'){
+			$scope.user.search =[];
+		}
+	};
 
 }]);

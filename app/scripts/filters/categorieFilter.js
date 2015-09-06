@@ -59,6 +59,23 @@ mod.filter('plurial', function() {
    }
 });
 
+mod.filter('arrayToString', function() {
+  return function(array) {
+     if(array && array.length){
+      var string = '';
+      array.forEach(function(item,index){
+        string += item;
+        if(index < array.length -1){
+          string +=', ';
+        }else{
+          string += '.';
+        }
+      });
+      return string;
+     }
+   }
+});
+
 
 mod.filter('firstLetterUpperCase', function() {
   return function(input) {
