@@ -47,11 +47,16 @@
     <div ng-hide='itemType === "company" || itemType === "experience"' class="col-xs-10">
            
 
-     <input ng-hide='itemType === "experience" || itemType === "company"' type="text" ng-model='item' class="form-control" 
+    <!--  <input ng-hide='itemType === "experience" || itemType === "company"' type="text" ng-model='item' class="form-control" 
         typeahead-on-select="addItem()" 
         typeahead="item for item in typeaheadItems | filter:$viewValue | limitTo:15"
-      /> 
-
+      />  -->
+      <ui-select  tagging  ng-model="data.item" on-select="addItem();">
+        <ui-select-match placeholder="Select...">{{$item}}</ui-select-match>
+        <ui-select-choices  repeat="item in typeaheadItems | filter:$select.search">
+             <div ng-bind-html="item | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
     </div>
     <div ng-hide='itemType === "company" || itemType === "experience"'  class="col-xs-2 no-padding">
       <button class="btn btn-primary" ng-click='addItem()'><span class="glyphicon glyphicon-plus"></span></button>

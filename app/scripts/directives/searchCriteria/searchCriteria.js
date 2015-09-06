@@ -11,13 +11,16 @@ angular.module('discountdublin')
 		},
 		link: function (scope, iElement, iAttrs) {
 
-
+			scope.data= {
+				item:''
+			};
 			scope.experiences = ['junior','intermediate','senior'];
 
 			scope.addItem = function(){
-				if(scope.item && scope.item.length){
-					scope.items.push(scope.item);
-					scope.item = '';
+				if(scope.data.item && scope.data.item.length){
+					scope.items.push(scope.data.item);
+					scope.data.item = '';
+	
 				}
 			};
 

@@ -14,6 +14,7 @@ angular
     'ngCookies',
     'ngResource',
     'ui.router',
+    'ui.select',
     'ngSanitize',
     'ngTouch',
     'toaster',
