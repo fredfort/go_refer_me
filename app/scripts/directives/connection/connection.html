@@ -1,6 +1,8 @@
 <div class="connections">
 	<div class="row" >
-		<div class="col-xs-6 col-md-4 text-center connection" ng-if="hasFilter()" ng-repeat="user in users"
+		<div class="col-xs-6 col-md-4 text-center connection" 
+			ng-if="hasFilter()" ng-repeat="user in users"
+			ng-class="{'isFriend':isFriend(user)}"
 			ng-hide="userProfile.onlyShowSavedProfile && !isAlreadySaved(user) || isTrashed(user)">
 			<p>
 				<strong>TITLE</strong><br />
@@ -15,7 +17,7 @@
 				<span class='work_value'>{{user.currentJob.company}}</span><br />
 				<span class='work_value'>{{user.currentJob.title}}</span>
 			</p>
-			<div class="row margin-top5">
+			<div  ng-show="!isFriend(user)" class="row margin-top5">
 				<div class="col-xs-3 col-xs-offset-1 col-sm-offset-0 col-sm-4">
 					<button ng-click="contactProfile(user)" class="btn btn-default rounded" 
 							ng-class="{'isContacted':hasSentInvitation(user)}">
@@ -33,6 +35,11 @@
 						<span class="error">R</span>
 					</button>
 				</div>
+			</div>
+			<div  ng-show="isFriend(user)" class="row margin-top5">
+				<a class="btn btn-default" ui-sref="main.friendsRequest">
+					See in connections
+				</a>
 			</div>
 		</div>
 		<br />

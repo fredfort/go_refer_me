@@ -5,12 +5,17 @@
 	    padding: 15px 0px;
 
 	    .isSaved{
-	    	background-color: rgba(255, 255, 138, 0.98); 
+	    	background-color: rgba(255, 255, 138, 0.98);
+	    	color:white;
 	    }
 
 	    .isContacted{
-	    	background-color: rgb(0, 255, 128); 
+	    	background-color: rgb(0, 123, 63);
+	    	color:white;
 	    }
-	    
+
+	}
+	.isFriend{
+		@extend .alert-success;
 	}
 }

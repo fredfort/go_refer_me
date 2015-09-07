@@ -11,10 +11,17 @@ angular.module('discountdublin')
 		templateUrl:'scripts/directives/connection/connection.html',
 		link: function (scope, iElement, iAttrs) {
 			var maxElemByPage = 20;
-
 			scope.page =1;
 			scope.hasNext = (scope.users.length === maxElemByPage);
 			scope.hasPrevious = (scope.page != 1);
+
+			var friendsId = _.map(scope.userProfile.friends, function(friend){
+				return friend.id;
+			});
+
+			scope.isFriend = function(user){
+				return friendsId.indexOf(user._id) !== -1;
+			}
 
 			scope.isAlreadySaved = function(linkedinProfile){
 				return scope.userProfile.saved.indexOf(linkedinProfile._id) !== -1;

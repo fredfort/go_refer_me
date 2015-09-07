@@ -6688,17 +6688,17 @@ a.thumbnail.active {
 }
 
 /* line 59, ../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
-.alert-success {
+.alert-success, .connections .isFriend {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #3c763d;
 }
 /* line 8, ../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
-.alert-success hr {
+.alert-success hr, .connections .isFriend hr {
   border-top-color: #c9e2b3;
 }
 /* line 11, ../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
-.alert-success .alert-link {
+.alert-success .alert-link, .connections .isFriend .alert-link {
   color: #2b542c;
 }
 
@@ -9027,10 +9027,12 @@ button.close {
 /* line 7, ../scripts/directives/connection/connection.scss */
 .connections .connection .isSaved {
   background-color: rgba(255, 255, 138, 0.98);
+  color: white;
 }
-/* line 11, ../scripts/directives/connection/connection.scss */
+/* line 12, ../scripts/directives/connection/connection.scss */
 .connections .connection .isContacted {
-  background-color: #00ff80;
+  background-color: #007b3f;
+  color: white;
 }
 
 /* line 2, ../scripts/directives/friends/friends.scss */
