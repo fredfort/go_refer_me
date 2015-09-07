@@ -1,9 +1,10 @@
 angular.module('discountdublin')
-.directive('searchCriteria', [function () {
+.directive('searchCriteria', ['toaster',function (toaster) {
 	return {
 		restrict: 'A',
 		templateUrl:'scripts/directives/searchCriteria/searchCriteria.html',
 		scope:{
+			user:'=',
 			itemType:'@',
 			items:'=',
 			typeaheadItems:'=',
@@ -25,7 +26,11 @@ angular.module('discountdublin')
 			};
 
 			scope.removeItem = function(item){
-				scope.items = _.without(scope.items, item);
+				if(item !== scope.user.location.name){
+					scope.items = _.without(scope.items, item);
+				}else{
+					toaster.pop('info','You can\'t remove your location as a filter');
+				}
 			};
 
 			scope.selectAll = function(){

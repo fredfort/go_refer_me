@@ -61,6 +61,7 @@ angular.module('discountdublin')
     $scope.languages       = languages.getLanguages();
     $scope.companies       = companies;
 
+
    User.setFetchUserInterval($scope.getUser);
 
 

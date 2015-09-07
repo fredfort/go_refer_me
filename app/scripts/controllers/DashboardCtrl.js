@@ -20,6 +20,15 @@ angular.module('discountdublin')
 		$scope.linkedinProfile.wants = { industries:[], locations:[], companies:[], functions:[], languages:[]};
 	}
 
+	$scope.currentLocation= $scope.user.location.name;
+	if($scope.linkedinProfile.wants.locations.indexOf($scope.currentLocation) === -1){
+		$scope.linkedinProfile.wants.locations.push($scope.currentLocation);
+	}
+
+	if($scope.linkedinProfile.search.locations.indexOf($scope.currentLocation) === -1){
+		$scope.linkedinProfile.search.locations.push($scope.currentLocation)
+	}
+
 
 
 
@@ -66,9 +75,11 @@ angular.module('discountdublin')
 	$scope.clearFilter = function(){
 		if($scope.user && $scope.user.category === 'looking_for_job'){
 			$scope.user.wants =[];
+			$scope.user.wants.locations.push($scope.currentLocation);
 			
 		}else if($scope.user && $scope.user.category === 'referer'){
 			$scope.user.search =[];
+			$scope.user.search.locations.push($scope.currentLocation);
 		}
 	};
 

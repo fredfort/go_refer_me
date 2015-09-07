@@ -73,7 +73,7 @@ angular.module('discountdublin')
 					wants.functions  = [];
 					wants.industries = [];
 					wants.languages  = [];
-					wants.locations  = [];
+					wants.locations  = [scope.userProfile.location.name];
 					
 				}else if(scope.userProfile && scope.userProfile.category === 'referer'){
 					var search =scope.userProfile.search;
@@ -81,7 +81,7 @@ angular.module('discountdublin')
 					search.functions  = [];
 					search.industries = [];
 					search.languages  = [];
-					search.locations  = [];
+					search.locations  = [scope.userProfile.location.name];
 				}
 				$timeout(function(){refreshUsers(null,scope.page)}, 500);//AWFUL
 			};
