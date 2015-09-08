@@ -1,22 +1,40 @@
 <div class="row filter-menu text-center" ng-class="{'wider-filter':widerFilter}">
 	<div ng-click='goToFilter("company")' ng-show="category==='looking_for_job'">
-		<span class='glyphicon glyphicon-briefcase'></span>
+		<div menu-icon class='icon' 
+			 filters="getFiltersLength('companies')" 
+			 glyphicon-class="glyphicon-briefcase">
+		</div>
 		<span class="filter-label">Company</span>
 	</div>
 	<div ng-click='goToFilter("location")'>
-		<span class='glyphicon glyphicon-globe'></span>
+		<div menu-icon class='icon' 
+			 filters="getFiltersLength('locations')" 
+			 glyphicon-class="glyphicon-globe">
+		</div>
 		<span class="filter-label">Location</span>
 	</div>
 	<div ng-click='goToFilter("experience")'>
-		<span class='glyphicon glyphicon-education'></span>
+		<div menu-icon class='icon' 
+			 filters="getFiltersLength('experience')" 
+			 glyphicon-class="glyphicon-education">
+		</div>
 		<span class="filter-label">Experience</span>
 	</div>
 	<div ng-click='goToFilter("function")'>
-		<span class='glyphicon glyphicon-tags'></span>
+		<div menu-icon class='icon' 
+			 filters="getFiltersLength('functions')" 
+			 glyphicon-class="glyphicon-tags">
+		</div>
 		<span class="filter-label">Functions</span>
 	</div>
 	<div ng-click='goToFilter("language")'>
-		<span class='glyphicon glyphicon-headphones'></span>
+		<div menu-icon class='icon' 
+			 filters="getFiltersLength('languages')" 
+			 glyphicon-class="glyphicon-headphones">
+		</div>
 		<span class="filter-label">Language</span>
+	</div>
+	<div ng-show="category==='referer'" class="logo">
+		<img class="headerLogo" src="../images/logo.svg">
 	</div>
 </div>

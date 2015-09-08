@@ -3,16 +3,31 @@ angular.module('discountdublin')
 	return {
 		restrict: 'A',
 		scope:{
-			category:'='
+			category:'=',
+			user:'='
 		},
 		templateUrl:'scripts/directives/filter-menu/filter-menu.html',
 		link: function (scope, iElement, iAttrs) {
-			scope.$watch('category', function(newValue,oldValue){
-				scope.widerFilter = (scope.category==='referer');
-			});
+			// scope.$watch('category', function(newValue,oldValue){
+			// 	scope.widerFilter = (scope.category==='referer');
+			// });
+
+			scope.getFiltersLength = function(type){
+				if(scope.category === 'referer'){
+					return scope.user.search[type].length;
+				}else if(scope.category === 'looking_for_job'){
+					if(type === 'functions'){
+						var industriesLength = scope.user.wants.industries.length;
+						var functionsLength  = scope.user.wants[type].length;
+						return industriesLength + functionsLength;
+					}
+					return scope.user.wants[type].length;
+				}
+			};
+
 			scope.goToFilter = function(filterType){
 				$state.go('main.filter',{filterType:filterType});
-			}
+			};
 			
 		}
 	};

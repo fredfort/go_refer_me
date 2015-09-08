@@ -13,12 +13,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "../scripts/directives/friends/friends.scss"; 
 
   
-.browsehappy {  
+.browsehappy {   
   background: #ccc; 
   color: #000; 
   padding: 0.2em 0;   
 } 
-
+ 
 html,body{ 
   height:100%;
 }
@@ -179,16 +179,16 @@ footer{
 
 @media (max-width: $screen-sm-min){
   .notification-xs{
-    display:inline-block;
+    display:inline-block; 
   }
 
-  .mainIntro{
+  .mainIntro{ 
     h3{
       font-size:19px
     }
   }
- 
-  .menu1-text,.menu2-text{
+  
+  .menu1-text,.menu2-text{ 
     height:600px;
     padding:15px;
     p{
@@ -212,6 +212,10 @@ footer{
 
   .alert{
     margin-bottom:10px;
+  }
+
+  .control{
+    position:fixed;
   }
 
 }

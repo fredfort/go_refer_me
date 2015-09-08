@@ -3,7 +3,7 @@
 	position: fixed;
 	bottom: -22px;
 	left: 15px;
-	height: 65px;
+	height: 70px;
 	width: 100%;
 	background-color:lightgray;
 	z-index: 9999;
@@ -12,19 +12,31 @@
 		display: block;
 	}
 
+	.icon{
+		margin-bottom: -5px;
+	}
+
 	.filter-label{
 		font-size: 0.8em;
 	}
-	div{
+	> div{
 		position: relative;
 	    min-height: 1px;
 	    padding: 2px 0px;
+	    padding-top:4px;
 	    width:20%;
 	    float: left;
-	    margin-top: 4px;
 
 	    &:hover{
 			background-color:whitesmoke;
+			cursor:pointer;
+	    }
+	}
+
+	> div.logo{
+		&:hover{
+			background-color:lightgray;
+			cursor:default;
 	    }
 	}
 }

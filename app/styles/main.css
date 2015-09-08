@@ -8974,7 +8974,7 @@ button.close {
   position: fixed;
   bottom: -22px;
   left: 15px;
-  height: 65px;
+  height: 70px;
   width: 100%;
   background-color: lightgray;
   z-index: 9999;
@@ -8984,24 +8984,34 @@ button.close {
   display: block;
 }
 /* line 15, ../scripts/directives/filter-menu/filter-menu.scss */
+.filter-menu .icon {
+  margin-bottom: -5px;
+}
+/* line 19, ../scripts/directives/filter-menu/filter-menu.scss */
 .filter-menu .filter-label {
   font-size: 0.8em;
 }
-/* line 18, ../scripts/directives/filter-menu/filter-menu.scss */
-.filter-menu div {
+/* line 22, ../scripts/directives/filter-menu/filter-menu.scss */
+.filter-menu > div {
   position: relative;
   min-height: 1px;
   padding: 2px 0px;
+  padding-top: 4px;
   width: 20%;
   float: left;
-  margin-top: 4px;
 }
-/* line 26, ../scripts/directives/filter-menu/filter-menu.scss */
-.filter-menu div:hover {
+/* line 30, ../scripts/directives/filter-menu/filter-menu.scss */
+.filter-menu > div:hover {
   background-color: whitesmoke;
+  cursor: pointer;
+}
+/* line 37, ../scripts/directives/filter-menu/filter-menu.scss */
+.filter-menu > div.logo:hover {
+  background-color: lightgray;
+  cursor: default;
 }
 
-/* line 33, ../scripts/directives/filter-menu/filter-menu.scss */
+/* line 45, ../scripts/directives/filter-menu/filter-menu.scss */
 .wider-filter div {
   width: 25%;
 }
@@ -9272,6 +9282,11 @@ cursor:pointer
   /* line 213, main.scss */
   .alert {
     margin-bottom: 10px;
+  }
+
+  /* line 217, main.scss */
+  .control {
+    position: fixed;
   }
 }
 
