@@ -3,6 +3,40 @@
       <span class="grm-page-header-title">Connections</span>
     </div>
 
+
+    <div class="row invitations" ng-show='invitations && invitations.length'>
+    	<div class="col-xs-12">
+			<alert type="info">
+			    Your friend request
+			</alert>
+			<div class="row" ng-repeat="person in invitations">
+				<div class="col-xs-8 col-sm-6">
+					<div>
+						<b>{{person.firstName}} {{person.lastName}}</b><br />
+						<b>Location</b> : {{person.location.name}}<br>
+						<b>Company</b>  : {{person.currentJob.company}}<br />    
+					</div>
+				</div>
+				<div class="col-xs-4 col-sm-6">
+					<div class="text-center margin-top5">
+							<button class="btn btn-success" ng-click="acceptInvitation(person)">
+								Accept <span class='glyphicon glyphicon-ok'></span>
+							</button>
+							<button class="btn btn-default btn-deny" ng-click="denyInvitation(person)">
+								Deny <span class='glyphicon glyphicon-remove'></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div ng-show='friends && friends.length' >
+		<alert type="info">Your connections' list</alert>
+	</div>
+
 	<div class="profile margin-bottom10">
 	  	<!-- FILTER -->
 		<div class="input-group margin-vertical10" >
@@ -10,10 +44,10 @@
 	     	<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
 		</div>
 		<div class="row">
-			<div class="col-xs-3 col-sm-2">
+			<div class="col-xs-4 col-sm-2">
 				<strong class="font_size1-2 verticalTop">Sort by</strong>
 			</div>
-			<div class="col-xs-9 col-sm-10 margin-bottom10">
+			<div class="col-xs-8 col-sm-10 margin-bottom10">
 		      	<select class="form-control" ng-model="sortFilter" ng-init="sortFilter='-last_update'">
 			     	<option value="-last_update" selected="selected">Last Update</option>
 			     	<option value="-date_connection">Connection date</option>
@@ -26,34 +60,4 @@
 
 	<div friends persons="friends" user-profile="user" person-filter="personFilter" sort-filter="sortFilter"></div>
 
-	<div class="row" ng-show='invitations && invitations.length'>
-		<div class="col-md-6">
-			<div class="panel panel-primary">
-		        <div class="panel-heading">
-		          <h3 class="panel-title">Your friend request</h3>
-		        </div>
-		        <div class="panel-body">
-					<div class="row" ng-repeat="person in invitations">
-						<div class="col-xs-8">
-							<div>
-								<b>{{person.firstName}} {{person.lastName}}</b><br />
-								<b>Location</b> : {{person.location.name}}<br>
-								<b>Company</b>  : {{person.currentJob.company}}<br />    
-							</div>
-						</div>
-						<div class="col-xs-4">
-							<div class="text-center">
-								<div>
-									<button class="btn btn-success" ng-click="acceptInvitation(person)">Accept <span class='glyphicon glyphicon-ok'></span></button>
-								</div>
-								<div class="margin-top5">
-									<button class="btn btn-default" ng-click="denyInvitation(person)">Deny <span class='glyphicon glyphicon-ok'></span></button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>

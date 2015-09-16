@@ -1,0 +1,29 @@
+.credits{
+	.widget{
+		border: 1px solid lightgray;
+    	padding: 15px;
+    	text-align: center;
+    	min-height:175px;
+
+    	.title{
+    		font-size:22px;
+    	}
+
+    	.connectionsLeft{
+    		font-size:52px;
+    		font-weight: bold;
+    		color: #337ab7;
+    	}
+
+    	.currency{
+    		font-size:28px;
+    		font-weight: bold;
+    	}
+	}
+
+    
+    .loader-payment{
+        width: 20px;
+        height:20px;
+    }
+}

@@ -26,8 +26,6 @@ angular
   .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
 
     $httpProvider.interceptors.push('HttpInterceptor');
-
-
     $urlRouterProvider.otherwise('/login');
 
     //
@@ -157,7 +155,7 @@ angular
         templateUrl: 'views/settings.html'
       })
       .state('main.credit',{
-        url:'credit',
+        url:'credit?paymentId&token&PayerID?qte',
         templateUrl: 'views/credit.html',
         controller:'CreditCtrl'
       });

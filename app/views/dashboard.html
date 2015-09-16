@@ -10,7 +10,7 @@
 	    <alert ng-show='!user.category' type="info" >
 	      	Please choose a category
 	    </alert>
-	    <alert ng-show="usersSearched && usersSearched.length && linkedinProfile.category"  type="info" >
+	    <alert class="xs-hidden" ng-show="usersSearched && usersSearched.length && linkedinProfile.category"  type="info" >
 	    	You may be interested in the followings profiles
 	    </alert>
 	    <alert ng-show='user.category && !hasFilter()' type="info" >

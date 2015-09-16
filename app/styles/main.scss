@@ -3,9 +3,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "_utils.scss";
 @import "_menu.scss"; 
 @import "_navbar.scss";
-@import "_grm-page.scss"; 
+@import "_grm-page.scss";  
 @import "_dashboard.scss";  
 @import "_settings.scss";  
+@import "_credit.scss"; 
 @import "../scripts/directives/filter-menu/filter-menu.scss";  
 @import "../scripts/directives/searchCriteria/searchCriteria.scss";
 @import "../scripts/directives/profile/profile.scss";
@@ -25,7 +26,7 @@ html,body{
  
 .navbar-header{
   text-align:text-right;
-}
+} 
 footer{
   bottom:0px; 
 }
@@ -182,7 +183,7 @@ footer{
     display:inline-block; 
   }
 
-  .mainIntro{ 
+  .mainIntro{  
     h3{
       font-size:19px
     }

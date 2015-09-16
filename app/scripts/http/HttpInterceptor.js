@@ -3,7 +3,7 @@ angular.module('discountdublin').factory('HttpInterceptor',['$window','$q','User
 
     	request: function(config){
         if(!config.headers['x-access-token']){
-          if(User.hasToken()){
+          if(User.hasToken() && !config.headers['Authorization']){
             config.headers['x-access-token'] = User.getToken();
           }else{
             delete config.headers['x-access-token']

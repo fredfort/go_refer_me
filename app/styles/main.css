@@ -8949,24 +8949,62 @@ button.close {
   margin-bottom: -40px;
 }
 
-/* line 2, _settings.scss */
+/* line 1, _settings.scss */
+.settings {
+  margin-bottom: 15px;
+}
+/* line 3, _settings.scss */
 .settings .address {
   border: 1px solid lightgray;
   padding: 5px 0px;
-  min-height: 220px;
+  min-height: 180px;
 }
-/* line 9, _settings.scss */
+/* line 10, _settings.scss */
 .settings .toDelete .btn.rounded {
   padding: 22px 40px;
   border-radius: 55px;
 }
-/* line 14, _settings.scss */
+/* line 15, _settings.scss */
 .settings .toDelete .error {
   font-size: 3em;
 }
-/* line 18, _settings.scss */
+/* line 19, _settings.scss */
 .settings .category {
   vertical-align: sub;
+}
+
+@media (max-width: 768px) {
+  /* line 27, _settings.scss */
+  .settings .address {
+    border-top: none;
+  }
+}
+/* line 2, _credit.scss */
+.credits .widget {
+  border: 1px solid lightgray;
+  padding: 15px;
+  text-align: center;
+  min-height: 175px;
+}
+/* line 8, _credit.scss */
+.credits .widget .title {
+  font-size: 22px;
+}
+/* line 12, _credit.scss */
+.credits .widget .connectionsLeft {
+  font-size: 52px;
+  font-weight: bold;
+  color: #337ab7;
+}
+/* line 18, _credit.scss */
+.credits .widget .currency {
+  font-size: 28px;
+  font-weight: bold;
+}
+/* line 25, _credit.scss */
+.credits .loader-payment {
+  width: 20px;
+  height: 20px;
 }
 
 /* line 1, ../scripts/directives/filter-menu/filter-menu.scss */
@@ -9031,82 +9069,129 @@ button.close {
 /* line 2, ../scripts/directives/connection/connection.scss */
 .connections .connection {
   border: 1px solid lightgray;
-  min-height: 257px;
-  padding: 15px 0px;
+  min-height: 240px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
-/* line 7, ../scripts/directives/connection/connection.scss */
+/* line 8, ../scripts/directives/connection/connection.scss */
 .connections .connection .isSaved {
   background-color: rgba(255, 255, 138, 0.98);
   color: white;
 }
-/* line 12, ../scripts/directives/connection/connection.scss */
+/* line 13, ../scripts/directives/connection/connection.scss */
 .connections .connection .isContacted {
   background-color: #007b3f;
   color: white;
 }
-
-/* line 2, ../scripts/directives/friends/friends.scss */
-.friends .friend {
-  border: 1px solid lightgray;
-  min-height: 460px;
-  padding: 15px 0px;
+/* line 17, ../scripts/directives/connection/connection.scss */
+.connections .connection .help {
+  opacity: 0.8;
 }
 
-/* line 16, main.scss */
+@media (max-width: 768px) {
+  /* line 31, ../scripts/directives/connection/connection.scss */
+  .connections .connection {
+    border-top: none;
+  }
+
+  /* line 35, ../scripts/directives/connection/connection.scss */
+  .connection.no-border-bottom {
+    border-bottom: none;
+  }
+}
+/* line 1, ../scripts/directives/friends/friends.scss */
+.friends {
+  margin-bottom: 15px;
+}
+/* line 3, ../scripts/directives/friends/friends.scss */
+.friends .friend {
+  border: 1px solid lightgray;
+  min-height: 250px;
+}
+/* line 7, ../scripts/directives/friends/friends.scss */
+.friends .friend div {
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  /* line 16, ../scripts/directives/friends/friends.scss */
+  .friends .friend {
+    border-top: none;
+  }
+
+  /* line 20, ../scripts/directives/friends/friends.scss */
+  .friend.no-border-bottom {
+    border-bottom: none;
+  }
+}
+/* line 25, ../scripts/directives/friends/friends.scss */
+.invitations {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: lightgray 1px solid;
+}
+
+/* line 31, ../scripts/directives/friends/friends.scss */
+.btn-deny {
+  padding-right: 18px;
+  padding-left: 18px;
+}
+
+/* line 17, main.scss */
 .browsehappy {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
 }
 
-/* line 22, main.scss */
+/* line 23, main.scss */
 html, body {
   height: 100%;
 }
 
-/* line 26, main.scss */
+/* line 27, main.scss */
 .navbar-header {
   text-align: text-right;
 }
 
-/* line 29, main.scss */
+/* line 30, main.scss */
 footer {
   bottom: 0px;
 }
 
-/* line 32, main.scss */
+/* line 33, main.scss */
 .notification {
   padding: 10px 12px;
   border-radius: 50%;
   background-color: #5cb85c;
 }
-/* line 36, main.scss */
+/* line 37, main.scss */
 cursor:pointer
 .notification:hover {
   background-color: #a3d7a3;
 }
 
-/* line 42, main.scss */
+/* line 43, main.scss */
 .notification-xs {
   display: none;
   margin: 9px;
 }
 
-/* line 46, main.scss */
+/* line 47, main.scss */
 .notification-sm {
   margin-top: -10px;
   margin-bottom: -10px;
 }
 
 /* Custom page footer */
-/* line 53, main.scss */
+/* line 54, main.scss */
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 60, main.scss */
+/* line 61, main.scss */
 .loginImage {
   background-image: url("../images/logo.png");
   background-size: cover;
@@ -9114,20 +9199,20 @@ cursor:pointer
   height: 500px;
 }
 
-/* line 67, main.scss */
+/* line 68, main.scss */
 .tabHeader {
   padding: 5px;
   font-weight: bold;
   border: 1px lightgray solid;
 }
 
-/* line 72, main.scss */
+/* line 73, main.scss */
 .tabRow {
   padding: 5px;
   border: 1px lightgray solid;
 }
 
-/* line 77, main.scss */
+/* line 78, main.scss */
 .mainTitle {
   color: white;
   font-size: 2.4em;
@@ -9135,20 +9220,20 @@ cursor:pointer
   opacity: 0.8;
 }
 
-/* line 84, main.scss */
+/* line 85, main.scss */
 .menuItem {
   margin: 0px;
   background-color: whitesmoke;
   padding: 30px;
   border-top: lightgray 1px solid;
 }
-/* line 90, main.scss */
+/* line 91, main.scss */
 .menuItem div p {
   padding: 15px;
   font-size: 1.3em;
 }
 
-/* line 97, main.scss */
+/* line 98, main.scss */
 .shoppingBackground {
   background: url("../images/shopping.jpg");
   background-size: cover;
@@ -9156,7 +9241,7 @@ cursor:pointer
   height: 350px;
 }
 
-/* line 104, main.scss */
+/* line 105, main.scss */
 .merchantBackground {
   background: url("../images/merchants.jpg");
   background-size: cover;
@@ -9164,17 +9249,17 @@ cursor:pointer
   height: 320px;
 }
 
-/* line 111, main.scss */
+/* line 112, main.scss */
 .intro {
   padding: 75px;
 }
-/* line 113, main.scss */
+/* line 114, main.scss */
 .intro p {
   font-size: 1.4em;
   color: #555555;
 }
 
-/* line 119, main.scss */
+/* line 120, main.scss */
 .LoginHeading {
   height: 450px;
   background: url("../images/mainImg.jpg");
@@ -9182,24 +9267,24 @@ cursor:pointer
   background-position: center;
   padding-top: 50px;
 }
-/* line 126, main.scss */
+/* line 127, main.scss */
 .LoginHeading .mainLogo {
   width: 50%;
   max-width: 350px;
 }
 
-/* line 132, main.scss */
+/* line 133, main.scss */
 .opacity-background {
   background-color: white;
   opacity: 0.7;
 }
 
-/* line 137, main.scss */
+/* line 138, main.scss */
 .menu1-text {
   height: 350px;
 }
 
-/* line 140, main.scss */
+/* line 141, main.scss */
 .menu1 {
   background: url("../images/menu1.jpg");
   background-size: cover;
@@ -9207,12 +9292,12 @@ cursor:pointer
   height: 350px;
 }
 
-/* line 147, main.scss */
+/* line 148, main.scss */
 .menu2-text {
   height: 350px;
 }
 
-/* line 151, main.scss */
+/* line 152, main.scss */
 .menu2 {
   background: url("../images/menu2.jpg");
   background-size: cover;
@@ -9220,71 +9305,71 @@ cursor:pointer
   height: 350px;
 }
 
-/* line 158, main.scss */
+/* line 159, main.scss */
 .profile-img {
   width: 100%;
 }
 
-/* line 162, main.scss */
+/* line 163, main.scss */
 .search-panel-title {
   padding-left: 5px;
   padding-top: 9px;
 }
 
-/* line 168, main.scss */
+/* line 169, main.scss */
 .loader {
   position: absolute;
   left: 50%;
   top: 50%;
 }
 
-/* line 175, main.scss */
+/* line 176, main.scss */
 .filter-margin-bottom {
   margin-bottom: 65px;
 }
 
 @media (max-width: 768px) {
-  /* line 181, main.scss */
+  /* line 182, main.scss */
   .notification-xs {
     display: inline-block;
   }
 
-  /* line 186, main.scss */
+  /* line 187, main.scss */
   .mainIntro h3 {
     font-size: 19px;
   }
 
-  /* line 191, main.scss */
+  /* line 192, main.scss */
   .menu1-text, .menu2-text {
     height: 600px;
     padding: 15px;
   }
-  /* line 194, main.scss */
+  /* line 195, main.scss */
   .menu1-text p, .menu2-text p {
     font-size: 1.2em;
   }
 
-  /* line 200, main.scss */
+  /* line 201, main.scss */
   .search-panel-title .panel-title {
     font-size: 14px;
   }
 
-  /* line 205, main.scss */
+  /* line 206, main.scss */
   .panel-body {
     padding: 10px;
   }
 
-  /* line 209, main.scss */
+  /* line 210, main.scss */
   .navbar {
     margin-bottom: 10px;
   }
 
-  /* line 213, main.scss */
+  /* line 214, main.scss */
   .alert {
     margin-bottom: 10px;
   }
 
-  /* line 217, main.scss */
+  /* line 218, main.scss */
   .control {
     position: fixed;
   }

@@ -14,7 +14,11 @@ angular.module('discountdublin')
 
 			scope.getFiltersLength = function(type){
 				if(scope.category === 'referer'){
-					return scope.user.search[type].length;
+					if(scope.user.search[type]){
+						return scope.user.search[type].length;
+					}else{
+						return 0;
+					}
 				}else if(scope.category === 'looking_for_job'){
 					if(type === 'functions'){
 						var industriesLength = scope.user.wants.industries.length;

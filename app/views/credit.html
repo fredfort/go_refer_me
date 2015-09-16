@@ -1,17 +1,45 @@
-<div class="credit">
+<div class="credits">
 	<div class="grm-page-header text-left">
       <span class="grm-page-header-title">Credit</span>
     </div>
+
 	<div class="row">
 		<div class="col-xs-12">
-			<alert type="info">Credit are coming soon!</alert>
+			<alert type="info">
+				Here you can buy more tokens to make even more connections
+			</alert>
 		</div>
 	</div>
-	<!-- <div class="text-center">
-		<form action="https://www.sandbox.paypal.com/webapps/adaptivepayment/flow/pay" target="PPDGFrame" class="standard">
-			<input type="image" id="submitBtn" value="Pay with PayPal" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" />
-			<input id="type" type="hidden" name="expType" value="light"/>
-			<input id="paykey" type="hidden" name="paykey" value="insert_pay_key">
-		</form>
-	</div> -->
+	<div ng-if="transaction">
+		<alert type="success">
+			Transaction {{transaction.state}} at {{transaction.update_time | date:'medium'}}.
+			Amount: {{transaction.transactions[0].amount.total | currency:transaction.transactions[0].amount.currency}}
+		</alert>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6 widget">
+			<p><strong class="title">Connections left</strong></p>
+			<p>
+				<span class="connectionsLeft">{{user.credit - user.friends.length}}</span>
+			</p>
+		</div>
+		<div class="col-md-6 widget">
+			<p><strong class="title">Buy more connections</strong></p>
+			<p>
+				<input type="number" class="form-control" ng-model="newConnection" placeholder="How many token do you want to get?"/>
+			</p>
+			<p>
+				<div class="row">
+					<div class="col-xs-6 text-right">
+						<span class="currency">{{getPrice() | currency}}</span>
+					</div>
+					<div class="col-xs-6 text-left">
+						<button class="btn btn-primary" ng-click="buyToken()">Buy tokens!</button>
+						<img class="loader-payment"  ng-show='isLoading' src="images/loader.gif" />
+					</div>
+				</div>	
+			</p>
+		</div>
+	</div>
 </div>

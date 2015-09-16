@@ -1,68 +1,75 @@
 <div class="friends row">
-	
-	<div ng-show='persons && persons.length' class="col-xs-12" >
-		<alert type="info">List of your connections</alert>
-	</div>
-
 	<!-- FRIENDS -->
-	<div  ng-repeat="person in persons | filter:personFilter | orderBy:sortFilter"
-			class="col-xs-6 col-md-4 text-center friend">
-		<div class="col-xs-12">
-			<div ng-show="!person.toRemove">
+	<div  ng-repeat="person in persons | filter:personFilter | orderBy:sortFilter" 
+		  class="col-sm-6 col-md-4 text-center friend" ng-class="{'no-border-bottom':$last}">
+		<div class="row" ng-show="!person.toRemove">
+			<div class="col-xs-4">
 				<p>
-					<b>Name</b><br />{{person.firstName}} {{person.lastName}}
-				</p>
-				<p>
-					<b>Location</b><br />{{person.location.name}}
+					<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" 
+					     class="img img-responsive margin-auto" />
 				</p>
 				<p>
-					<b>Company</b><br /> {{person.currentJob.company}}
+					{{person.firstName}} {{person.lastName}}
 				</p>
-				<p>  
-					<b>Profile</b><br /> 
-					<a ng-href="{{person.siteStandardProfileRequest.url}}" target="_blank">Linkedin profile</a>
+				<a ng-show="person.siteStandardProfileRequest" ng-href="{{person.siteStandardProfileRequest.url}}" target="_blank">Linkedin</a>
+			</div>
+			<div class="col-xs-8 text-left">				
+				<p>
+					<b>Location:</b> {{person.location.name}}
 				</p>
 				<p>
-					<b>Email</b><br />
-					<a ng-href='mailto:{{person.emailAddress}}' class="break-word">{{person.emailAddress}}</a>
+					<b>Company:</b> {{person.currentJob.company}}
 				</p>
-				<span ng-show='person.date_connection'><b>Friends since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}<br /></span>
-				<div ng-if="userProfile.category ==='referer'">
-					<label ng-show='person.status'><b>Status:</b></label>
-					<select id='experience' ng-model="person.status" class="form-control" ng-change="changeFriendShipStatus(person)">
-			          <option value="connected">Connected</option>
-			          <option value="cv_granted">CV granted</option>
-			          <option value="cv_forwarded">CV forwarded to HR</option>
-			          <option value="hired">Hired</option>
-			          <option value="not_hired">Not hired</option>
-			        </select>
+				<p>
+					<b>Email:</b> <a ng-href='mailto:{{person.emailAddress}}' class="break-word">{{person.emailAddress}}</a>
+				</p>
+				<p ng-show='person.date_connection'>
+					<b>Friends since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}
+				</p>
+				<div class="row" ng-if="userProfile.category ==='referer'">
+					<div class="col-xs-4">
+						<label ng-show='person.status'><b>Status:</b></label>
+					</div>
+					<div class="col-xs-8">
+						<select id='experience' ng-model="person.status" class="form-control" 
+						                        ng-change="changeFriendShipStatus(person)">
+				          <option value="connected">Connected</option>
+				          <option value="cv_granted">CV granted</option>
+				          <option value="cv_forwarded">CV forwarded to HR</option>
+				          <option value="hired">Hired</option>
+				          <option value="not_hired">Not hired</option>
+				        </select>
+				    </div>
 			    </div>
-		        <div class="row margin-top5">
-					<div class="col-xs-4 col-xs-offset-8">
-						<button ng-click='person.toRemove = true' title="unfriend" class="btn btn-default rounded">
-							<span class="error">R</span>
-						</button>
-					</div>
-				</div>
-		    </div>
-		    <div ng-show="person.toRemove">
-		    	<p>
-		    		Do you really want to break the connection with {{person.firstName}} {{person.lastName}}?
-		    	</p>
-		    	<div class="text-center ">
-	 				<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" class="img img-responsive margin-auto" />
-	 			</div>
-	 			<br />
-		    	<div class="row">
-					<div class="col-sm-3 col-sm-offset-3 col-xs-offset-1 col-xs-5">
-						<button class="btn btn-default" ng-click="person.toRemove = false">No</button>
-					</div>
-					<div class="col-sm-3 col-xs-5">
-						<button class="btn btn-default" ng-click="unFriend(person)">Yes</button>
-					</div>
-		    	</div>
-		    </div>
+			</div>
+		</div>	
+        <div class="row">
+			<div class="col-xs-6 col-xs-offset-6">
+				<span class="error">Disconnect</span>
+				<button ng-click='person.toRemove = true' title="unfriend" class="btn btn-default rounded">
+					<span class="error">D</span>
+				</button>
+				
+			</div>
 		</div>
+	    <div ng-show="person.toRemove">
+	    	<p>
+	    		Do you really want to break the connection with {{person.firstName}} {{person.lastName}}?
+	    	</p>
+	    	<div class="text-center ">
+ 				<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" class="img img-responsive margin-auto" />
+ 			</div>
+ 			<br />
+	    	<div class="row">
+				<div class="col-sm-3 col-sm-offset-3 col-xs-offset-1 col-xs-5">
+					<button class="btn btn-default" ng-click="person.toRemove = false">No</button>
+				</div>
+				<div class="col-sm-3 col-xs-5">
+					<button class="btn btn-default" ng-click="unFriend(person)">Yes</button>
+				</div>
+	    	</div>
+	    </div>
+
 	</div>
 
 	<!-- NO FRIENDS -->

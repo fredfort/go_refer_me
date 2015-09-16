@@ -10,7 +10,9 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/dashboard"><img class="headerLogo" src="../images/logo.svg" /></a>
+            <a class="navbar-brand" href="#/dashboard">
+              <img class="headerLogo" src="../images/logo.svg" />
+            </a>
             <a ng-click="goToConnection();" ng-show="user.invitationsReceived.length">  
               <span tabindex='0' class="badge notification-xs notification" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
             </a>

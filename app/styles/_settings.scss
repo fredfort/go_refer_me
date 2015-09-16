@@ -1,8 +1,9 @@
 .settings{
+	margin-bottom:15px;
 	.address{
 		border: 1px solid lightgray;
 		padding: 5px 0px;
-		min-height: 220px;
+		min-height: 180px;
 	}
 
 	.toDelete{
@@ -17,5 +18,14 @@
 	}
 	.category{
 		    vertical-align: sub;
+	}
+}
+
+
+@media (max-width: $screen-sm-min){
+	.settings{
+		.address{
+			border-top:none;
+		}
 	}
 }
