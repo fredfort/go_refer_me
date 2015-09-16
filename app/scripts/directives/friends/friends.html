@@ -42,17 +42,18 @@
 				    </div>
 			    </div>
 			</div>
-		</div>	
-        <div class="row">
-			<div class="col-xs-6 col-xs-offset-6">
-				<span class="error">Disconnect</span>
-				<button ng-click='person.toRemove = true' title="unfriend" class="btn btn-default rounded">
-					<span class="error">D</span>
-				</button>
-				
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-6">
+					<span class="error">Disconnect</span>
+					<button ng-click='person.toRemove = true' title="unfriend" class="btn btn-default rounded">
+						<span class="error">D</span>
+					</button>
+					
+				</div>
 			</div>
-		</div>
-	    <div ng-show="person.toRemove">
+		</div>	
+
+	    <div class="to-disconnect" ng-show="person.toRemove">
 	    	<p>
 	    		Do you really want to break the connection with {{person.firstName}} {{person.lastName}}?
 	    	</p>

@@ -9106,7 +9106,7 @@ button.close {
 /* line 3, ../scripts/directives/friends/friends.scss */
 .friends .friend {
   border: 1px solid lightgray;
-  min-height: 250px;
+  min-height: 300px;
 }
 /* line 7, ../scripts/directives/friends/friends.scss */
 .friends .friend div {
@@ -9125,13 +9125,18 @@ button.close {
   }
 }
 /* line 25, ../scripts/directives/friends/friends.scss */
+.to-disconnect {
+  min-height: 300px;
+}
+
+/* line 29, ../scripts/directives/friends/friends.scss */
 .invitations {
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: lightgray 1px solid;
 }
 
-/* line 31, ../scripts/directives/friends/friends.scss */
+/* line 35, ../scripts/directives/friends/friends.scss */
 .btn-deny {
   padding-right: 18px;
   padding-left: 18px;
