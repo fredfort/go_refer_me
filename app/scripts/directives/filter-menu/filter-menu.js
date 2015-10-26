@@ -8,9 +8,9 @@ angular.module('discountdublin')
 		},
 		templateUrl:'scripts/directives/filter-menu/filter-menu.html',
 		link: function (scope, iElement, iAttrs) {
-			// scope.$watch('category', function(newValue,oldValue){
-			// 	scope.widerFilter = (scope.category==='referer');
-			// });
+			scope.$watch('category', function(newValue,oldValue){
+			 	scope.widerFilter = (scope.category==='referer');
+			});
 
 			scope.getFiltersLength = function(type){
 				if(scope.category === 'referer'){

@@ -1,7 +1,7 @@
 angular.module('discountdublin')
 
 .factory('API',['$http',function($http){
-	//var nodeAPI = 'http://localhost:3000/';
+	var nodeAPI = 'http://localhost:3000/';
 	//var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
 	var nodeAPI = 'http://default-environment-2mdvympgb6.elasticbeanstalk.com/';
 	var baseURL = nodeAPI;

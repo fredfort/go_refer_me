@@ -9050,7 +9050,7 @@ button.close {
 }
 
 /* line 45, ../scripts/directives/filter-menu/filter-menu.scss */
-.wider-filter div {
+.wider-filter > div {
   width: 25%;
 }
 
