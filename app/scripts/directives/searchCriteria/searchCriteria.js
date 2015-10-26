@@ -18,10 +18,16 @@ angular.module('discountdublin')
 			scope.experiences = ['junior','intermediate','senior'];
 
 			scope.addItem = function(){
-				if(scope.data.item && scope.data.item.length){
-					scope.items.push(scope.data.item);
-					scope.data.item = '';
-	
+
+
+				if(scope.itemType === 'location' && scope.items.length >= 10){
+					toaster.pop('info','You can\'t add more than 10 locations in your filters');
+				}else{
+					if(scope.data.item && scope.data.item.length && scope.items.indexOf(scope.data.item) === -1){
+						scope.items.push(scope.data.item);
+						scope.data.item = '';
+		
+					}
 				}
 			};
 
