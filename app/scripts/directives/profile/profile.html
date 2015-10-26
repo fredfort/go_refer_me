@@ -1,20 +1,11 @@
 <div class="profile margin-bottom10">
     <div class="row">
       <div class="col-xs-12 font_size1-2 text-left">
-       {{profile.firstName}} {{profile.lastName}},  {{profile.currentJob.title || profile.headline}}
+       {{profile.firstName}} {{profile.lastName}},  {{profile.currentJob.title || profile.headline}},
+       {{profile.category | categoryFilter}}
       </div>
     </div>
-    <div class="row margin-top10">
-      <div class="col-xs-3 col-sm-2 text-left">
-        <span class="verticalTop font_size1-2"><b>Category</b></span>
-      </div>
-      <div class="col-xs-9 col-sm-10">
-        <select id='category' ng-disabled="profile.category" ng-model="profile.category" class="form-control" ng-change="saveUserProfile(profile)">
-          <option value="referer">{{'referer' | categoryFilter}}</option>
-          <option value="looking_for_job">{{'looking_for_job' | categoryFilter}}</option>
-        </select>
-      </div>
-    </div>
+
     <div  ng-show="profile.saved.length" class="row margin-top5">
         <label>Only show saved profile</label>
         <input type="checkbox" ng-click="toggleShowOnlySavedProfile()"/>
