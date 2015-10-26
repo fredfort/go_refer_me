@@ -21,14 +21,8 @@ angular.module('discountdublin')
 	}
 
 	$scope.getPrice = function(){
-		if($scope.newConnection > 100){
-			var price = $scope.newConnection * 0.4;
-			return price.toFixed(2) 
-		}else if($scope.newConnection > 50){
-			var price = $scope.newConnection * 0.5;
-			return price.toFixed(2) 
-		}else if($scope.newConnection > 0){
-			var price = $scope.newConnection * 0.6;
+		if($scope.newConnection){
+			var price = $scope.newConnection ;
 			return price.toFixed(2) 
 		}else{
 			return 0;
@@ -48,7 +42,7 @@ angular.module('discountdublin')
 	  			});
 			});
 		}else{
-			toaster.info('You can\'t buy 0 token');
+			toaster.info('Please specify the amount of tokens you need');
 		}
 	}
 
