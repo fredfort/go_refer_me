@@ -24,7 +24,7 @@
 					<b>Email:</b> <a ng-href='mailto:{{person.emailAddress}}' class="break-word">{{person.emailAddress}}</a>
 				</p>
 				<p ng-show='person.date_connection'>
-					<b>Friends since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}
+					<b>Connected since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}
 				</p>
 				<div class="row" ng-if="userProfile.category ==='referer'">
 					<div class="col-xs-4">
