@@ -1,49 +1,50 @@
 <div class="friends row">
 	<!-- FRIENDS -->
 	<div  ng-repeat="person in persons | filter:personFilter | orderBy:sortFilter" 
-		  class="col-sm-6 col-md-4 text-center friend" ng-class="{'no-border-bottom':$last}">
-		<div class="row" ng-show="!person.toRemove">
-			<div class="col-xs-4">
-				<p>
-					<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" 
-					     class="img img-responsive margin-auto" />
-				</p>
-				<p>
-					{{person.firstName}} {{person.lastName}}
-				</p>
-				<a ng-show="person.siteStandardProfileRequest" ng-href="{{person.siteStandardProfileRequest.url}}" target="_blank">Linkedin</a>
-			</div>
-			<div class="col-xs-8 text-left">				
-				<p>
-					<b>Location:</b> {{person.location.name}}
-				</p>
-				<p>
-					<b>Company:</b> {{person.currentJob.company}}
-				</p>
-				<p>
-					<b>Email:</b> <a ng-href='mailto:{{person.emailAddress}}' class="break-word">{{person.emailAddress}}</a>
-				</p>
-				<p ng-show='person.date_connection'>
-					<b>Connected since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}
-				</p>
-				<div class="row" ng-if="userProfile.category ==='referer'">
-					<div class="col-xs-4">
-						<label ng-show='person.status'><b>Status:</b></label>
-					</div>
-					<div class="col-xs-8">
-						<select id='experience' ng-model="person.status" class="form-control" 
-						                        ng-change="changeFriendShipStatus(person)">
-				          <option value="connected">Connected</option>
-				          <option value="cv_granted">CV granted</option>
-				          <option value="cv_forwarded">CV forwarded to HR</option>
-				          <option value="hired">Hired</option>
-				          <option value="not_hired">Not hired</option>
-				        </select>
-				    </div>
-			    </div>
-			</div>
+		  class="col-sm-6 col-md-4 text-left friend" ng-class="{'no-border-bottom':$last}">
+		<div ng-if="!person.toRemove">
 			<div class="row">
-				<div class="col-xs-6 col-xs-offset-6">
+				<div class="col-xs-4">
+					<img ng-src="{{person.pictureUrl || '../images/user.svg'}}" 
+					     class="img img-responsive img-circle margin-auto" />
+				</div>
+				<div class="col-xs-8 name">
+					{{person.firstName}} {{person.lastName}}
+				</div>
+			</div>		
+			<p>
+				<b>Location:</b> {{person.location.name}}
+			</p>
+			<p>
+				<b>Company:</b> {{person.currentJob.company}}
+			</p>
+			<p>
+				<b>Email:</b> <a ng-href='mailto:{{person.emailAddress}}' class="break-word">{{person.emailAddress}}</a>
+			</p>
+			<p ng-show='person.date_connection'>
+				<b>Connected since</b>:{{person.date_connection | date:'dd/MM/yyyy'}}
+			</p>
+			<div class="row" ng-if="userProfile.category ==='referer'">
+				<div class="col-xs-3">
+					<label ng-show='person.status'><b>Status:</b></label>
+				</div>
+				<div class="col-xs-9 status-select" >
+					<select id='experience' ng-model="person.status" class="form-control" 
+					                        ng-change="changeFriendShipStatus(person)">
+			          <option value="connected">Connected</option>
+			          <option value="cv_granted">CV granted</option>
+			          <option value="cv_forwarded">CV forwarded to HR</option>
+			          <option value="hired">Hired</option>
+			          <option value="not_hired">Not hired</option>
+			        </select>
+			    </div>
+		    </div>
+			<div class="row">
+				<div class="col-xs-6 linkedinDiv">
+					<a ng-show="person.siteStandardProfileRequest" ng-href="{{person.siteStandardProfileRequest.url}}"  target="_blank">
+					<img class="linkedinLogo" src="images/linkedinLogo.png"/></a>	
+				</div>
+				<div class="col-xs-6">
 					<span class="error">Disconnect</span>
 					<button ng-click='person.toRemove = true' title="unfriend" class="btn btn-default rounded">
 						<span class="error">D</span>

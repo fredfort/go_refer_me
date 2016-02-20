@@ -72,12 +72,15 @@ angular.module('discountdublin')
     }
   }, true);
 
+  $rootScope.currentState = $state.$current.self;
 
-  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+    $rootScope.currentState = toState;
     $scope.isLoading =  true;
   })
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+    $rootScope.currentState = toState;
     $scope.isLoading =  false;
   });
 

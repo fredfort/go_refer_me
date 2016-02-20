@@ -41,13 +41,13 @@ angular.module('discountdublin')
                     svg
                     .append("path")
                     .attr("d", arc)
-                    .style("fill","#009F21")
+                    .style("fill","#fff")
                     .attr("transform", "translate(33,8)");
 
                     svg
                     .append('text')
                     .attr('font-size','11px')
-                    .attr('fill','#fff')
+                    .attr('fill',"#009F21")
                     .attr('x','30')
                     .attr('y','12')
                     .text(filters);

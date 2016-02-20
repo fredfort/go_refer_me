@@ -5,8 +5,9 @@
 	left: 15px;
 	height: 70px;
 	width: 100%;
-	background-color:lightgray;
+	background-color:$primary-color;
 	z-index: 9999;
+	color:white;
 
 	.glyphicon{
 		display: block;
@@ -28,13 +29,13 @@
 	    float: left;
 
 	    &:hover{
-			background-color:whitesmoke;
+			opacity:0.8;
 			cursor:pointer;
 	    }
 	}
 
 	> div.logo{
-		&:hover{
+		&:hover{ 
 			background-color:lightgray;
 			cursor:default;
 	    }

@@ -1,9 +1,8 @@
 .credits{
 	.widget{
-		border: 1px solid lightgray;
     	padding: 15px;
     	text-align: center;
-    	min-height:175px;
+    	min-height:165px;
 
     	.title{
     		font-size:22px;
@@ -12,7 +11,7 @@
     	.connectionsLeft{
     		font-size:52px;
     		font-weight: bold;
-    		color: #337ab7;
+    		color: $primary-color;
     	}
 
     	.currency{
@@ -21,7 +20,16 @@
     	}
 	}
 
-     
+    .separator{
+        background-color: #0e91a1;
+        width: 90%;
+        height: 3px;
+        margin-left: 5%;
+        padding-right: 15;
+        margin-bottom: 15px;
+    }
+
+
     .loader-payment{
         width: 20px;
         height:20px;

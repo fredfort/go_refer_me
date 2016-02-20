@@ -1,20 +1,23 @@
 .settings{
 	margin-bottom:15px;
 	.address{
-		border: 1px solid lightgray;
+		margin-bottom:15px;
 		padding: 5px 0px;
 		min-height: 180px;
 	}
 
 	.toDelete{
 		.btn.rounded {
-			padding: 22px 40px;
-		    border-radius: 55px;
+			padding: 4px 15px;
+    		border-radius: 50%;
 		}
 
 		.error{
-			font-size:3em;
+			font-size:2em;
 		}
+	}
+	.email{
+		    text-decoration: underline;
 	}
 	.category{
 		    vertical-align: sub;

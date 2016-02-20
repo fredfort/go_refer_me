@@ -1,15 +1,5 @@
 <div class="credits">
-	<div class="grm-page-header text-left">
-      <span class="grm-page-header-title">Credit</span>
-    </div>
 
-	<div class="row">
-		<div class="col-xs-12">
-			<alert type="info">
-				Here you can buy more tokens to make even more connections
-			</alert>
-		</div>
-	</div>
 	<div ng-if="transaction">
 		<alert type="success">
 			Transaction {{transaction.state}} at {{transaction.update_time | date:'medium'}}.
@@ -18,13 +8,14 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-6 widget">
+		<div class="col-xs-12 widget">
 			<p><strong class="title">Connections left</strong></p>
-			<p>
+			<div>
 				<span class="connectionsLeft">{{user.credit - user.friends.length}}</span>
-			</p>
+			</div>
 		</div>
-		<div class="col-md-6 widget">
+		<div class="col-xs-12 separator"></div>
+		<div class="col-sm-8 col-sm-offset-2 col-xs-12 widget">
 			<p><strong class="title">Buy more connections</strong></p>
 			<p>
 				<input type="number" class="form-control" ng-model="newConnection" placeholder="How many token do you want to get?"/>
