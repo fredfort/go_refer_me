@@ -2,7 +2,6 @@
 	margin-bottom:15px;
 	.address{
 		margin-bottom:15px;
-		padding: 5px 0px;
 		min-height: 180px;
 	}
 
@@ -21,6 +20,18 @@
 	}
 	.category{
 		    vertical-align: sub;
+	}
+
+	.subtitles{
+		font-size: 1.2em;
+		color:$primary-color;
+		text-align:center;
+		border-bottom:1px solid $primary-color;
+		margin-bottom:15px;
+	}
+
+	.subparts{
+		margin-bottom:50px;
 	}
 }
 

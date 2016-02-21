@@ -1,13 +1,13 @@
 <div class="profile margin-bottom10">
-    <div class="row">
+   <!--  <div class="row">
       <div class="col-xs-12 font_size1-2 text-left">
        {{profile.firstName}} {{profile.lastName}},  {{profile.currentJob.title || profile.headline}},
        {{profile.category | categoryFilter}}
       </div>
     </div>
-
+ -->
     <div  ng-show="profile.saved.length" class="row margin-top5">
-        <label>Only show saved profile</label>
+        <label>Only show saved profiles</label>
         <input type="checkbox" ng-click="toggleShowOnlySavedProfile()"/>
     </div>
     <br />
@@ -16,7 +16,7 @@
           <button class="btn btn-block btn-default" ng-click="clearTrash()">Clear the trash</button>
         </div>
         <div class="col-xs-6" ng-show="profile.saved.length">
-          <button class="btn btn-block btn-default" ng-click="clearSavedProfile()">Clear saved profile</button>
+          <button class="btn btn-block btn-default btn-clear-profile" ng-click="clearSavedProfile()">Clear saved profile</button>
         </div>
     </div>
     <br ng-show="profile.trash.length || profile.saved.length" />

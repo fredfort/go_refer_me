@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('discountdublin', [
     'ngAnimate',
     'ngCookies',
@@ -22,8 +22,9 @@ angular
     'angularMoment',
     'ui.bootstrap',
     'pageslide-directive'
-  ])
-  .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
+  ]);
+
+  app.config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
 
     $httpProvider.interceptors.push('HttpInterceptor');
     $urlRouterProvider.otherwise('/login');
@@ -160,3 +161,23 @@ angular
         controller:'CreditCtrl'
       });
   });
+
+  app.run(['$rootScope','toaster', function ($rootScope,toaster){
+
+      $rootScope.isLoading =  true;
+
+      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+        $rootScope.currentState = toState;
+        $rootScope.isLoading =  true;
+      })
+
+      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+        $rootScope.currentState = toState;
+        $rootScope.isLoading =  false;
+      });
+
+      $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+        $rootScope.isLoading =  false;
+        toaster.pop('error',error);
+      });
+  }]);

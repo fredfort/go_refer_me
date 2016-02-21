@@ -29,6 +29,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 .btn-primary{
   background-color:$primary-color;
+  color:#fff;
+}
+
+.btn-default{
+  color:$primary-color;
+  border: 1px solid $primary-color;
 }
 
 
@@ -228,11 +234,14 @@ footer{
   padding-top: 9px;
 }
 
-  //LOADER
   .loader{
-    position: absolute;
-    left: 50%;
-    top: 50%;
+    position: fixed;
+      top: 0px;
+      left: 0px;
+      height: 100%;
+      z-index: 999;
+      background: url('../images/loader.gif') 50% 50% no-repeat;
+      width: 100%;
   }
 
 
