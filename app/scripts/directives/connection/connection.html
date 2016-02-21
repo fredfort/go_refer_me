@@ -1,21 +1,21 @@
 <div class="connections">
 	<div class="row" >
-		<div class="col-sm-6 col-md-4 text-center connection" 
+		<div class="col-xs-12 text-left connection" 
 			ng-if="hasFilter()" 
 			ng-repeat="user in users"
 			ng-class="{'isFriend':isFriend(user),'no-border-bottom':$last}"
 			ng-hide="isFriend(user) || userProfile.onlyShowSavedProfile && !isAlreadySaved(user) || isTrashed(user)">
 			<p>
-				<strong>TITLE</strong><br />
+				<strong>TITLE</strong>: 
 				<span class='title_value'>{{user.currentJob.title || user.headline}}</span>
 			</p>
 			<p>
-				<strong>INDUSTRY</strong><br />
+				<strong>INDUSTRY</strong>: 
 				<span class='industry_value'>{{user.industry}}</span>
 			</p>
 			<p>
-				<strong>WORK</strong><br />
-				<span class='work_value'>{{user.currentJob.company}}</span><br />
+				<strong>WORK</strong>: 
+				<span class='work_value'>{{user.currentJob.company}}</span>, 
 				<span class='work_value'>{{user.currentJob.title}}</span>
 			</p>
 			<div  ng-show="!isFriend(user)" class="row margin-top5">

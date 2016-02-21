@@ -1,10 +1,10 @@
 <div class="settings">
 	<div class="profile">
 		<div class="row">
-			<div class="col-xs-3 col-sm-2">
-				<strong class="category font_size1-2">Category</strong>
+			<div class="col-xs-3">
+				<strong class="category font_size1-2">Category: </strong>
 			</div>
-			<div class="col-xs-9 col-sm-10">
+			<div class="col-xs-9">
 		        <select id='category' ng-model="user.category" class="form-control">
 		          <option value="referer">{{'referer' | categoryFilter}}</option>
 		          <option value="looking_for_job">{{'looking_for_job' | categoryFilter}}</option>
@@ -12,42 +12,55 @@
 			</div>
 		</div>
 		<div class="row margin-top5">
-			<div class="col-xs-3 col-sm-2">
-				<strong class="font_size1-2">Location</strong>
-			</div>
-			<div class="col-xs-9 col-sm-10">
+			<div class="col-xs-12">
+				<strong class="font_size1-2">Location: </strong>
 		        <span>{{user.location.name}}</span>
 			</div>
 		</div>
 		<div class="row margin-top5">
-			<div class="col-xs-3 col-sm-2">
-				<strong class="font_size1-2">Id</strong>
-			</div>
-			<div class="col-xs-9 col-sm-10">
+			<div class="col-xs-12">
+				<strong class="font_size1-2">Id: </strong>
 		        <span>{{user._id}}</span>
 			</div>
 		</div>
 		<br />
 	</div>
-	<br />
 	<div class="row">
 		<div class="col-sm-6 address">
 			<div class="text-center">
 				<p class="font_size1-2">
 					<b>Any question?</b>
 				</p>
-				<address>
-					<p>
-					  <span>Go Refer me</span><br>
-					  14 Madison court<br>
-					  Dublin, Ireland
+				<div class="row">
+					<p style="font-size: 1.1em">
+						Go refer me
 					</p>
-					<br />
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<address>
+							<p>
+							  814 mission st,<br /> 6th floor<br>
+							  San fransisco CA, 94103
+							</p>
+						</address>
+					</div>
+					<div class="col-xs-6">
+						<address>
+							<p>
+							  14 Madison court<br>
+							  Grattan street <br>
+							  Dublin, Dublin 2, <br />Ireland
+							</p>
+						</address>
+					</div>
+				</div>
+				<div class="row">
 					<p>
 						<a href="tel:+353872291126">(353) 872291126</a><br>
 						<a class="email" href="mailto:gorefer.me@gmail.com">gorefer.me@gmail.com</a>
 					</p>
-				</address>
+				</div>
 			</div>
 		</div>
 		<div class="col-sm-6 address">
@@ -83,8 +96,5 @@
 	
 			</div>
 		</div>
-	</div>
-
-
-	
+	</div>	
 </div>

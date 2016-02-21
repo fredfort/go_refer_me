@@ -37,17 +37,17 @@
       </div>
     </div>
 
-    <div class="container" menu-slideout ng-init="slideOpen=false" ng-swipe-right="slideOpen=true">
+    <div class="container" menu-slideout  ng-swipe-right="slideOpen=true">
         <pageslide  ng-swipe-left="slideOpen=false" ps-open="slideOpen" ps-side="left" ps-push="true" ps-auto-close="false" class="navbar navbar-default" style="border-right: 3px lightgray;border-style: solid;">
-          <div class="navbar-header"> 
+          <div class="navbar-header" ng-class="{'active':slideOpen}"> 
             <div class="row"> 
               <div class="col-md-12">  
                 <button type="button" class="navbar-toggle collapsed"  
                 style="float:left;margin-left:5px;margin-bottom: 15px;" ng-click="slideOpen = !slideOpen">
                   <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+                  <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
+                  <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
+                  <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
                 </button>
               </div>
             </div>

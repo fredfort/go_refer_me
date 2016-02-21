@@ -6,9 +6,20 @@
 	    <alert ng-show='!user.category' type="info" >
 	      	Please choose a category
 	    </alert>
-	    <alert class="xs-hidden" ng-show="usersSearched && usersSearched.length && linkedinProfile.category"  type="info" >
+	    <div ng-show='!user.category' class="row">
+			<div class="col-xs-3">
+				<strong class="category font_size1-2">Category: </strong>
+			</div>
+			<div class="col-xs-9">
+		        <select id='category' ng-model="user.category" class="form-control">
+		          <option value="referer">{{'referer' | categoryFilter}}</option>
+		          <option value="looking_for_job">{{'looking_for_job' | categoryFilter}}</option>
+		        </select>
+			</div>
+		</div>
+	   <!--  <alert class="xs-hidden" ng-show="usersSearched && usersSearched.length && linkedinProfile.category"  type="info" >
 	    	You may be interested in the followings profiles
-	    </alert>
+	    </alert> -->
 	    <alert ng-show='user.category && !hasFilter()' type="info" >
 	      	You have to define at least one filter at the bottom of the page to display people matching your expectation
 	    </alert>
@@ -18,5 +29,5 @@
 	    									  has-filter="hasFilter()"></div>
 	 
 	</div>
-    <div ng-show="linkedinProfile.category" filter-menu user="user" category="linkedinProfile.category"></div>
+    <div ng-show="linkedinProfile.category && !slideOpen" filter-menu user="user" category="linkedinProfile.category"></div>
 </div>

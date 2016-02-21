@@ -1,42 +1,50 @@
 <div class="menu">
   <div class="profile-menu row">
-    <div class="col-xs-4 col-md-offset-1 col-md-3 text-center">
+    <div class="col-xs-12 text-center myself">
       <div>
-        <img ng-src="{{profileMenu.pictureUrl || '../images/user.svg'}}" class="profileMenu-img" />
+        <img ng-src="{{profileMenu.pictureUrl || '../images/user.svg'}}" class="profileMenu-img img-circle" />
       </div> 
-    </div>
-    <div class="font_size1-3">
-        {{profileMenu.firstName}} {{profileMenu.lastName}}
-    </div>
-    <div style="font-size: 0.9em;">
-         {{ profileMenu.headline || profileMenu.currentJob.title}}
-    </div>
+      <div class="font_size1-3">
+          {{profileMenu.firstName}} {{profileMenu.lastName}}
+      </div>
+      <div style="font-size: 0.9em;">
+           {{ profileMenu.headline || profileMenu.currentJob.title}}
+      </div>
+     </div>
   </div>
-  <div class="app-menu">
-    <div>
-      <a ui-sref='main.dashboard'  ng-click="slideOpen = false">
-        <span class="glyphicon glyphicon-user"></span> Search
-      </a>
-    </div>
-    <div>
-      <a ui-sref='main.friendsRequest' ng-click='slideOpen = false'>
-        <span class='glyphicon glyphicon-globe'></span> Connections
-      </a>
-    </div>
-    <div>
-      <a ui-sref='main.settings'  ng-click="slideOpen = false">
-        <span class="glyphicon glyphicon-info-sign"></span> Settings
-      </a>
-    </div>
-    <div>
-      <a ui-sref='main.credit' ng-click="slideOpen = false">
-        <span class="glyphicon glyphicon-piggy-bank"></span> Credit 
-      </a>
-    </div>
-    <div> 
-      <a href='#' ng-click='logout()'>
-        <span class="glyphicon glyphicon-log-out"></span> Logout
-      </a>
+    
+  <div class="app-menu row">
+    <div class="col-xs-12 menu-divs">
+      <div>
+        <span class="glyphicon glyphicon-user"></span> 
+        <a ui-sref='main.dashboard'  ng-click="slideOpen = false">
+          <span ng-bind-html="'Home &amp; Search'"></span>
+        </a>
+      </div>
+      <div>
+      <span class='glyphicon glyphicon-globe'></span> 
+        <a ui-sref='main.friendsRequest' ng-click='slideOpen = false'>
+          Connections
+        </a>
+      </div>
+      <div>
+       <span class="glyphicon glyphicon-cog"></span> 
+        <a ui-sref='main.settings'  ng-click="slideOpen = false">
+          Settings
+        </a>
+      </div>
+      <div>
+        <span class="glyphicon glyphicon-piggy-bank"></span>
+        <a ui-sref='main.credit' ng-click="slideOpen = false">
+           Credit 
+        </a>
+      </div>
+      <div> 
+        <span class="glyphicon glyphicon-log-out"></span>
+        <a href='#' ng-click='logout()'>
+           Logout
+        </a>
+      </div>
     </div>
   </div>
 </div>

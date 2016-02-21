@@ -1,24 +1,40 @@
 .menu{
+
+	background: url('../images/background-menu.jpg') cover no-repeat;
 	.profile-menu{
-	    border-top: lightgray 1px solid;
 		padding: 8px;
-		margin-bottom: -5px;
+		margin-bottom: 15px;
+		margin-top:-10px;
 	}
+
+	.myself{
+			color:#fff;
+	}
+
 	.app-menu{
 
+		.menu-divs{
 
-		div{
- 			
-			padding: 10px;
-			border-bottom: lightgray 1px solid;
+			div{
+				&:first-child{
+					border-top: lightgray 1px solid;
+				}
 
-			&:first-child{
- 				border-top: lightgray 1px solid;
- 				margin-top:5px;
- 			}
 
-			a{
-				color:#757474;
+				padding: 10px;
+				border-bottom: lightgray 1px solid;
+
+				.glyphicon{
+					font-size: 1.5em;
+					margin-left:25px;
+				}
+
+				a{
+					color:#757474;
+					margin-left:25px;
+					color:#fff;
+					font-size: 1.3em;
+				}
 			}
 		}
 	}

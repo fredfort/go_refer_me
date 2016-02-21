@@ -8906,25 +8906,40 @@ button.close {
   vertical-align: text-top;
 }
 
-/* line 2, _menu.scss */
+/* line 1, _menu.scss */
+.menu {
+  background: url("../images/background-menu.jpg") cover no-repeat;
+}
+/* line 4, _menu.scss */
 .menu .profile-menu {
-  border-top: lightgray 1px solid;
   padding: 8px;
-  margin-bottom: -5px;
+  margin-bottom: 15px;
+  margin-top: -10px;
 }
 /* line 10, _menu.scss */
-.menu .app-menu div {
+.menu .myself {
+  color: #fff;
+}
+/* line 18, _menu.scss */
+.menu .app-menu .menu-divs div {
   padding: 10px;
   border-bottom: lightgray 1px solid;
 }
-/* line 15, _menu.scss */
-.menu .app-menu div:first-child {
+/* line 19, _menu.scss */
+.menu .app-menu .menu-divs div:first-child {
   border-top: lightgray 1px solid;
-  margin-top: 5px;
 }
-/* line 20, _menu.scss */
-.menu .app-menu div a {
+/* line 27, _menu.scss */
+.menu .app-menu .menu-divs div .glyphicon {
+  font-size: 1.5em;
+  margin-left: 25px;
+}
+/* line 32, _menu.scss */
+.menu .app-menu .menu-divs div a {
   color: #757474;
+  margin-left: 25px;
+  color: #fff;
+  font-size: 1.3em;
 }
 
 /* line 1, _navbar.scss */
@@ -9183,83 +9198,97 @@ button.close {
   background-color: #0e91a1;
 }
 
-/* line 34, main.scss */
+/* line 35, main.scss */
+.navbar-header.active {
+  height: 100%;
+  background-color: #0e91a1;
+}
+
+/* line 40, main.scss */
 .navbar-default {
   background-color: #fff;
   border-bottom: 1px solid #0e91a1;
 }
 
-/* line 38, main.scss */
+/* line 45, main.scss */
 .navbar-default .navbar-brand {
   padding-left: 0px;
   color: #0e91a1;
 }
 
-/* line 43, main.scss */
+/* line 50, main.scss */
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #0e91a1;
 }
 
-/* line 46, main.scss */
+/* line 54, main.scss */
+.navbar-default .navbar-toggle .icon-bar.active {
+  background-color: #fff;
+}
+
+/* line 58, main.scss */
 .navbar-default .navbar-toggle {
   border-color: #fff;
 }
 
-/* line 50, main.scss */
+/* line 62, main.scss */
 .alert-info {
   background-color: #0e91a1;
   border-color: #0e91a1;
   color: #fff;
 }
 
-/* line 56, main.scss */
+/* line 68, main.scss */
 html, body {
   height: 100%;
 }
 
-/* line 60, main.scss */
+/* line 72, main.scss */
 .navbar-header {
   text-align: text-right;
 }
 
-/* line 63, main.scss */
+/* line 75, main.scss */
 footer {
   bottom: 0px;
+  background-color: black;
+  color: #fff;
+  padding: 25px;
 }
 
-/* line 66, main.scss */
+/* line 81, main.scss */
 .notification {
   padding: 10px 12px;
   border-radius: 50%;
   background-color: #5cb85c;
 }
-/* line 70, main.scss */
+/* line 85, main.scss */
 cursor:pointer
 .notification:hover {
   background-color: #a3d7a3;
 }
 
-/* line 76, main.scss */
+/* line 91, main.scss */
 .notification-xs {
   display: none;
   margin: 9px;
 }
 
-/* line 80, main.scss */
+/* line 95, main.scss */
 .notification-sm {
   margin-top: -10px;
   margin-bottom: -10px;
 }
 
 /* Custom page footer */
-/* line 87, main.scss */
+/* line 102, main.scss */
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 94, main.scss */
+/* line 109, main.scss */
 .loginImage {
   background-image: url("../images/logo.png");
   background-size: cover;
@@ -9267,20 +9296,20 @@ cursor:pointer
   height: 500px;
 }
 
-/* line 101, main.scss */
+/* line 116, main.scss */
 .tabHeader {
   padding: 5px;
   font-weight: bold;
   border: 1px lightgray solid;
 }
 
-/* line 106, main.scss */
+/* line 121, main.scss */
 .tabRow {
   padding: 5px;
   border: 1px lightgray solid;
 }
 
-/* line 111, main.scss */
+/* line 126, main.scss */
 .mainTitle {
   color: white;
   font-size: 2.4em;
@@ -9288,20 +9317,20 @@ cursor:pointer
   opacity: 0.8;
 }
 
-/* line 118, main.scss */
+/* line 133, main.scss */
 .menuItem {
   margin: 0px;
   background-color: whitesmoke;
   padding: 30px;
   border-top: lightgray 1px solid;
 }
-/* line 124, main.scss */
+/* line 139, main.scss */
 .menuItem div p {
   padding: 15px;
   font-size: 1.3em;
 }
 
-/* line 131, main.scss */
+/* line 146, main.scss */
 .shoppingBackground {
   background: url("../images/shopping.jpg");
   background-size: cover;
@@ -9309,7 +9338,7 @@ cursor:pointer
   height: 350px;
 }
 
-/* line 138, main.scss */
+/* line 153, main.scss */
 .merchantBackground {
   background: url("../images/merchants.jpg");
   background-size: cover;
@@ -9317,42 +9346,58 @@ cursor:pointer
   height: 320px;
 }
 
-/* line 145, main.scss */
+/* line 160, main.scss */
 .intro {
   padding: 75px;
 }
-/* line 147, main.scss */
+/* line 162, main.scss */
 .intro p {
   font-size: 1.4em;
   color: #555555;
 }
 
-/* line 153, main.scss */
+/* line 168, main.scss */
 .LoginHeading {
   height: 450px;
   background: url("../images/mainImg.jpg");
   background-size: cover;
   background-position: center;
-  padding-top: 50px;
 }
-/* line 160, main.scss */
+/* line 174, main.scss */
+.LoginHeading a {
+  color: #fff;
+  text-decoration: underline;
+}
+/* line 179, main.scss */
 .LoginHeading .mainLogo {
-  width: 50%;
-  max-width: 350px;
+  width: 100px;
 }
 
-/* line 166, main.scss */
+/* line 184, main.scss */
+.social-media {
+  background-color: #333;
+  color: white;
+  padding: 5px;
+}
+/* line 189, main.scss */
+.social-media img {
+  width: 30px;
+}
+
+/* line 194, main.scss */
 .opacity-background {
-  background-color: white;
+  background-color: #0e91a1;
+  color: #fff;
   opacity: 0.7;
+  height: 450px;
 }
 
-/* line 171, main.scss */
+/* line 201, main.scss */
 .menu1-text {
   height: 350px;
 }
 
-/* line 174, main.scss */
+/* line 204, main.scss */
 .menu1 {
   background: url("../images/menu1.jpg");
   background-size: cover;
@@ -9360,84 +9405,84 @@ cursor:pointer
   height: 350px;
 }
 
-/* line 181, main.scss */
+/* line 211, main.scss */
 .menu2-text {
-  height: 350px;
+  height: 370px;
 }
 
-/* line 185, main.scss */
+/* line 215, main.scss */
 .menu2 {
   background: url("../images/menu2.jpg");
   background-size: cover;
   background-position: center;
-  height: 350px;
+  height: 370px;
 }
 
-/* line 192, main.scss */
+/* line 222, main.scss */
 .profile-img {
   width: 100%;
 }
 
-/* line 196, main.scss */
+/* line 226, main.scss */
 .search-panel-title {
   padding-left: 5px;
   padding-top: 9px;
 }
 
-/* line 202, main.scss */
+/* line 232, main.scss */
 .loader {
   position: absolute;
   left: 50%;
   top: 50%;
 }
 
-/* line 209, main.scss */
+/* line 239, main.scss */
 .filter-margin-bottom {
   margin-bottom: 65px;
 }
 
 @media (max-width: 768px) {
-  /* line 215, main.scss */
+  /* line 245, main.scss */
   .notification-xs {
     display: inline-block;
   }
 
-  /* line 220, main.scss */
+  /* line 250, main.scss */
   .mainIntro h3 {
     font-size: 19px;
   }
 
-  /* line 225, main.scss */
+  /* line 255, main.scss */
   .menu1-text, .menu2-text {
     height: 600px;
     padding: 15px;
   }
-  /* line 228, main.scss */
+  /* line 258, main.scss */
   .menu1-text p, .menu2-text p {
     font-size: 1.2em;
   }
 
-  /* line 234, main.scss */
+  /* line 264, main.scss */
   .search-panel-title .panel-title {
     font-size: 14px;
   }
 
-  /* line 239, main.scss */
+  /* line 269, main.scss */
   .panel-body {
     padding: 10px;
   }
 
-  /* line 243, main.scss */
+  /* line 273, main.scss */
   .navbar {
     margin-bottom: 10px;
   }
 
-  /* line 247, main.scss */
+  /* line 277, main.scss */
   .alert {
     margin-bottom: 10px;
   }
 
-  /* line 251, main.scss */
+  /* line 281, main.scss */
   .control {
     position: fixed;
   }
