@@ -16,8 +16,11 @@ mod.filter('urlFilter', function() {
       case "main.credit":
          returnedString = "Credit";
          break;
-       case "main.filter":
+      case "main.filter":
          returnedString = "Filter By";
+         break;
+      case "main.faq":
+         returnedString = "FAQ";
          break;
    }
    return returnedString;

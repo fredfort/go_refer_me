@@ -1,6 +1,6 @@
 <div class="connections">
 	<div class="row" >
-		<div class="col-xs-12 text-left connection" 
+		<div class="col-sm-6 text-left connection" 
 			ng-if="hasFilter()" 
 			ng-repeat="user in users"
 			ng-class="{'isFriend':isFriend(user),'no-border-bottom':$last}"
@@ -20,7 +20,9 @@
 			</p>
 			<div  ng-show="!isFriend(user)" class="row margin-top15">
 				<div class="col-xs-4 text-center">
-					<button ng-init="isInvented=hasSentInvitation(user)" ng-click="contactProfile(user)" class="btn rounded" 
+					<button ng-init="isInvented=hasSentInvitation(user)" 
+							ng-click="contactProfile(user);" 
+							class="btn rounded" 
 							ng-class="{'btn-primary':isInvented,'btn-default':!isInvented}">
 						<span>C</span>
 					</button>
@@ -28,7 +30,8 @@
 					<span class="help">Connect</span>
 				</div>
 				<div class="col-xs-4 text-center">
-					<button ng-init="isSaved=isAlreadySaved(user)" ng-click="saveProfile(user)" class="btn rounded"
+					<button ng-init="isSaved=isAlreadySaved(user)" 
+							ng-click="saveProfile(user);isSaved=!isSaved" class="btn rounded"
 							ng-class="{'btn-primary':isSaved,'btn-default':!isSaved}">
 						<span>S</span>
 					</button>
@@ -44,7 +47,7 @@
 				</div>
 			</div>
 		</div>
-		<div ng-show="users.length && hasFilter()" class="col-xs-12 col-md-8 col-md-offset-2 margin-top15">
+		<div ng-show="users.length && hasFilter() && hasVisibleConnection()" class="col-xs-12 col-md-8 col-md-offset-2 margin-top15">
 			<button class="btn btn-default btn-block" ng-click="clearFilter()">Clear filters</button>
 		</div>
 		<br />
@@ -57,7 +60,8 @@
 			</div>
 		</div>
 	</div>
-	<alert class="text-left" ng-show='userProfile.category && hasFilter() && !users.length' type="info" >
+
+	<alert class="text-left" ng-show='userProfile.category && hasFilter() && !hasVisibleConnection()' type="info" >
 		<p>Nobody matches the following criterias</p>
 		<ul ng-show="userProfile.category === 'referer'">
 			<li ng-if="userProfile.search.experience.length">Experience: {{userProfile.search.experience | arrayToString}}</li>

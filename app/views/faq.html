@@ -1,0 +1,9 @@
+<div class="faq">
+	<div class="question" ng-repeat="question in questions track by $index">
+		<a ng-click="question.show = !question.show">
+			<span class="title" ng-bind-html="question.title"></span>
+<!-- <span class="glyphicon" ng-class="{'glyphicon-chevron-up':question.show,'glyphicon-chevron-down':!question.show}"></span>-->
+		</a>
+		<p class="answer" ng-bind-html="question.answer" ng-show="question.show"></p>
+	</p>
+</div>

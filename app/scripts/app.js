@@ -159,6 +159,16 @@ var app = angular
         url:'credit?paymentId&token&PayerID?qte',
         templateUrl: 'views/credit.html',
         controller:'CreditCtrl'
+      })
+       .state('main.faq',{
+        url:'faq',
+        templateUrl: 'views/faq.html',
+        controller:'FaqCtrl',
+        resolve:{
+          questions:['$http', function($http){
+              return $http.get('assets/questions.json');
+          }]
+        }
       });
   });
 

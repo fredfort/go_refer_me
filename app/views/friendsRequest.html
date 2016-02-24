@@ -15,7 +15,7 @@
 				</div>
 				<div class="col-xs-4 col-sm-6">
 					<div class="text-center margin-top5">
-							<button class="btn btn-success" ng-click="acceptInvitation(person)">
+							<button class="btn btn-primary" ng-click="acceptInvitation(person)">
 								Accept <span class='glyphicon glyphicon-ok'></span>
 							</button>
 							<button class="btn btn-default btn-deny" ng-click="denyInvitation(person)">
@@ -35,10 +35,10 @@
 	     	<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
 		</div>
 		<div class="row">
-			<div class="col-xs-4 col-sm-2">
-				<strong class="font_size1-2 verticalTop">Sort by</strong>
+			<div class="col-xs-4 col-sm-2 sortByDiv">
+				<span>Sort by</span>
 			</div>
-			<div class="col-xs-8 col-sm-10 margin-bottom10">
+			<div class="col-xs-8 col-sm-10  margin-bottom10">
 		      	<select class="form-control" ng-model="sortFilter" ng-init="sortFilter='-last_update'">
 			     	<option value="-last_update" selected="selected">Last Update</option>
 			     	<option value="-date_connection">Connection date</option>

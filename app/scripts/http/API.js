@@ -1,7 +1,7 @@
 angular.module('discountdublin')
 
 .factory('API',['$http',function($http){
-	var nodeAPI = 'http://localhost:3000/';
+	//var nodeAPI = 'http://localhost:3000/';
 	//var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
 	var nodeAPI = 'http://default-environment-2mdvympgb6.elasticbeanstalk.com/';
 	var baseURL = nodeAPI;
@@ -88,7 +88,10 @@ angular.module('discountdublin')
 		},
 		getPaypalToken:function(){
 			return $http.get(baseURL+'paypal/token');
-		}
+		},
+		sendPremiumEmail: function(email){
+			return $http.post(baseURL+'premiumEmail', {email:email});
+		},
 	};
 
 }]);

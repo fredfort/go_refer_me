@@ -1,7 +1,7 @@
 .friends{
 	margin-bottom:15px;
 	.friend{
-		border: 1px solid lightgray;
+		border-right: 1px solid $primary-color;
 		min-height: 300px;
 
 		div{
@@ -18,7 +18,7 @@
 	}
 
 	.linkedinLogo{
-		width:70px;
+		width:50px;
 	}
 
 	.linkedinDiv{
@@ -32,7 +32,8 @@
 @media (max-width: $screen-sm-min){
 	.friends{
 		.friend{
-			border-top:none;
+			border-right: none;
+			border-bottom: 1px solid $primary-color;
 		}
 	}
 	.friend.no-border-bottom{

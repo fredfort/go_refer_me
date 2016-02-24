@@ -40,6 +40,21 @@ angular.module('discountdublin')
 		}
 	}, true);
 
+
+
+	$scope.clearTrash = function(){
+		$scope.user.trash = [];
+	};
+
+	$scope.clearSavedProfile = function(){
+		$scope.user.saved = [];
+		$scope.user.onlyShowSavedProfile = false;
+	}
+
+	$scope.toggleShowOnlySavedProfile = function(){//TODO do not listen to this event, no need to call API
+		$scope.user.onlyShowSavedProfile = !$scope.user.onlyShowSavedProfile;
+	}
+
 	//Look for match
 	$scope.searchJobSeeker = function(){
 		$state.go('main.search');

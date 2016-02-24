@@ -1,8 +1,24 @@
 <div class="dashboard">
     <div class="filter-margin-bottom text-center">
 	    
+		<div class="profile margin-bottom10">
+		    <div  ng-show="user.saved.length" class="row margin-top5">
+		        <label>Only show saved profiles</label>
+		        <input type="checkbox" ng-click="toggleShowOnlySavedProfile()"/>
+		    </div>
+		    <br />
+		    <div class="row" ng-show="user.trash.length || user.saved.length">
+		        <div class="col-xs-offset-3 col-xs-6" ng-show="user.trash.length">
+		          <button class="btn btn-block btn-default" ng-click="clearTrash()">Clear the trash</button>
+		        </div>
+		       <!--  <div class="col-xs-6" ng-show="user.saved.length">
+		          <button class="btn btn-block btn-default btn-clear-profile" ng-click="clearSavedProfile()">Clear saved profile</button>
+		        </div> -->
+		    </div>
+		    <br ng-show="profile.trash.length || profile.saved.length" />
+		</div>
 
-	    <div profile="linkedinProfile"></div>    
+
 	    <alert ng-show='!user.category' type="info" >
 	      	Please choose a category
 	    </alert>

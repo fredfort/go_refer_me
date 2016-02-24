@@ -19,18 +19,18 @@
 
 
       <div ng-init="collapse = true" class="collapse navbar-collapse" collapse="collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right menu-items">
               <li class="hidden-xs">
                 <a ng-click="goToConnection();" ng-show="user.invitationsReceived.length"> 
                   <span class="badge notification notification-sm" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
                 </a>
               </li>
-              <li><a ui-sref='main.dashboard'  ng-click="collapse = true"><span class="glyphicon glyphicon-user"></span> Search</a></li>
-              <li><a ui-sref='main.friendsRequest' ng-click='collapse = true'><span class='glyphicon glyphicon-globe'></span> Connections</a></li>
-              <li><a ui-sref='main.settings'  ng-click="collapse = true"><span class="glyphicon glyphicon-info-sign"></span> Settings</a></li>
-              <li><a ui-sref='main.credit' ng-click="collapse = true"><span class="glyphicon glyphicon-piggy-bank"></span> Credit </a></li>
+              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.dashboard'  ng-click="collapse = true"></span> <span ng-bind-html="'Home &amp; Search'"></span></a></li>
+              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.friendsRequest' ng-click='collapse = true'>Connections</a></li>
+              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.settings'  ng-click="collapse = true">Settings</a></li>
+              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.credit' ng-click="collapse = true">Credit </a></li>
               <li class="divider"></li>
-              <li> <a href='#' ng-click='logout()'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <li> <a href='#' ng-click='logout()'>Logout</a></li>
             </ul>
           </div>
         </div>

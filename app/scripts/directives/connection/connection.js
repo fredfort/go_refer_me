@@ -19,6 +19,17 @@ angular.module('discountdublin')
 				return friend.id;
 			});
 
+			scope.hasVisibleConnection = function(){
+				var hasVisibleconnection = false;
+				_.each(scope.users, function(user){
+					if((!scope.isFriend(user) && !scope.userProfile.onlyShowSavedProfile) || (scope.isAlreadySaved(user) && !scope.isTrashed(user))){
+						hasVisibleconnection = true;
+						return false;//break the loop
+					}
+				});
+				return hasVisibleconnection;
+			}
+
 			scope.isFriend = function(user){
 				return friendsId.indexOf(user._id) !== -1;
 			}
