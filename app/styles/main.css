@@ -9803,7 +9803,7 @@ cursor:pointer
   left: 0px;
   height: 100%;
   z-index: 999;
-  background: url("../images/loader.gif") 50% 50% no-repeat;
+  background: url("../images/loader.svg") 50% 50% no-repeat;
   width: 100%;
 }
 
