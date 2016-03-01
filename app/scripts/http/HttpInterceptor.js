@@ -20,7 +20,7 @@ angular.module('discountdublin').factory('HttpInterceptor',['$window','$q','User
         if(rejection.status === 403 || rejection.status === 401){
           User.logout();
           toaster.pop('error', rejection.data);
-        }else if(rejection.status !== 404){
+        }else if(rejection.status !== 404 && rejection.status !== 400){
           toaster.pop('error', rejection.data);
         }
         return $q.reject(rejection);    

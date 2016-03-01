@@ -153,12 +153,39 @@ var app = angular
       .state('main.settings',{
         url:'settings',
         controller:'SettingsCtrl',
-        templateUrl: 'views/settings.html'
+        templateUrl: 'views/settings.html',
+        resolve:{
+          referer:[ 'API','linkedinProfile',function(API,linkedinProfile){
+            if(linkedinProfile.data.referer){
+              return API.searchUsersByIds([linkedinProfile.data.referer]).then(function(people){
+                return people.data[0];
+              });
+            }else{
+              return null;
+            }
+          }]
+        }
       })
       .state('main.credit',{
         url:'credit?paymentId&token&PayerID?qte',
         templateUrl: 'views/credit.html',
         controller:'CreditCtrl'
+      })
+       .state('info',{
+        url:'/info',
+        templateUrl: 'views/info.html',
+      })
+      .state('info.blog',{
+        url:'/blog',
+        templateUrl: 'views/blog.html',
+      })
+      .state('info.about',{
+        url:'/about',
+        templateUrl: 'views/about.html',
+      })
+      .state('info.contact',{
+        url:'/contact',
+        templateUrl: 'views/contact.html',
       })
        .state('main.faq',{
         url:'faq',

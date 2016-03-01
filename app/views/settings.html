@@ -64,6 +64,25 @@
 		</div>
 		<div class="col-sm-6 address">
 			<div class="subtitles">
+				<b>Did you get Referred?</b>
+			</div>
+			<div class="subparts text-center" ng-show="!referer">
+				<p>Enter the id of your referer so you can both of you get free credits.</p>
+				<p>
+					<input class="form-control" ng-model="refererId"/>
+				</p>
+				<p class="text-center">
+					<button class="btn btn-primary" ng-disabled="!refererId" ng-click="sendReferer()">Submit</button>
+				</p>
+			</div>
+			<div class="subparts text-center" ng-show="referer">
+				<p>{{referer.firstName}} {{referer.lastName}} refered you!</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6 address">
+			<div class="subtitles">
 					<b>Want to leave?</b>
 			</div>
 			<div class="subparts">
@@ -96,5 +115,5 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 </div>

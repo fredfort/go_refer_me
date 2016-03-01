@@ -1,0 +1,31 @@
+.info{
+	width:100%;
+	background-color:$primary-color;
+	padding:10px 0px;
+
+	 .mainLogo{
+    	width:60px;
+  	}
+
+  	.btn-menu{
+	    border: white solid 1px;
+	    .icon-bar{
+	      background-color:white;
+	    }
+	}
+
+  	.menu-links{//login page
+	    margin-top:10px;
+	    a{  
+	      text-decoration: none;
+	      margin-left:15px;
+	      margin-right:5px;
+	      color:white;
+
+	      &:hover{
+	        text-decoration:underline;
+	      }
+	    }
+  	}
+
+}

@@ -1,19 +1,66 @@
 [
-	{
-		"title":"Question 1",
-		"answer":"Answer to question 1, please"
+{
+  "title":"What is GoReferMe?",
+  "answer":"GoReferMe is an independent app helping jobseekers to connect with employees of their dream companies to help them to apply to the right jobs with the right attitude and increase their chance to be hired."
 
-	},
-	{
-		"title":"Question 2",
-		"answer":"Answer to question 2"
-	},
-	{
-		"title":"Question 3",
-		"answer":"Answer to question 3"
-	},
-	{
-		"title":"Question 4",
-		"answer":"Answer to question 4"
-	}
+ },
+{
+  "title":"Why employees who help jobseekers?",
+  "answer":"Today, one of every two employers offers a formal referral bonus program to their employees. The employees can refer external candidates to their HR department, and if the candidate is finally hired, the employee will earn benefit or cash bonus from its employers."
+
+ },
+{
+  "title":"How to make sure i connect with Jobseekers only?",
+  "answer":"Go to settings and set your profile as a Referrer, then go to Home & Search, and Jobseekers profiles will be displayed based on the selected filters."
+
+ },
+{
+  "title":"How to make sure i connect with Referrers only?",
+  "answer":"Go to settings and set your profile as a Jobseeker, then go to Home & Search, and Referrers profiles will be displayed based on the selected filters."
+
+ },
+{
+  "title":"How to refine my search?",
+  "answer":"Go to Home & Search and use the filters ‘Location’, ‘Experience’, ‘Function’ and ‘Language’ to refine your search."
+
+ },
+{
+  "title":"How to connect with another user?",
+  "answer":"When a relevant profile appears on Home & Search click on Connect under its description. each time you connect with someone, you use one credit."
+
+ },
+{
+  "title":"I clicked on Connect, now what?",
+  "answer":"Once you click connect, the user will receive a notification about your request. Once this user accept it, it will appear in your Connections with its contact details. Then up to you!"
+
+ },
+{
+  "title":"I find relevant profiles but i don’t want to use a credit right now?",
+  "answer":"Save it for later.When a relevant profile appears on Home & Search click on Save under its description. it won’t use a credit and profile will appearing when you tick Only show saved profiles."
+
+ },
+{
+  "title":"How does credits work?",
+  "answer":"to restrain abusive request to our members, both referrers and jobseekers use credit to connect to each other. the credit is use when both part have accepted the connection. Once done, both part will access to each other contact details in order to connect."
+
+ },
+{
+  "title":"How many credits do I have?",
+  "answer":"Go to Credits and your credits will appear."
+
+ },
+{
+  "title":"How to get credits?",
+  "answer":"There is several ways to get credits. When you subscribe for the first time, you will automatically start with 30 credits. if you refer a friend to use the app, both of you will receive 15 credits (see How to refer somebody?). You can also purchase credits with a paypal account or a debit/credit card : go to Credits, choose the amount of credits you need, click Purchase Credits and follow the instructions.Finally, if you choose to disconnect with another user, both got a credit back."
+
+ },
+{
+  "title":"How to refer somebody?",
+  "answer":"Go to Settings, find your User ID and ask your friend to enter it under ‘Did you get Referred’ in its Settings and click confirm. Both of you will receive 15 credits."
+
+ },
+{
+  "title":"How to contact the team?",
+  "answer":"Send us an email to hello@gorefer.me . we would love to hear your feedback and help you around."
+ }
 ]

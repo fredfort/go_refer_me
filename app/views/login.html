@@ -1,9 +1,27 @@
 <div>
 	<div class="LoginHeading">
 		<div class="opacity-background text-center">
-			<div class="text-left">
-				<img src="../images/logoWhite.png" class="mainLogo" /><br />
-				<span class="font_size1-3" style="margin-left: 15px">GoRefer.me</span>
+			<div class="row no-margin">
+				<div class="col-xs-6 col-sm-4 text-left">
+					<img src="../images/logoWhite.png" class="mainLogo" /><br />
+					<span class="font_size1-3" style="margin-left: 15px">GoRefer.me</span>
+				</div>
+				<div class="col-xs-6 col-sm-8 text-right menu-links">
+					<div class="hidden-xs hidden-sm">
+						<a ng-href="#/info/home">HOME</a>
+						<a ng-href="#/info/blog">BLOG</a>
+						<a ng-href="#/info/about">ABOUT</a>
+						<a ng-href="#/info/contact">CONTACT</a>
+					</div>
+					<div class="visible-xs visible-sm">
+						<button type="button" class="btn-menu navbar-toggle collapsed" ng-click="slideOpen = !slideOpen">
+			              <span class="sr-only">Toggle navigation</span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			            </button>
+					</div>
+				</div>
 			</div>
 			<div class="mainIntro">
 				<h3>Jobseekers, Looking for someone to help you getting a job?</h3>
@@ -126,5 +144,27 @@
 				</div>
 		</footer>
 	</div>
+
+
+	<div class="container" menu-slideout  ng-swipe-right="slideOpen=true">
+        <pageslide  ng-swipe-left="slideOpen=false" ps-open="slideOpen" ps-side="right" ps-push="true" ps-auto-close="false" class="navbar navbar-default" style="border-right: 3px lightgray;border-style: solid;">
+          <div class="navbar-header" ng-class="{'active':slideOpen}"> 
+            <div class="row"> 
+              <div class="col-md-12">  
+                <button type="button" class="navbar-toggle collapsed"  
+                style="float:left;margin-left:5px;margin-bottom: 15px;" ng-click="slideOpen = !slideOpen">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
+                  <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
+                  <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
+                </button>
+              </div>
+            </div>
+            <div login-menu slide-open="slideOpen"></div>
+          </div>
+        </pageslide>
+    </div>
+
+
 	<toaster-container toaster-options="{'position-class':'toast-bottom-right'}"></toaster-container>
 </div>

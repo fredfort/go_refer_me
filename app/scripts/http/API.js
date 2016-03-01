@@ -1,9 +1,9 @@
 angular.module('discountdublin')
 
 .factory('API',['$http',function($http){
-	//var nodeAPI = 'http://localhost:3000/';
+	var nodeAPI = 'http://localhost:3000/';
 	//var nodeAPI = 'http://goreferme.elasticbeanstalk.com/';
-	var nodeAPI = 'http://default-environment-2mdvympgb6.elasticbeanstalk.com/';
+	//var nodeAPI = 'http://default-environment-2mdvympgb6.elasticbeanstalk.com/';
 	var baseURL = nodeAPI;
 	var user = null;
 
@@ -71,6 +71,10 @@ angular.module('discountdublin')
 
 		activateAccount:function(access_token){
 			return $http.post(baseURL+'user/activateAccount?access_token='+access_token);
+		},
+
+		addReferer:function(id){
+			return $http.post(baseURL+'user/referer',{id:id});
 		},
 
 		changePassword:function(password,token){
