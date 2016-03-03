@@ -1,6 +1,7 @@
 //main colors 
 $primary-color: #0e91a1;
 $toastSuccess:$primary-color !default;
+$grid-float-breakpoint:992 !default;
 
 
 
@@ -44,6 +45,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 .navbar-header.active {
     height: 100%;
+    width: 100%;
     background-color: #0e91a1;
 }
 
@@ -52,10 +54,21 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     border-bottom: 1px solid $primary-color;
     //opacity: 0.9;
 }
-.navbar-default .navbar-brand{
+
+.page-indicator{
   padding-left: 0px;
   color:$primary-color;
 }
+
+
+.mobile-top-nav{
+  background-color: #fff;
+  border-bottom: 1px solid $primary-color;
+  height: 50px;
+
+}
+
+
 
 .menu-link{
   &:focus{
@@ -67,6 +80,15 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .menu-link.active{
   font-weight: bold;
   text-decoration: underline;
+}
+
+.navbar-toggle.unactive{
+  float: left;
+  margin-left: 5px;
+  margin-bottom: 15px;
+  .icon-bar{
+    background-color:$primary-color;
+  }
 }
 
 .navbar-default .navbar-toggle .icon-bar{
@@ -311,8 +333,32 @@ footer{
       margin-bottom: 65px;
   }
 
+.mainView{
+  margin-left: 300px;
+}
+
+.mobile-notif{
+  float: right;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.desktop-notif{
+  float: right;
+  margin-top: 15px;
+  margin-right: -15px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: $screen-md-min){
+  .mainView{
+    margin-left: 0px;
+    width:100%;
+  }
+}
 
 @media (max-width: $screen-sm-min){
+
   .notification-xs{
     display:inline-block; 
   }

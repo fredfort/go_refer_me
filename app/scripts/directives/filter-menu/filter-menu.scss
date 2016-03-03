@@ -1,5 +1,5 @@
 .filter-menu{
-	
+	margin-left:285px;
 	position: fixed;
 	bottom: -22px;
 	left: 15px;
@@ -46,4 +46,11 @@
 	>div{
 		width:25%;
 	}
+}
+
+@media (max-width: $screen-md-min){
+  .filter-menu{
+    margin-left: -15px;
+    width:100%;
+  }
 }

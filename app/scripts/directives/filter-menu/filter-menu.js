@@ -1,5 +1,5 @@
 angular.module('discountdublin')
-.directive('filterMenu', ['$state', function ($state) {
+.directive('filterMenu', ['$state','$window', function ($state,$window) {
 	return {
 		restrict: 'A',
 		scope:{
@@ -32,6 +32,27 @@ angular.module('discountdublin')
 			scope.goToFilter = function(filterType){
 				$state.go('main.filter',{filterType:filterType});
 			};
+
+
+	  		scope.windowWidth = $window.innerWidth+'px';
+			var w = angular.element($window);
+			scope.$watch(
+				function () {
+				  return $window.innerWidth;
+				},
+				function (value) {
+				  if(value > 992){
+				    scope.windowWidth = $window.innerWidth - 285+'px';
+				  }else{
+				    scope.windowWidth = $window.innerWidth+'px';
+				  }
+				},
+				true
+			);
+
+			w.bind('resize', function(){
+				scope.$apply();
+			});
 			
 		}
 	};

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('discountdublin')
-  .controller('MainCtrl',['$rootScope','$scope','$state','$interval','toaster','User','industries','locations','functions','languages','API','linkedinProfile','companies',
-    function ($rootScope, $scope,$state,$interval, toaster, User,industries, locations, functions, languages, API,linkedinProfile,companies) {
+  .controller('MainCtrl',['$rootScope','$scope','$window','$state','$interval','toaster','User','industries','locations','functions','languages','API','linkedinProfile','companies',
+    function ($rootScope, $scope,$window,$state,$interval, toaster, User,industries, locations, functions, languages, API,linkedinProfile,companies) {
     
     $rootScope.slideOpen=false;
 
@@ -74,6 +74,29 @@ angular.module('discountdublin')
       $scope.saveUserProfile($scope.user);
     }
   }, true);
+
+
+  $scope.windowWidth = $window.innerWidth;
+  var w = angular.element($window);
+  $scope.$watch(
+    function () {
+      return $window.innerWidth;
+    },
+    function (value) {
+      if(value > 992){
+        $scope.slideOpen = true;
+        $scope.windowWidth = $window.innerWidth - 300+'px';
+      }else{
+        $scope.slideOpen = false;
+        $scope.windowWidth = $window.innerWidth+'px';
+      }
+    },
+    true
+  );
+
+  w.bind('resize', function(){
+    $scope.$apply();
+  });
 
   $rootScope.currentState = $state.$current.self;
 

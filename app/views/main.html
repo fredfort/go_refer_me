@@ -1,49 +1,24 @@
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div>
-          <div class="navbar-header navbar-main">
 
-            <button type="button" class="navbar-toggle collapsed"  style="float:left;margin-left:5px" ng-click="slideOpen = !slideOpen">
+  <div class="hidden-md hidden-lg mobile-top-nav">
+    <button type="button" class="navbar-toggle unactive collapsed"  ng-click="slideOpen = !slideOpen">
               <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-             
-            <span class="page-indicator visible-xs visible-sm navbar-brand" ng-bind-html="currentState.name | urlFilter"></span>
-
-            <a ng-click="goToConnection();" ng-show="user.invitationsReceived.length">  
-              <span tabindex='0' class="badge notification-xs notification" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
-            </a>
-          </div>
-
-
-      <div ng-init="collapse = true" class="collapse navbar-collapse" collapse="collapse">
-            <ul class="nav navbar-nav navbar-right menu-items">
-              <li class="hidden-xs">
-                <a ng-click="goToConnection();" ng-show="user.invitationsReceived.length"> 
+              <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
+              <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
+              <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
+    </button>
+    <span class="page-indicator hidden-md hidden-lg navbar-brand" ng-bind-html="currentState.name | urlFilter"></span>
+    <a ng-click="goToConnection();" ng-show="user.invitationsReceived.length" class="mobile-notif"> 
                   <span class="badge notification notification-sm" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
-                </a>
-              </li>
-              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.dashboard'  ng-click="collapse = true"></span> <span ng-bind-html="'Home &amp; Search'"></span></a></li>
-              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.friendsRequest' ng-click='collapse = true'>Connections</a></li>
-              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.settings'  ng-click="collapse = true">Settings</a></li>
-              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.credit' ng-click="collapse = true">Credit </a></li>
-              <li><a class="menu-link" ui-sref-active="active" ui-sref='main.faq' ng-click="collapse = true">FAQ </a></li>
-              <li class="divider"></li>
-              <li> <a href='#' ng-click='logout()'>Logout</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    </a>
+  </div>
 
-    <div class="container" menu-slideout  ng-swipe-right="slideOpen=true">
+
+    <div class="container" menu-slideout  ng-init="slideOpen=true" ng-swipe-right="slideOpen=true">
         <pageslide  ng-swipe-left="slideOpen=false" ps-open="slideOpen" ps-side="left" ps-push="true" ps-auto-close="false" class="navbar navbar-default" style="border-right: 3px lightgray;border-style: solid;">
           <div class="navbar-header" ng-class="{'active':slideOpen}"> 
             <div class="row"> 
               <div class="col-md-12">  
-                <button type="button" class="navbar-toggle collapsed"  
+                <button type="button" class="navbar-toggle collapsed hidden-md hidden-lg"  
                 style="float:left;margin-left:5px;margin-bottom: 15px;" ng-click="slideOpen = !slideOpen">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar" ng-class="{'active':slideOpen}"></span>
@@ -56,4 +31,13 @@
           </div>
         </pageslide>
     </div>
-    <div ui-view class="container"></div>
+
+    <div class="container ">
+      <div class="mainView">
+        <a ng-click="goToConnection();" class="desktop-notif" ng-show="user.invitationsReceived.length"> 
+                      <span class="badge notification notification-sm" popover="You have {{user.invitationsReceived.length}} friends request" popover-trigger="mouseenter" popover-title="Friend request" popover-placement="bottom">{{user.invitationsReceived.length}}</span>
+        </a>
+      </div>
+    </div>
+
+    <div ui-view class="container mainView" ng-style="{'width':windowWidth}"></div>

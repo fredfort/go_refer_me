@@ -1,5 +1,5 @@
 angular.module('discountdublin')
-.directive('profileMenu', ['$state','User', 'Linkedin', function ($state, User, Linkedin) {
+.directive('profileMenu', ['$state','$window','User', 'Linkedin', function ($state,$window, User, Linkedin) {
 	return {
 		restrict: 'A',
 		templateUrl:'scripts/directives/profile-menu/profile-menu.html',
@@ -11,6 +11,13 @@ angular.module('discountdublin')
 		  	scope.logout = function(){
 				User.logout();
 	  		};
+
+	  		scope.clickLink = function(){
+	  			if(window.innerWidth < 992){//mobile
+	  				scope.slideOpen = false;
+	  			}
+	  		};
+
 		}
 	};
 }])
